@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { login, logOut, register, fetchRefresh } from "Redux/authOperaions";
+import { login, logOut, register } from "Redux/authOperaions";
 import { persistReducer } from "redux-persist";
 import storage from 'redux-persist/lib/storage'
 const initialState = {
@@ -37,7 +37,6 @@ export const kapustaSlice = createSlice({
             state.loading = true;
         },
         [login.fulfilled]: (state, action) => {
-            console.log(action.payload);
             state.loading = false;
             state.auth.user.email = action.payload.userData.email;
             state.auth.user.id = action.payload.userData.id;

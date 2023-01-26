@@ -39,9 +39,11 @@ export const logOut = createAsyncThunk('auth/logout', async () => {
 export const fetchRefresh = createAsyncThunk('auth/refresh', async (_, thunkAPI) => {
     const state = thunkAPI.getState();
     console.log(state);
-    // setToken(token);
+    const sid = state.sid;
+    setToken(state.accessToken);
     try {
-        const { data } = await axios.post('/auth/refresh')
+        const { data } = await axios.post('/auth/refresh', { sid })
+        console.log(data);
         return data;
     } catch (error) {
         console.log(error);

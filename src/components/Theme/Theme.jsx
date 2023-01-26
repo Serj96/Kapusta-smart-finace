@@ -1,8 +1,8 @@
 
-export const MyTheme = {
+export const myTheme = {
     backgroundColors: {
         primary: '#FFFFFF',
-        secondary: 'F5F6FB'
+        secondary: '#F5F6FB',
     },
     colors: {
         primary: '#52555F',
@@ -13,5 +13,7 @@ export const MyTheme = {
         hover: '#FF751D',
         validation: '#FF0000'
     },
+    breakPoints: {
 
+    }
 }
