@@ -24,6 +24,10 @@ import {
   ReportExpenseListItem,
   ReportExpenseListItemAmount,
   ReportExpenseListItemText,
+  ReportIoIosArrowRoundBackText,
+  ReportIoIosArrowRoundBackWrapper,
+  ReportHeaderWrapperTablet,
+  ReportExpenseListWrapper,
 } from './Report.styled';
 
 import Boock from 'components/icons/Boock';
@@ -41,21 +45,31 @@ import Ufo from 'components/icons/Ufo';
 export default function Report() {
   return (
     <Container>
-      <ReportIoIosArrowRoundBack size={36} />
-      <ReportCurrentPeriodWrapper>
-        <ReportCurrentPeriodText>Current period:</ReportCurrentPeriodText>
-        <ReportDateWrapper>
-          <ReportArrowLeft size={24} />
-          <ReportDateText>November 2019</ReportDateText>
-          <ReportArrowRight size={24} />
-        </ReportDateWrapper>
-      </ReportCurrentPeriodWrapper>
-      <ReportCurrentBalanceWrapper>
-        <ReportCurrentBalanceText>Balance:</ReportCurrentBalanceText>
-        <ReportCurrentAmountWrapper>
-          <ReportCurrentAmount>55 000.00 UAH</ReportCurrentAmount>
-        </ReportCurrentAmountWrapper>
-      </ReportCurrentBalanceWrapper>
+      <ReportHeaderWrapperTablet>
+        <ReportIoIosArrowRoundBackWrapper>
+          <ReportIoIosArrowRoundBack size={36} />
+          <ReportIoIosArrowRoundBackText>
+            Main page
+          </ReportIoIosArrowRoundBackText>
+        </ReportIoIosArrowRoundBackWrapper>
+
+        <ReportCurrentPeriodWrapper>
+          <ReportCurrentPeriodText>Current period:</ReportCurrentPeriodText>
+          <ReportDateWrapper>
+            <ReportArrowLeft size={24} />
+            <ReportDateText>November 2019</ReportDateText>
+            <ReportArrowRight size={24} />
+          </ReportDateWrapper>
+        </ReportCurrentPeriodWrapper>
+
+        <ReportCurrentBalanceWrapper>
+          <ReportCurrentBalanceText>Balance:</ReportCurrentBalanceText>
+          <ReportCurrentAmountWrapper>
+            <ReportCurrentAmount>55 000.00 UAH</ReportCurrentAmount>
+          </ReportCurrentAmountWrapper>
+        </ReportCurrentBalanceWrapper>
+      </ReportHeaderWrapperTablet>
+
       <ReportListIndicator>
         <ReportListItemIndicatorExpenses>
           <ReportListItemIndicatorText>Expenses:</ReportListItemIndicatorText>
@@ -70,68 +84,70 @@ export default function Report() {
           </ReportListItemIndicatorIncomeAmount>
         </ReportListItemIndicatorIncome>
       </ReportListIndicator>
-      <ReportExpenseWrapper>
-        <ReportArrowLeft size={24} />
-        <ReportExpenseText>EXPENSES</ReportExpenseText>
-        <ReportArrowRight size={24} />
-      </ReportExpenseWrapper>
-      <ReportExpenseList>
-        <ReportExpenseListItem>
-          <ReportExpenseListItemAmount>5 000.00</ReportExpenseListItemAmount>
-          <Boock />
-          <ReportExpenseListItemText>Products</ReportExpenseListItemText>
-        </ReportExpenseListItem>
-        <ReportExpenseListItem>
-          <ReportExpenseListItemAmount>3 000.00</ReportExpenseListItemAmount>
-          <Kite />
-          <ReportExpenseListItemText>Products</ReportExpenseListItemText>
-        </ReportExpenseListItem>
-        <ReportExpenseListItem>
-          <ReportExpenseListItemAmount>3 000.00</ReportExpenseListItemAmount>
-          <Car />
-          <ReportExpenseListItemText>Products</ReportExpenseListItemText>
-        </ReportExpenseListItem>
-        <ReportExpenseListItem>
-          <ReportExpenseListItemAmount>3 000.00</ReportExpenseListItemAmount>
-          <Clay />
-          <ReportExpenseListItemText>Products</ReportExpenseListItemText>
-        </ReportExpenseListItem>
-        <ReportExpenseListItem>
-          <ReportExpenseListItemAmount>3 000.00</ReportExpenseListItemAmount>
-          <Cocktail />
-          <ReportExpenseListItemText>Products</ReportExpenseListItemText>
-        </ReportExpenseListItem>
-        <ReportExpenseListItem>
-          <ReportExpenseListItemAmount>3 000.00</ReportExpenseListItemAmount>
-          <Couch />
-          <ReportExpenseListItemText>Products</ReportExpenseListItemText>
-        </ReportExpenseListItem>
-        <ReportExpenseListItem>
-          <ReportExpenseListItemAmount>3 000.00</ReportExpenseListItemAmount>
-          <HandsHoldingHeart />
-          <ReportExpenseListItemText>Products</ReportExpenseListItemText>
-        </ReportExpenseListItem>
-        <ReportExpenseListItem>
-          <ReportExpenseListItemAmount>3 000.00</ReportExpenseListItemAmount>
-          <Products />
-          <ReportExpenseListItemText>Products</ReportExpenseListItemText>
-        </ReportExpenseListItem>
-        <ReportExpenseListItem>
-          <ReportExpenseListItemAmount>3 000.00</ReportExpenseListItemAmount>
-          <Invoice />
-          <ReportExpenseListItemText>Products</ReportExpenseListItemText>
-        </ReportExpenseListItem>
-        <ReportExpenseListItem>
-          <ReportExpenseListItemAmount>3 000.00</ReportExpenseListItemAmount>
-          <Tools />
-          <ReportExpenseListItemText>Products</ReportExpenseListItemText>
-        </ReportExpenseListItem>
-        <ReportExpenseListItem>
-          <ReportExpenseListItemAmount>3 000.00</ReportExpenseListItemAmount>
-          <Ufo />
-          <ReportExpenseListItemText>Products</ReportExpenseListItemText>
-        </ReportExpenseListItem>
-      </ReportExpenseList>
+      <ReportExpenseListWrapper>
+        <ReportExpenseWrapper>
+          <ReportArrowLeft size={24} />
+          <ReportExpenseText>Expenses</ReportExpenseText>
+          <ReportArrowRight size={24} />
+        </ReportExpenseWrapper>
+        <ReportExpenseList>
+          <ReportExpenseListItem>
+            <ReportExpenseListItemAmount>5 000.00</ReportExpenseListItemAmount>
+            <Boock />
+            <ReportExpenseListItemText>Products</ReportExpenseListItemText>
+          </ReportExpenseListItem>
+          <ReportExpenseListItem>
+            <ReportExpenseListItemAmount>3 000.00</ReportExpenseListItemAmount>
+            <Kite />
+            <ReportExpenseListItemText>Products</ReportExpenseListItemText>
+          </ReportExpenseListItem>
+          <ReportExpenseListItem>
+            <ReportExpenseListItemAmount>3 000.00</ReportExpenseListItemAmount>
+            <Car />
+            <ReportExpenseListItemText>Products</ReportExpenseListItemText>
+          </ReportExpenseListItem>
+          <ReportExpenseListItem>
+            <ReportExpenseListItemAmount>3 000.00</ReportExpenseListItemAmount>
+            <Clay />
+            <ReportExpenseListItemText>Products</ReportExpenseListItemText>
+          </ReportExpenseListItem>
+          <ReportExpenseListItem>
+            <ReportExpenseListItemAmount>3 000.00</ReportExpenseListItemAmount>
+            <Cocktail />
+            <ReportExpenseListItemText>Products</ReportExpenseListItemText>
+          </ReportExpenseListItem>
+          <ReportExpenseListItem>
+            <ReportExpenseListItemAmount>3 000.00</ReportExpenseListItemAmount>
+            <Couch />
+            <ReportExpenseListItemText>Products</ReportExpenseListItemText>
+          </ReportExpenseListItem>
+          <ReportExpenseListItem>
+            <ReportExpenseListItemAmount>3 000.00</ReportExpenseListItemAmount>
+            <HandsHoldingHeart />
+            <ReportExpenseListItemText>Products</ReportExpenseListItemText>
+          </ReportExpenseListItem>
+          <ReportExpenseListItem>
+            <ReportExpenseListItemAmount>3 000.00</ReportExpenseListItemAmount>
+            <Products />
+            <ReportExpenseListItemText>Products</ReportExpenseListItemText>
+          </ReportExpenseListItem>
+          <ReportExpenseListItem>
+            <ReportExpenseListItemAmount>3 000.00</ReportExpenseListItemAmount>
+            <Invoice />
+            <ReportExpenseListItemText>Products</ReportExpenseListItemText>
+          </ReportExpenseListItem>
+          <ReportExpenseListItem>
+            <ReportExpenseListItemAmount>3 000.00</ReportExpenseListItemAmount>
+            <Tools />
+            <ReportExpenseListItemText>Products</ReportExpenseListItemText>
+          </ReportExpenseListItem>
+          <ReportExpenseListItem>
+            <ReportExpenseListItemAmount>3 000.00</ReportExpenseListItemAmount>
+            <Ufo />
+            <ReportExpenseListItemText>Products</ReportExpenseListItemText>
+          </ReportExpenseListItem>
+        </ReportExpenseList>
+      </ReportExpenseListWrapper>
     </Container>
   );
 }
