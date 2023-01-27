@@ -60,7 +60,7 @@ export const LoginForm = styled.div`
   top: 50%;
   left: 50%;
   border-radius: 30px;
-  border: none;
+  border: 1px solid #000000;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   padding: 40px 20px;
 
