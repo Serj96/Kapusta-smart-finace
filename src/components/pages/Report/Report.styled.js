@@ -152,7 +152,10 @@ export const ReportExpenseListItemAmount = styled.p`
   margin-right: 20px;
 `;
 
-export const ReportExpenseListItemSvg = styled.svg`
+export const ReportExpenseListItemSvg = styled.img`
+  /* fill: blue;
+  color: orange;
+  background-color: green; */
   margin-bottom: 5px;
 `;
 
