@@ -131,6 +131,7 @@ export const LoginForm = styled.div`
     width: 426px;
     height: 552px;
     padding: 56px 84px;
+    border: none;
   }
 
   @media (min-width: 1280px) {
@@ -140,6 +141,7 @@ export const LoginForm = styled.div`
     transform: translate(-50%, -50%);
     top: 50%;
     left: 70%;
+    border: none;
   }
 `;
 export const ButtonWrapper = styled.div`
