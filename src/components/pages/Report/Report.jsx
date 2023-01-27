@@ -1,3 +1,5 @@
+import { Container } from 'components/Theme/BreakPoints';
+
 import {
   ReportIoIosArrowRoundBack,
   ReportArrowLeft,
@@ -22,24 +24,23 @@ import {
   ReportExpenseListItem,
   ReportExpenseListItemAmount,
   ReportExpenseListItemText,
-  ReportExpenseListItemSvg,
 } from './Report.styled';
 
-import kite from './../../../images/icons/kite.svg';
-import book from './../../../images/icons/book.svg';
-import car from './../../../images/icons/car.svg';
-import clay from './../../../images/icons/clay.svg';
-import cocktail from './../../../images/icons/cocktail.svg';
-import couch from './../../../images/icons/couch.svg';
-import handsHoldingHeart from './../../../images/icons/hands-holding-heart.svg';
-import group from './../../../images/icons/group.svg';
-import invoice from './../../../images/icons/invoice.svg';
-import tools from './../../../images/icons/tools.svg';
-import ufo from './../../../images/icons/ufo.svg';
+import Boock from 'components/icons/Boock';
+import Kite from 'components/icons/Kite';
+import Car from 'components/icons/Car';
+import Clay from 'components/icons/Clay';
+import Cocktail from 'components/icons/Cocktail';
+import Couch from 'components/icons/Couch';
+import HandsHoldingHeart from 'components/icons/HandsHoldingHeart';
+import Products from 'components/icons/Products';
+import Invoice from 'components/icons/Invoice';
+import Tools from 'components/icons/Tools';
+import Ufo from 'components/icons/Ufo';
 
 export default function Report() {
   return (
-    <>
+    <Container>
       <ReportIoIosArrowRoundBack size={36} />
       <ReportCurrentPeriodWrapper>
         <ReportCurrentPeriodText>Current period:</ReportCurrentPeriodText>
@@ -77,60 +78,60 @@ export default function Report() {
       <ReportExpenseList>
         <ReportExpenseListItem>
           <ReportExpenseListItemAmount>5 000.00</ReportExpenseListItemAmount>
-          <ReportExpenseListItemSvg src={kite} />
+          <Boock />
           <ReportExpenseListItemText>Products</ReportExpenseListItemText>
         </ReportExpenseListItem>
         <ReportExpenseListItem>
           <ReportExpenseListItemAmount>3 000.00</ReportExpenseListItemAmount>
-          <ReportExpenseListItemSvg src={book} />
+          <Kite />
           <ReportExpenseListItemText>Products</ReportExpenseListItemText>
         </ReportExpenseListItem>
         <ReportExpenseListItem>
           <ReportExpenseListItemAmount>3 000.00</ReportExpenseListItemAmount>
-          <ReportExpenseListItemSvg src={car} />
+          <Car />
           <ReportExpenseListItemText>Products</ReportExpenseListItemText>
         </ReportExpenseListItem>
         <ReportExpenseListItem>
           <ReportExpenseListItemAmount>3 000.00</ReportExpenseListItemAmount>
-          <ReportExpenseListItemSvg src={clay} />
+          <Clay />
           <ReportExpenseListItemText>Products</ReportExpenseListItemText>
         </ReportExpenseListItem>
         <ReportExpenseListItem>
           <ReportExpenseListItemAmount>3 000.00</ReportExpenseListItemAmount>
-          <ReportExpenseListItemSvg src={cocktail} />
+          <Cocktail />
           <ReportExpenseListItemText>Products</ReportExpenseListItemText>
         </ReportExpenseListItem>
         <ReportExpenseListItem>
           <ReportExpenseListItemAmount>3 000.00</ReportExpenseListItemAmount>
-          <ReportExpenseListItemSvg src={couch} />
+          <Couch />
           <ReportExpenseListItemText>Products</ReportExpenseListItemText>
         </ReportExpenseListItem>
         <ReportExpenseListItem>
           <ReportExpenseListItemAmount>3 000.00</ReportExpenseListItemAmount>
-          <ReportExpenseListItemSvg src={handsHoldingHeart} />
+          <HandsHoldingHeart />
           <ReportExpenseListItemText>Products</ReportExpenseListItemText>
         </ReportExpenseListItem>
         <ReportExpenseListItem>
           <ReportExpenseListItemAmount>3 000.00</ReportExpenseListItemAmount>
-          <ReportExpenseListItemSvg src={group} />
+          <Products />
           <ReportExpenseListItemText>Products</ReportExpenseListItemText>
         </ReportExpenseListItem>
         <ReportExpenseListItem>
           <ReportExpenseListItemAmount>3 000.00</ReportExpenseListItemAmount>
-          <ReportExpenseListItemSvg src={invoice} />
+          <Invoice />
           <ReportExpenseListItemText>Products</ReportExpenseListItemText>
         </ReportExpenseListItem>
         <ReportExpenseListItem>
           <ReportExpenseListItemAmount>3 000.00</ReportExpenseListItemAmount>
-          <ReportExpenseListItemSvg src={tools} />
+          <Tools />
           <ReportExpenseListItemText>Products</ReportExpenseListItemText>
         </ReportExpenseListItem>
         <ReportExpenseListItem>
           <ReportExpenseListItemAmount>3 000.00</ReportExpenseListItemAmount>
-          <ReportExpenseListItemSvg src={ufo} />
+          <Ufo />
           <ReportExpenseListItemText>Products</ReportExpenseListItemText>
         </ReportExpenseListItem>
       </ReportExpenseList>
-    </>
+    </Container>
   );
 }
