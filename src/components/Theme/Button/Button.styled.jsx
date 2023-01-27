@@ -7,4 +7,6 @@ cursor:pointer;
 &:hover{
     color:${myTheme.backgroundColors.primary};
     background-color:${myTheme.colors.hover};
+
+    
 }`

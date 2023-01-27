@@ -1,4 +1,8 @@
+import HomePage from "./HomePage/HomePage";
 export const App = () => {
+  return (
+    <HomePage/>
+  )
   /* <Routes>
       <Route path="/" element={<Layout />}>
         <Route path="register" element={"!token" ? <div /> : <Navigate to={"/contacts"} replace />} />
@@ -10,7 +14,4 @@ export const App = () => {
         <Route path="reports" element={"token ?" < ContactList /> : <Navigate to={"/login"} replace />} />
       </Route>
     </Routes> */
-}
-
-
-
+};
