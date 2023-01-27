@@ -25,7 +25,7 @@ const HomePage = () => {
       <FormSubTitle>
         Or log in using an email and password, after registering:
       </FormSubTitle>
-      <label htmlFor="email">Email</label>
+      <label htmlFor="email">Email :</label>
       <input
         id="email"
         name="email"
@@ -35,7 +35,7 @@ const HomePage = () => {
         placeholder="your@email.com"
       />
 
-      <label htmlFor="password">Password</label>
+      <label htmlFor="password">Password :</label>
       <input
         id="password"
         name="password"

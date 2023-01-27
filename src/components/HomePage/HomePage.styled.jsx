@@ -14,6 +14,8 @@ export const FormTitle = styled.h3`
 `;
 
 export const FormSubTitle = styled.h3`
+  display: block;
+  width: 75%;
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 400;
@@ -21,7 +23,15 @@ export const FormSubTitle = styled.h3`
   line-height: 14px;
   letter-spacing: 0.04em;
 
+  margin: 0 auto;
   margin-top: 32px;
+  @media (min-width: 767px) and (max-width: 1279.98px) {
+    width: 50%;
+  }
+
+  @media (min-width: 1280px) {
+    width: 50%;
+  }
 `;
 
 export const ButtonLink = styled.a`
@@ -52,14 +62,13 @@ export const LoginForm = styled.div`
   border-radius: 30px;
   border: none;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  padding: 0 20px ;
+  padding: 40px 20px;
 
   label {
     margin-top: 16px;
 
-    
     display: block;
-    
+
     font-size: 16px;
     font-weight: 500;
     font-family: 'Roboto';
@@ -72,7 +81,19 @@ export const LoginForm = styled.div`
 
     margin-bottom: 12px;
 
-    
+    @media (min-width: 767px) and (max-width: 1279.98px) {
+      position: relative;
+      transform: translate(-50%, -50%);
+      top: 2%;
+      left: 70%;
+    }
+
+    @media (min-width: 1280px) {
+      position: relative;
+      transform: translate(-50%, -50%);
+      top: 2%;
+      left: 70%;
+    }
   }
 
   input {
@@ -84,9 +105,7 @@ export const LoginForm = styled.div`
     border-radius: 30px;
     border: none;
 
-    
-
-    
+    margin: 0 auto;
 
     &::placeholder {
       font-family: 'Roboto';
@@ -100,18 +119,36 @@ export const LoginForm = styled.div`
       color: #a6abb9;
     }
 
+    @media (min-width: 767px) and (max-width: 1279.98px) {
+      width: 259px;
     }
-    @media (min-width:767px) and (max-width:1279.98px){
-        width: 426px;
-        height: 552px;
-        padding: 0 60px;
 
-        
- }
+    @media (min-width: 1280px) {
+      width: 259px;
+    }
+  }
+  @media (min-width: 767px) and (max-width: 1279.98px) {
+    width: 426px;
+    height: 552px;
+    padding: 56px 84px;
+  }
+
+  @media (min-width: 1280px) {
+    width: 426px;
+    height: 552px;
+    padding: 56px 84px;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 70%;
   }
 `;
 export const ButtonWrapper = styled.div`
   display: flex;
-  justify-content: space-between;
-  margin: 40px 0;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 40px;
+
+  @media (min-width: 767px) and (max-width: 1279.98px) {
+    margin-top: 57px;
+  }
 `;
