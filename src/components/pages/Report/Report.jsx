@@ -28,6 +28,8 @@ import {
   ReportIoIosArrowRoundBackWrapper,
   ReportHeaderWrapperTablet,
   ReportExpenseListWrapper,
+  ReportCurrentConfirmWrapper,
+  ReportCurrentConfirm,
 } from './Report.styled';
 
 import Boock from 'components/icons/Boock';
@@ -67,6 +69,9 @@ export default function Report() {
           <ReportCurrentAmountWrapper>
             <ReportCurrentAmount>55 000.00 UAH</ReportCurrentAmount>
           </ReportCurrentAmountWrapper>
+          <ReportCurrentConfirmWrapper>
+            <ReportCurrentConfirm>Confirm</ReportCurrentConfirm>
+          </ReportCurrentConfirmWrapper>
         </ReportCurrentBalanceWrapper>
       </ReportHeaderWrapperTablet>
 
