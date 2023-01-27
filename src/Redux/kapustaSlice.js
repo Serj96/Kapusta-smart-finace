@@ -2,12 +2,13 @@ import { createSlice } from '@reduxjs/toolkit'
 import { login, logOut, refresh, register } from "Redux/authOperaions";
 import { persistReducer } from "redux-persist";
 import storage from 'redux-persist/lib/storage'
+import { addExpense, addIncome, getExpense, getIncome } from './transactionOperation';
 const initialState = {
     auth: {
         user: { email: null, id: null },
         userData: {
             balance: null,
-            transactions: []
+            transactions: [],
         },
     },
     accessToken: null,
@@ -40,8 +41,6 @@ export const kapustaSlice = createSlice({
         [login.fulfilled]: (state, action) => {
             state.isLoggedIn = true;
             state.loading = false;
-            state.auth.user.email = action.payload.userData.email;
-            state.auth.user.id = action.payload.userData.id;
             state.refreshToken = action.payload.refreshToken;
             state.sid = action.payload.sid;
             state.accessToken = action.payload.accessToken;
@@ -82,6 +81,55 @@ export const kapustaSlice = createSlice({
             state.isLoading = false;
             state.error = action.payload;
         },
+        [getIncome.pending]: (state) => {
+            state.error = null;
+            state.loading = true;
+        },
+        [getIncome.fulfilled]: (state, action) => {
+            state.loading = false;
+            state.auth.userData.transactions = action.payload;
+        },
+        [getIncome.rejected]: (state, action) => {
+            state.loading = false;
+            state.error = action.payload;
+        },
+        [addIncome.pending]: (state) => {
+            state.loading = false;
+            state.error = null;
+        },
+        [addIncome.fulfilled]: (state, action) => {
+            state.loading = false;
+            state.auth.userData.balance = action.payload.newBalance;
+        },
+        [addIncome.rejected]: (state, action) => {
+            state.loading = false;
+            state.error = action.payload;
+        },
+        [getExpense.pending]: (state, action) => {
+            state.loading = false;
+            state.error = null;
+        },
+        [getExpense.fulfilled]: (state, action) => {
+            state.loading = false;
+            state.auth.user.transactions = action.payload;
+        },
+        [getExpense.rejected]: (state, action) => {
+            state.loading = false;
+            state.error = action.payload;
+        },
+        [addExpense.pending]: (state) => {
+            state.error = null;
+            state.loading = true;
+        },
+        [addExpense.fulfilled]: (state, action) => {
+            state.loading = false;
+            state.auth.userData.balance = action.payload.newBalance;
+        },
+        [addExpense.rejected]: (state, action) => {
+            state.loading = false;
+            state.error = action.payload;
+        }
+
     }
 })
 const persistConfig = {
@@ -91,6 +139,6 @@ const persistConfig = {
 }
 export const kapustaReducer = persistReducer(persistConfig, kapustaSlice.reducer)
 export const getIsLoggedIn = state => state.kapusta.isLoggedIn;
-export const getTransation = state => state.kapusta.auth.userData.transaction;
+export const getTransation = state => state.kapusta.auth.userData.transactions;
 export const getSid = state => state.kapusta.sid;
 export const getUser = state => state.kapusta.auth.user.email;
