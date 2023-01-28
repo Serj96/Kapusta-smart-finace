@@ -1,16 +1,30 @@
 import { Route, Routes } from 'react-router-dom';
 import Expenses from 'pages/Report/Expenses/Expenses';
 import Income from 'pages/Report/Income/Income';
+import AppBarReport from './Report/AppBarReport/AppBarReport';
 
 export const App = () => {
   return (
     <Routes>
-      <Route path="/home" />
-      <Route path="/expenses" element={<Expenses />} />
-      <Route path="/income" element={<Income />} />
+      <Route path="/expenses" element={<AppBarReport />}>
+        <Route index element={<Expenses />} />
+        <Route path="income" element={<Income />} />
+      </Route>
     </Routes>
   );
 };
+
+// export const App = () => {
+//   return (
+//     <>
+//       <AppBarReport />
+//       <Routes>
+//         <Route path="/expenses" element={<Expenses />} />
+//         <Route path="/income" element={<Income />} />
+//       </Routes>
+//     </>
+//   );
+// };
 
 /* <Routes>
       <Route path="/" element={<Layout />}>
