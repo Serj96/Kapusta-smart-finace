@@ -377,7 +377,7 @@ export const ReportExpenseText = styled.p`
   }
 
   @media (min-width: 768px) {
-    margin: 0 25px 0 15px;
+    margin: 0 15px 0 15px;
   }
 `;
 

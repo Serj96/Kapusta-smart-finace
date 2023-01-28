@@ -1,9 +1,18 @@
-import Report from './pages/Report/Report';
+import { Route, Routes } from 'react-router-dom';
+import Expenses from './pages/Report/Expenses/Expenses';
+import Income from './pages/Report/Income/Income';
 
 export const App = () => {
-  return <Report />;
+  return (
+    <Routes>
+      <Route path="/home" />
+      <Route path="/expenses" element={<Expenses />} />
+      <Route path="/income" element={<Income />} />
+    </Routes>
+  );
+};
 
-  /* <Routes>
+/* <Routes>
       <Route path="/" element={<Layout />}>
         <Route path="register" element={"!token" ? <div /> : <Navigate to={"/contacts"} replace />} />
         <Route path="login" element={"!token " ? <Login /> : <Navigate to={"/contacts"} replace />} />
@@ -14,4 +23,3 @@ export const App = () => {
         <Route path="reports" element={"token ?" < ContactList /> : <Navigate to={"/login"} replace />} />
       </Route>
     </Routes> */
-};

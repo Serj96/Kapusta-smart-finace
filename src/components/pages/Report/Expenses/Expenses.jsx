@@ -1,4 +1,5 @@
 import { Container } from 'components/Theme/BreakPoints';
+import { useNavigate } from 'react-router-dom';
 
 import {
   ReportIoIosArrowRoundBack,
@@ -30,7 +31,7 @@ import {
   ReportExpenseListWrapper,
   ReportCurrentConfirmWrapper,
   ReportCurrentConfirm,
-} from './Report.styled';
+} from '../Report.styled';
 
 import Boock from 'components/ReportIcons/Boock';
 import Kite from 'components/ReportIcons/Kite';
@@ -44,11 +45,28 @@ import Invoice from 'components/ReportIcons/Invoice';
 import Tools from 'components/ReportIcons/Tools';
 import Ufo from 'components/ReportIcons/Ufo';
 
-export default function Report() {
+export default function Expenses() {
+  const navigate = useNavigate();
+
+  const onBackHomePageHandler = () => {
+    navigate('/home', { replace: true });
+    console.log('Натиснули стрілку і перейшли на сторінку Home');
+  };
+
+  const onChangeExpensesPageHandler = () => {
+    navigate('/expenses', { replace: true });
+    console.log('Натиснули на ліву стрілку і перейшли на сторінку Expenses');
+  };
+
+  const onChangeIncomePageHandler = () => {
+    navigate('/income', { replace: true });
+    console.log('Натиснули на праву стрілку і перейшли на сторінку Income');
+  };
+
   return (
     <Container>
       <ReportHeaderWrapperTablet>
-        <ReportIoIosArrowRoundBackWrapper>
+        <ReportIoIosArrowRoundBackWrapper onClick={onBackHomePageHandler}>
           <ReportIoIosArrowRoundBack size={36} />
           <ReportIoIosArrowRoundBackText>
             Main page
@@ -91,9 +109,9 @@ export default function Report() {
       </ReportListIndicator>
       <ReportExpenseListWrapper>
         <ReportExpenseWrapper>
-          <ReportArrowLeft size={24} />
+          <ReportArrowLeft onClick={onChangeExpensesPageHandler} size={24} />
           <ReportExpenseText>Expenses</ReportExpenseText>
-          <ReportArrowRight size={24} />
+          <ReportArrowRight onClick={onChangeIncomePageHandler} size={24} />
         </ReportExpenseWrapper>
         <ReportExpenseList>
           <ReportExpenseListItem>
