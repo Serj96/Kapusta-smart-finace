@@ -13,27 +13,3 @@ export const App = () => {
     </Routes>
   );
 };
-
-// export const App = () => {
-//   return (
-//     <>
-//       <AppBarReport />
-//       <Routes>
-//         <Route path="/expenses" element={<Expenses />} />
-//         <Route path="/income" element={<Income />} />
-//       </Routes>
-//     </>
-//   );
-// };
-
-/* <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route path="register" element={"!token" ? <div /> : <Navigate to={"/contacts"} replace />} />
-        <Route path="login" element={"!token " ? <Login /> : <Navigate to={"/contacts"} replace />} />
-        <Route path="home" element={"token" ? <ContactList /> : <Navigate to={"/login"} replace />} >
-          <Route path="expenses" element={"!token" ? <Login /> : <Navigate to={"/contacts"} replace />} />
-          <Route path="income" element={"!token" ? <Login /> : <Navigate to={"/contacts"} replace />} />
-        </Route>
-        <Route path="reports" element={"token ?" < ContactList /> : <Navigate to={"/login"} replace />} />
-      </Route>
-    </Routes> */

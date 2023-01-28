@@ -1,4 +1,6 @@
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { getTransation, getUserIncomes } from 'Redux/kapustaSlice';
 
 import {
   ReportArrowLeft,
@@ -12,19 +14,21 @@ import {
   ReportExpenseListWrapper,
 } from '../Report.styled';
 
-import Boock from 'components/ReportIcons/Boock';
-import Kite from 'components/ReportIcons/Kite';
-import Car from 'components/ReportIcons/Car';
-import Clay from 'components/ReportIcons/Clay';
-import Cocktail from 'components/ReportIcons/Cocktail';
-import Couch from 'components/ReportIcons/Couch';
-import HandsHoldingHeart from 'components/ReportIcons/HandsHoldingHeart';
-import Products from 'components/ReportIcons/Products';
-import Invoice from 'components/ReportIcons/Invoice';
-import Tools from 'components/ReportIcons/Tools';
-import Ufo from 'components/ReportIcons/Ufo';
+import Salary from 'components/ReportIcons/Salary';
+import OutherIncomes from 'components/ReportIcons/OutherIncomes';
 
 export default function Income() {
+  const categories = useSelector(
+    state => state.kapusta.auth.userData.category.income
+  );
+  console.log(categories);
+
+  const transactions = useSelector(getTransation);
+  console.log(transactions);
+
+  const userIncomes = useSelector(getUserIncomes);
+  userIncomes.map(item => console.log(item));
+
   const navigate = useNavigate();
 
   const onChangeExpensesPageHandler = () => {
@@ -45,62 +49,24 @@ export default function Income() {
           <ReportExpenseText>Income</ReportExpenseText>
           <ReportArrowRight onClick={onChangeIncomePageHandler} size={24} />
         </ReportExpenseWrapper>
+
         <ReportExpenseList>
-          <ReportExpenseListItem>
-            <ReportExpenseListItemAmount>5 000.00</ReportExpenseListItemAmount>
-            <Boock />
-            <ReportExpenseListItemText>Products</ReportExpenseListItemText>
-          </ReportExpenseListItem>
-          <ReportExpenseListItem>
-            <ReportExpenseListItemAmount>3 000.00</ReportExpenseListItemAmount>
-            <Kite />
-            <ReportExpenseListItemText>Products</ReportExpenseListItemText>
-          </ReportExpenseListItem>
-          <ReportExpenseListItem>
-            <ReportExpenseListItemAmount>3 000.00</ReportExpenseListItemAmount>
-            <Car />
-            <ReportExpenseListItemText>Products</ReportExpenseListItemText>
-          </ReportExpenseListItem>
-          <ReportExpenseListItem>
-            <ReportExpenseListItemAmount>3 000.00</ReportExpenseListItemAmount>
-            <Clay />
-            <ReportExpenseListItemText>Products</ReportExpenseListItemText>
-          </ReportExpenseListItem>
-          <ReportExpenseListItem>
-            <ReportExpenseListItemAmount>3 000.00</ReportExpenseListItemAmount>
-            <Cocktail />
-            <ReportExpenseListItemText>Products</ReportExpenseListItemText>
-          </ReportExpenseListItem>
-          <ReportExpenseListItem>
-            <ReportExpenseListItemAmount>3 000.00</ReportExpenseListItemAmount>
-            <Couch />
-            <ReportExpenseListItemText>Products</ReportExpenseListItemText>
-          </ReportExpenseListItem>
-          <ReportExpenseListItem>
-            <ReportExpenseListItemAmount>3 000.00</ReportExpenseListItemAmount>
-            <HandsHoldingHeart />
-            <ReportExpenseListItemText>Products</ReportExpenseListItemText>
-          </ReportExpenseListItem>
-          <ReportExpenseListItem>
-            <ReportExpenseListItemAmount>3 000.00</ReportExpenseListItemAmount>
-            <Products />
-            <ReportExpenseListItemText>Products</ReportExpenseListItemText>
-          </ReportExpenseListItem>
-          <ReportExpenseListItem>
-            <ReportExpenseListItemAmount>3 000.00</ReportExpenseListItemAmount>
-            <Invoice />
-            <ReportExpenseListItemText>Products</ReportExpenseListItemText>
-          </ReportExpenseListItem>
-          <ReportExpenseListItem>
-            <ReportExpenseListItemAmount>3 000.00</ReportExpenseListItemAmount>
-            <Tools />
-            <ReportExpenseListItemText>Products</ReportExpenseListItemText>
-          </ReportExpenseListItem>
-          <ReportExpenseListItem>
-            <ReportExpenseListItemAmount>3 000.00</ReportExpenseListItemAmount>
-            <Ufo />
-            <ReportExpenseListItemText>Products</ReportExpenseListItemText>
-          </ReportExpenseListItem>
+          {userIncomes.map((income, index) => (
+            <ReportExpenseListItem key={index}>
+              <ReportExpenseListItemAmount>
+                {income.amount}
+              </ReportExpenseListItemAmount>
+              {income.category === 'Salary' && <Salary />}
+              {income.category === 'Outher' && <OutherIncomes />}
+              {income.category === 'Pension' && <OutherIncomes />}
+              {income.category === 'Premium' && <OutherIncomes />}
+              {income.category === 'Win' && <OutherIncomes />}
+              {income.category === 'Advance' && <OutherIncomes />}
+              <ReportExpenseListItemText>
+                {income.category}
+              </ReportExpenseListItemText>
+            </ReportExpenseListItem>
+          ))}
         </ReportExpenseList>
       </ReportExpenseListWrapper>
     </>

@@ -1,5 +1,7 @@
 import { Container } from 'components/Theme/BreakPoints';
 import { Outlet, useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { getUserIncomes, getUserExpenses } from 'Redux/kapustaSlice';
 
 import {
   ReportIoIosArrowRoundBack,
@@ -28,6 +30,23 @@ import {
 
 export default function AppBarReport() {
   const navigate = useNavigate();
+  const userIncomes = useSelector(getUserIncomes);
+  const userExpenses = useSelector(getUserExpenses);
+  const balanse = useSelector(state => state.kapusta.auth.userData.balance);
+  const userIncomesTotalAmount = userIncomes
+    .map(item => item.amount)
+    .reduce((previousValue, amount) => {
+      return previousValue + amount;
+    }, 0);
+
+  const userExpensesTotalAmount = userExpenses
+    .map(item => item.amount)
+    .reduce((previousValue, amount) => {
+      return previousValue + amount;
+    }, 0);
+
+  console.log(userIncomesTotalAmount);
+  console.log(userExpensesTotalAmount);
 
   const onBackHomePageHandler = () => {
     navigate('/home', { replace: true });
@@ -56,7 +75,7 @@ export default function AppBarReport() {
         <ReportCurrentBalanceWrapper>
           <ReportCurrentBalanceText>Balance:</ReportCurrentBalanceText>
           <ReportCurrentAmountWrapper>
-            <ReportCurrentAmount>55 000.00 UAH</ReportCurrentAmount>
+            <ReportCurrentAmount>{balanse} UAH</ReportCurrentAmount>
           </ReportCurrentAmountWrapper>
           <ReportCurrentConfirmWrapper>
             <ReportCurrentConfirm>Confirm</ReportCurrentConfirm>
@@ -68,13 +87,13 @@ export default function AppBarReport() {
         <ReportListItemIndicatorExpenses>
           <ReportListItemIndicatorText>Expenses:</ReportListItemIndicatorText>
           <ReportListItemIndicatorExpensesAmount>
-            - 18 000.00 UAH.
+            {userExpensesTotalAmount} UAH.
           </ReportListItemIndicatorExpensesAmount>
         </ReportListItemIndicatorExpenses>
         <ReportListItemIndicatorIncome>
           <ReportListItemIndicatorText>Income:</ReportListItemIndicatorText>
           <ReportListItemIndicatorIncomeAmount>
-            + 45 000.00 UAH.
+            {userIncomesTotalAmount} UAH.
           </ReportListItemIndicatorIncomeAmount>
         </ReportListItemIndicatorIncome>
       </ReportListIndicator>

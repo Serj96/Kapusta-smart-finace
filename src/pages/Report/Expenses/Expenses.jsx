@@ -1,4 +1,6 @@
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { getUserExpenses } from 'Redux/kapustaSlice';
 
 import {
   ReportArrowLeft,
@@ -24,7 +26,10 @@ import Invoice from 'components/ReportIcons/Invoice';
 import Tools from 'components/ReportIcons/Tools';
 import Ufo from 'components/ReportIcons/Ufo';
 
-export default function Expenses() {
+export default function Expense() {
+  const userExpense = useSelector(getUserExpenses);
+  userExpense.map(item => console.log(item));
+
   const navigate = useNavigate();
 
   const onChangeExpensesPageHandler = () => {
@@ -45,62 +50,29 @@ export default function Expenses() {
           <ReportExpenseText>Expenses</ReportExpenseText>
           <ReportArrowRight onClick={onChangeIncomePageHandler} size={24} />
         </ReportExpenseWrapper>
+
         <ReportExpenseList>
-          <ReportExpenseListItem>
-            <ReportExpenseListItemAmount>5 000.00</ReportExpenseListItemAmount>
-            <Boock />
-            <ReportExpenseListItemText>Products</ReportExpenseListItemText>
-          </ReportExpenseListItem>
-          <ReportExpenseListItem>
-            <ReportExpenseListItemAmount>3 000.00</ReportExpenseListItemAmount>
-            <Kite />
-            <ReportExpenseListItemText>Products</ReportExpenseListItemText>
-          </ReportExpenseListItem>
-          <ReportExpenseListItem>
-            <ReportExpenseListItemAmount>3 000.00</ReportExpenseListItemAmount>
-            <Car />
-            <ReportExpenseListItemText>Products</ReportExpenseListItemText>
-          </ReportExpenseListItem>
-          <ReportExpenseListItem>
-            <ReportExpenseListItemAmount>3 000.00</ReportExpenseListItemAmount>
-            <Clay />
-            <ReportExpenseListItemText>Products</ReportExpenseListItemText>
-          </ReportExpenseListItem>
-          <ReportExpenseListItem>
-            <ReportExpenseListItemAmount>3 000.00</ReportExpenseListItemAmount>
-            <Cocktail />
-            <ReportExpenseListItemText>Products</ReportExpenseListItemText>
-          </ReportExpenseListItem>
-          <ReportExpenseListItem>
-            <ReportExpenseListItemAmount>3 000.00</ReportExpenseListItemAmount>
-            <Couch />
-            <ReportExpenseListItemText>Products</ReportExpenseListItemText>
-          </ReportExpenseListItem>
-          <ReportExpenseListItem>
-            <ReportExpenseListItemAmount>3 000.00</ReportExpenseListItemAmount>
-            <HandsHoldingHeart />
-            <ReportExpenseListItemText>Products</ReportExpenseListItemText>
-          </ReportExpenseListItem>
-          <ReportExpenseListItem>
-            <ReportExpenseListItemAmount>3 000.00</ReportExpenseListItemAmount>
-            <Products />
-            <ReportExpenseListItemText>Products</ReportExpenseListItemText>
-          </ReportExpenseListItem>
-          <ReportExpenseListItem>
-            <ReportExpenseListItemAmount>3 000.00</ReportExpenseListItemAmount>
-            <Invoice />
-            <ReportExpenseListItemText>Products</ReportExpenseListItemText>
-          </ReportExpenseListItem>
-          <ReportExpenseListItem>
-            <ReportExpenseListItemAmount>3 000.00</ReportExpenseListItemAmount>
-            <Tools />
-            <ReportExpenseListItemText>Products</ReportExpenseListItemText>
-          </ReportExpenseListItem>
-          <ReportExpenseListItem>
-            <ReportExpenseListItemAmount>3 000.00</ReportExpenseListItemAmount>
-            <Ufo />
-            <ReportExpenseListItemText>Products</ReportExpenseListItemText>
-          </ReportExpenseListItem>
+          {userExpense.map((expense, index) => (
+            <ReportExpenseListItem key={index}>
+              <ReportExpenseListItemAmount>
+                {expense.amount}
+              </ReportExpenseListItemAmount>
+              {expense.category === 'Alcohol' && <Cocktail />}
+              {expense.category === 'Products' && <Products />}
+              {expense.category === 'Health' && <HandsHoldingHeart />}
+              {expense.category === 'Entertainment' && <Kite />}
+              {expense.category === 'Transport' && <Car />}
+              {expense.category === 'Housing' && <Couch />}
+              {expense.category === 'Technique' && <Tools />}
+              {expense.category === 'Communal, communication' && <Invoice />}
+              {expense.category === 'Sports, hobbies' && <Clay />}
+              {expense.category === 'Education' && <Boock />}
+              {expense.category === 'Other' && <Ufo />}
+              <ReportExpenseListItemText>
+                {expense.category}
+              </ReportExpenseListItemText>
+            </ReportExpenseListItem>
+          ))}
         </ReportExpenseList>
       </ReportExpenseListWrapper>
     </>

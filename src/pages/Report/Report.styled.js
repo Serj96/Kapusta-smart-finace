@@ -52,9 +52,6 @@ export const ReportExpenseList = styled.ul`
 
   @media (min-width: 768px) {
     margin-bottom: 0;
-
-    width: 623px;
-    height: 268px;
   }
 `;
 
@@ -64,6 +61,18 @@ export const ReportExpenseListItem = styled.li`
   align-items: center;
   flex-direction: column;
   margin-bottom: 15px;
+
+  /* background-image: url('../../images/Rectangle.svg');
+
+  background-image: url('../../images/Rectangle.svg'); */
+  /* background-image: url('Rectangle'); */
+  /* background-image: url('../../images/Rect');
+  background-image: url('../../images/Rect.png');
+  background-image: url('/src./images/Rect'); */
+
+  background-image: url('https://cdn2.iconfinder.com/data/icons/avatars-60/5985/34-Father-512.png');
+
+  background-size: 50px 50px;
 
   @media (max-width: 767.98px) {
     width: calc((100% - 22px) / 3);
@@ -76,7 +85,7 @@ export const ReportExpenseListItem = styled.li`
 
 export const ReportExpenseListItemAmount = styled.p`
   margin-top: 0;
-  margin-bottom: 5px;
+  margin-bottom: 6px;
   margin-right: 0;
 
   color: #52555f;
@@ -95,6 +104,7 @@ export const ReportExpenseListItemText = styled.p`
   margin-right: 0;
 
   color: #52555f;
+  text-align: center;
 
   font-family: 'Roboto';
   font-weight: 400;
@@ -106,11 +116,7 @@ export const ReportExpenseListItemText = styled.p`
 
 export const ReportExpenseListWrapper = styled.div`
   @media (min-width: 768px) {
-    padding-top: 20px;
-    padding-bottom: 0;
-
-    width: 704px;
-    height: 328px;
+    padding: 20px 40px 20px 40px;
 
     margin-left: auto;
     margin-right: auto;
@@ -122,7 +128,6 @@ export const ReportExpenseListWrapper = styled.div`
   }
 
   @media (min-width: 1280px) {
-    width: 1034px;
-    height: 328px;
+    padding: 20px 200px 20px 200px;
   }
 `;
