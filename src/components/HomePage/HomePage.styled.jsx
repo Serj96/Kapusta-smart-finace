@@ -11,6 +11,7 @@ export const FormTitle = styled.h3`
   letter-spacing: 0.04em;
   margin-top: 40px;
   margin-bottom: 16px;
+  color: #52555f;
 `;
 
 export const FormSubTitle = styled.h3`
@@ -22,6 +23,8 @@ export const FormSubTitle = styled.h3`
   font-size: 12px;
   line-height: 14px;
   letter-spacing: 0.04em;
+
+  color: #52555f;
 
   margin: 0 auto;
   margin-top: 32px;
@@ -40,7 +43,7 @@ export const ButtonLink = styled.a`
 
   width: 122px;
   height: 40px;
-  
+
   text-decoration: none;
   font-family: 'Roboto';
   font-style: normal;
@@ -50,7 +53,6 @@ export const ButtonLink = styled.a`
   display: flex;
   align-items: center;
   letter-spacing: 0.02em;
-  
 
   color: #000000;
 
@@ -79,7 +81,7 @@ export const LoginForm = styled.div`
 
   label {
     margin-top: 16px;
-    margin-left: 20px;
+    margin-left: 10px;
     display: block;
 
     font-size: 16px;
@@ -98,14 +100,14 @@ export const LoginForm = styled.div`
       position: relative;
       transform: translate(-50%, -50%);
       top: 2%;
-      left: 70%;
+      left: 64%;
     }
 
     @media (min-width: 1280px) {
       position: relative;
       transform: translate(-50%, -50%);
       top: 2%;
-      left: 70%;
+      left: 64%;
     }
   }
 
@@ -117,6 +119,7 @@ export const LoginForm = styled.div`
     background: #f6f7fb;
     border-radius: 30px;
     border: none;
+    padding-left: 20px;
 
     margin: 0 auto;
 
@@ -127,7 +130,6 @@ export const LoginForm = styled.div`
       font-size: 14px;
       line-height: 16px;
       letter-spacing: 0.04em;
-      padding-left: 19px;
 
       color: #a6abb9;
     }
@@ -144,6 +146,7 @@ export const LoginForm = styled.div`
     width: 426px;
     height: 552px;
     padding: 56px 84px;
+    
   }
 
   @media (min-width: 1280px) {
@@ -152,7 +155,32 @@ export const LoginForm = styled.div`
     padding: 56px 84px;
     transform: translate(-50%, -50%);
     top: 50%;
-    left: 70%;
+    left: 60%;
+  }
+`;
+
+export const ErrorMsg = styled.div`
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+
+  margin-top: 2px;
+  padding-left: 8px;
+
+  letter-spacing: 0.04em;
+
+  color: #eb5757;
+
+  @media (min-width: 767px) and (max-width: 1279.98px) {
+    margin-top: 2px;
+    padding-left: 70px;
+  }
+
+  @media (min-width: 1280px) {
+    margin-top: 2px;
+    padding-left: 70px;
   }
 `;
 export const ButtonWrapper = styled.div`
