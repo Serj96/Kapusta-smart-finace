@@ -8,20 +8,22 @@ import {
 } from './HomePage.styled';
 import { SubmitButton } from '../Theme/Button/Button';
 
+
 const HomePage = () => {
   const formik = useFormik({
     initialValues: {
       email: '',
       pasword: '',
     },
+
     onSubmit: values => {
-      // alert(JSON.stringify(values, null, 2));
+      console.log(values);
     },
   });
   return (
     <LoginForm onSubmit={formik.handleSubmit}>
       <FormTitle>You can log in with your Google Account:</FormTitle>
-      <ButtonLink href="shorturl.at/pAB18"></ButtonLink>
+      <ButtonLink href="shorturl.at/pAB18">Google</ButtonLink>
       <FormSubTitle>
         Or log in using an email and password, after registering:
       </FormSubTitle>
@@ -34,7 +36,6 @@ const HomePage = () => {
         value={formik.values.email}
         placeholder="your@email.com"
       />
-
       <label htmlFor="password">Password :</label>
       <input
         id="password"

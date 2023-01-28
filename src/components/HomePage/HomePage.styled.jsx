@@ -36,10 +36,23 @@ export const FormSubTitle = styled.h3`
 
 export const ButtonLink = styled.a`
   display: block;
+  justify-content: end;
+
   width: 122px;
   height: 40px;
-  left: 99px;
-  top: 339px;
+  
+  text-decoration: none;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 800;
+  font-size: 14px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.02em;
+  
+
+  color: #000000;
 
   background: #f6f7fb;
   border-radius: 26px;
@@ -60,13 +73,13 @@ export const LoginForm = styled.div`
   top: 50%;
   left: 50%;
   border-radius: 30px;
-  border: 1px solid #000000;
+  border: none;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   padding: 40px 20px;
 
   label {
     margin-top: 16px;
-
+    margin-left: 20px;
     display: block;
 
     font-size: 16px;
@@ -98,7 +111,7 @@ export const LoginForm = styled.div`
 
   input {
     display: block;
-    width: 100%;
+    width: 240px;
     height: 52px;
 
     background: #f6f7fb;
@@ -131,7 +144,6 @@ export const LoginForm = styled.div`
     width: 426px;
     height: 552px;
     padding: 56px 84px;
-    border: none;
   }
 
   @media (min-width: 1280px) {
@@ -141,7 +153,6 @@ export const LoginForm = styled.div`
     transform: translate(-50%, -50%);
     top: 50%;
     left: 70%;
-    border: none;
   }
 `;
 export const ButtonWrapper = styled.div`
