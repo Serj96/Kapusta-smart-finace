@@ -32,17 +32,17 @@ import {
   ReportCurrentConfirm,
 } from './Report.styled';
 
-import Boock from 'components/icons/Boock';
-import Kite from 'components/icons/Kite';
-import Car from 'components/icons/Car';
-import Clay from 'components/icons/Clay';
-import Cocktail from 'components/icons/Cocktail';
-import Couch from 'components/icons/Couch';
-import HandsHoldingHeart from 'components/icons/HandsHoldingHeart';
-import Products from 'components/icons/Products';
-import Invoice from 'components/icons/Invoice';
-import Tools from 'components/icons/Tools';
-import Ufo from 'components/icons/Ufo';
+import Boock from 'components/ReportIcons/Boock';
+import Kite from 'components/ReportIcons/Kite';
+import Car from 'components/ReportIcons/Car';
+import Clay from 'components/ReportIcons/Clay';
+import Cocktail from 'components/ReportIcons/Cocktail';
+import Couch from 'components/ReportIcons/Couch';
+import HandsHoldingHeart from 'components/ReportIcons/HandsHoldingHeart';
+import Products from 'components/ReportIcons/Products';
+import Invoice from 'components/ReportIcons/Invoice';
+import Tools from 'components/ReportIcons/Tools';
+import Ufo from 'components/ReportIcons/Ufo';
 
 export default function Report() {
   return (
