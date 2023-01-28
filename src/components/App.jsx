@@ -1,16 +1,18 @@
-import { Route, Routes } from 'react-router-dom';
-import { Layout } from './Layout/Layout';
+
 
 export const App = () => {
-  <Routes>
-    <Route path="/" element={<Layout />}>
-      {/* <Route path="register" element={"!token" ? <div /> : <Navigate to={"/contacts"} replace />} />
-        <Route path="login" element={"!token " ? <Login /> : <Navigate to={"/contacts"} replace />} />
-        <Route path="home" element={"token" ? <ContactList /> : <Navigate to={"/login"} replace />} >
-          <Route path="expenses" element={"!token" ? <Login /> : <Navigate to={"/contacts"} replace />} />
-          <Route path="income" element={"!token" ? <Login /> : <Navigate to={"/contacts"} replace />} />
-        </Route>
-        <Route path="reports" element={"token ?" < ContactList /> : <Navigate to={"/login"} replace />} /> */}
-    </Route>
-  </Routes>;
+
+  // return <Routes>
+  //   <Route path="/" element={<Layout />}>
+  //     <Route path="home" element={<Home />} >
+  //       <Route index element={!token ? <Login /> : <Navigate to={"/home/expenses"} replace />} />
+  //       <Route path="register" element={!token ? <Register /> : <Navigate to={"/home/expenses"} replace />} />
+  //       <Route path="expenses" element={token ? <Expenses /> : <Navigate to={"/home"} />} />
+  //       <Route path="income" element={token ? <Income /> : <Navigate to={"/home"} replace />} />
+  //       <Route path="reports " element={token ? <Reports /> : <Navigate to={"/home"} replace />} />
+  //     </Route>
+  //   </Route>
+  // </Routes>;
+
+
 };
