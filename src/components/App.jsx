@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
-import Expenses from './pages/Report/Expenses/Expenses';
-import Income from './pages/Report/Income/Income';
+import Expenses from 'pages/Report/Expenses/Expenses';
+import Income from 'pages/Report/Income/Income';
 
 export const App = () => {
   return (
