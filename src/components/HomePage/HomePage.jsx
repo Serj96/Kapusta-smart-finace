@@ -8,7 +8,6 @@ import {
 } from './HomePage.styled';
 import { SubmitButton } from '../Theme/Button/Button';
 
-
 const HomePage = () => {
   const formik = useFormik({
     initialValues: {
@@ -46,12 +45,8 @@ const HomePage = () => {
         placeholder="Password"
       />
       <ButtonWrapper>
-        <SubmitButton buttonLog={true} type={'submit'}>
-          Log In
-        </SubmitButton>
-        <SubmitButton className="buttonReg" type={'submit'}>
-          Registration
-        </SubmitButton>
+        <SubmitButton type={'submit'}>Log In</SubmitButton>
+        <SubmitButton type={'submit'}>Registration</SubmitButton>
       </ButtonWrapper>
     </LoginForm>
   );
