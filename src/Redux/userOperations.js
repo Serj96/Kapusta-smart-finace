@@ -10,7 +10,7 @@ const setToken = token => {
   axios.defaults.headers.common.authorization = '';
 };
 
-const getUser = createAsyncThunk(
+export const getUser = createAsyncThunk(
   'user',
   async (_, { rejectWithValue, getState }) => {
     const state = getState();
@@ -24,7 +24,7 @@ const getUser = createAsyncThunk(
   }
 );
 
-const changeBalance = createAsyncThunk(
+export const changeBalance = createAsyncThunk(
   'user/balance',
   async (credentials, { rejectWithValue, getState }) => {
     const state = getState();
