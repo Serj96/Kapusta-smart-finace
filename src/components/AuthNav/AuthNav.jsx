@@ -1,31 +1,66 @@
-import { NavStyled, LabelStyled } from './AuthNav.styled';
+import {
+  NavStyled,
+  // NameFirstLetter,
+  // Mail,
+  ExitMobile,
+  Decor,
+  ExitTablet,
+} from './AuthNav.styled';
+
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+// import { selectUser } from 'Redux/selectors-nav';
+import { logOut } from 'Redux/authOperaions';
+import logoutSvg from '../../images/logout.svg';
+import { ModalWindow } from 'components/ModalWindowNav/ModalWindowNav';
 
 export const AuthNav = () => {
-  // const [modalOpen, setModalOpen] = useState(false);
-  // const isLogIn = useSelector(selectLogIn);
+  const [modalOpen, setModalOpen] = useState(false);
+
   // const userEmail = useSelector(selectUser);
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   // Відкрити модалку
-  //   const handleModalOpen = () => {
-  //     setModalOpen(true);
-  //   };
+  const handleModalOpen = () => {
+    setModalOpen(true);
+  };
 
   // Закрити модалку
-  //   const handleModalClose = () => {
-  //     setModalOpen(false);
-  //   };
+  const handleModalClose = () => {
+    setModalOpen(false);
+  };
 
   // Логаут
-  //   const handleClick = () => {
-  //     dispatch(logOut());
-  //   };
+  const handleClick = () => {
+    dispatch(logOut());
+  };
 
   return (
-    //   isLogIn && ( */якщо користувач зазогінився, показуємо
     <>
-      <NavStyled>{/* Тут буде кругляш з першою буквою юзера */}</NavStyled>
+      <NavStyled>
+        {/* тут буде перша буква імені юзера */}
+        {/* <NameFirstLetter>{userEmail[0].toUpperCase()}</NameFirstLetter> */}
+
+        {/* тут відображається мейл юзера */}
+        {/* <Mail>{userEmail}</Mail> */}
+
+        {/* Свг виходу в мобілці */}
+        <ExitMobile src={logoutSvg} alt="logout" onClick={handleModalOpen} />
+
+        <Decor />
+
+        {/* Кнопка виходу в таблетці */}
+        <ExitTablet type="button" onClick={handleModalOpen}>
+          Exit
+        </ExitTablet>
+      </NavStyled>
+
+      {/* Модалка при виході */}
+      {modalOpen && (
+        <ModalWindow closeModal={handleModalClose} dispatch={handleClick}>
+          Do you really want to leave?
+        </ModalWindow>
+      )}
     </>
-    //   )
   );
 };
