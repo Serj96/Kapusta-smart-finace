@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
-import { myTheme } from './Theme/Theme';
+// import { myTheme } from './Theme/Theme';
 export const Container = styled.div`
-  background-color: ${myTheme.backgroundColors.third};
+  background-color: #f5f6fb;
   padding: 0 20px;
 
   @media (min-width: 767px) and (max-width: 1279.98px) {

@@ -8,6 +8,7 @@ import {
   ErrorMsg,
   LoginForm,
   ButtonWrapper,
+  LinkRegistr,
 } from './HomePage.styled';
 import { SubmitButton } from '../Theme/Button/Button';
 import Kapusta_mob from '../image/Kapusta_mob.png';
@@ -92,7 +93,9 @@ const HomePage = () => {
           ) : null}
           <ButtonWrapper>
             <SubmitButton type={'submit'}>Log In</SubmitButton>
-            <Link to="/">Registration</Link>
+            <LinkRegistr>
+              <Link to="/">Registration</Link>
+            </LinkRegistr>
           </ButtonWrapper>
         </LoginForm>
       </div>

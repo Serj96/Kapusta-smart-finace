@@ -84,10 +84,7 @@ export const ButtonLink = styled.a`
   border-radius: 26px;
 
   span {
-    // position: absolute;
-    // transform: translate(-50%, -30%);
-    // top: 22%;
-    // left: 56%;
+    
 
     @media (min-width: 767px) and (max-width: 1279.98px) {
     }
@@ -213,6 +210,35 @@ export const ErrorMsg = styled.div`
     margin-top: 2px;
     padding-left: 70px;
   }
+`;
+
+export const LinkRegistr = styled.div`
+  display: flex;
+  border: 2px solid #f6f7fc;
+  justify-content: center;
+  /* text-decoration: none; */
+  border-radius: 16px;
+  background-color: inherit;
+  cursor: pointer;
+  text-transform: uppercase;
+  
+  width: 122px;
+  height: 40px;
+  padding: 0 auto;
+
+  text-decoration: none;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.02em;
+
+  color: #000000;
+  background: #f6f7fb;
+  border-radius: 26px;
 `;
 export const ButtonWrapper = styled.div`
   display: flex;
