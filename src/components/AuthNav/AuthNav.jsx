@@ -40,35 +40,35 @@ export const AuthNav = () => {
   };
 
   return (
-    isLogIn && (
-      <>
-        <NavStyled>
-          {/* тут буде перша буква імені юзера */}
-          {/* <NameFirstLetter>
+    // isLogIn && (
+    <>
+      <NavStyled>
+        {/* тут буде перша буква імені юзера */}
+        {/* <NameFirstLetter>
             {Object.values(userEmail[0].toUpperCase())}
           </NameFirstLetter> */}
 
-          {/* тут відображається мейл юзера */}
-          {/* <Mail>{userEmail}</Mail> */}
+        {/* тут відображається мейл юзера */}
+        {/* <Mail>{userEmail}</Mail> */}
 
-          {/* Свг виходу в мобілці */}
-          <ExitMobile src={logoutSvg} alt="logout" onClick={handleModalOpen} />
+        {/* Свг виходу в мобілці */}
+        <ExitMobile src={logoutSvg} alt="logout" onClick={handleModalOpen} />
 
-          <Decor />
+        <Decor />
 
-          {/* Кнопка виходу в таблетці */}
-          <ExitTablet type="button" onClick={handleModalOpen}>
-            Exit
-          </ExitTablet>
-        </NavStyled>
+        {/* Кнопка виходу в таблетці */}
+        <ExitTablet type="button" onClick={handleModalOpen}>
+          Exit
+        </ExitTablet>
+      </NavStyled>
 
-        {/* Модалка при виході */}
-        {modalOpen && (
-          <ModalWindow closeModal={handleModalClose} dispatch={handleClick}>
-            Do you really want to leave?
-          </ModalWindow>
-        )}
-      </>
-    )
+      {/* Модалка при виході */}
+      {modalOpen && (
+        <ModalWindow closeModal={handleModalClose} dispatch={handleClick}>
+          Do you really want to leave?
+        </ModalWindow>
+      )}
+    </>
+    // )
   );
 };
