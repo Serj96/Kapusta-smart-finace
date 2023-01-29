@@ -9,17 +9,19 @@ import {
 
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-// import { getUser } from 'Redux/kapustaSlice';
 import { logOut } from 'Redux/authOperaions';
 import logoutSvg from '../../images/logout.svg';
 import { ModalWindow } from 'components/ModalWindowNav/ModalWindowNav';
-import { getIsLoggedIn } from 'Redux/kapustaSlice';
+import {
+  getIsLoggedIn,
+  // getUserMail
+} from 'Redux/kapustaSlice';
 
 export const AuthNav = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const isLogIn = useSelector(getIsLoggedIn);
 
-  // const userEmail = useSelector(getUser);
+  // const userEmail = useSelector(getUserMail);
   const dispatch = useDispatch();
 
   // Відкрити модалку
@@ -42,7 +44,9 @@ export const AuthNav = () => {
       <>
         <NavStyled>
           {/* тут буде перша буква імені юзера */}
-          {/* <NameFirstLetter>{userEmail[0].toUpperCase()}</NameFirstLetter> */}
+          {/* <NameFirstLetter>
+            {Object.values(userEmail[0].toUpperCase())}
+          </NameFirstLetter> */}
 
           {/* тут відображається мейл юзера */}
           {/* <Mail>{userEmail}</Mail> */}

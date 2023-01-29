@@ -12,7 +12,10 @@ export const Modal = styled.div`
 `;
 
 export const Wrapper = styled.div`
-  padding: 50px 58px 60px;
+  padding: 50px 20px 60px;
+  @media screen and (min-width: 768px) {
+    padding: 50px 58px 60px;
+  }
 `;
 
 export const Text = styled.p`

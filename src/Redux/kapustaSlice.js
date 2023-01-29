@@ -247,3 +247,4 @@ export const getUserIncomes = state =>
 export const getUserExpenses = state =>
   state.kapusta.auth.userData.expenses.expenses;
 export const getState = state => state.kapusta;
+export const getUserMail = state => state.kapusta.auth.user.email;
