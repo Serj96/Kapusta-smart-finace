@@ -1,6 +1,27 @@
 import styled from '@emotion/styled';
 import { myTheme } from 'components/Theme/Theme';
 
+export const WrapperHomePage = styled.div`
+  @media (min-width: 767px) and (max-width: 1279.98px) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  @media (min-width: 1280px) {
+    display: flex;
+    justify-content: space-between;
+  }
+`;
+
+export const WrapperImg = styled.div`
+  margin-bottom: 50px;
+  @media (min-width: 1280px) {
+    display: flex;
+    align-items: center;
+  }
+`;
+
 export const FormTitle = styled.h3`
   font-family: 'Roboto';
   font-style: normal;
@@ -41,6 +62,8 @@ export const FormSubTitle = styled.h3`
 
 export const ButtonLink = styled.a`
   display: block;
+  gap: 10px;
+  justify-content: center;
 
   width: 122px;
   height: 40px;
@@ -61,23 +84,15 @@ export const ButtonLink = styled.a`
   border-radius: 26px;
 
   span {
-    position: absolute;
-    transform: translate(-50%, -30%);
-    top: 22%;
-    left: 56%;
+    // position: absolute;
+    // transform: translate(-50%, -30%);
+    // top: 22%;
+    // left: 56%;
 
     @media (min-width: 767px) and (max-width: 1279.98px) {
-      position: absolute;
-      transform: translate(-50%, -15%);
-      top: 21%;
-      left: 53%;
     }
 
     @media (min-width: 1280px) {
-      position: absolute;
-      transform: translate(-50%, -15%);
-      top: 21%;
-      left: 53%;
     }
   }
 
@@ -88,14 +103,11 @@ export const ButtonLink = styled.a`
   }
 `;
 
-export const LoginForm = styled.div`
+export const LoginForm = styled.form`
   height: 496px;
   width: 280px;
   background-color: #ffffff;
-  position: absolute;
-  transform: translate(-50%, -50%);
-  top: 50%;
-  left: 50%;
+
   border-radius: 30px;
   border: none;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -174,9 +186,7 @@ export const LoginForm = styled.div`
     width: 426px;
     height: 552px;
     padding: 56px 84px;
-    transform: translate(-50%, -50%);
-    top: 50%;
-    left: 60%;
+    
   }
 `;
 

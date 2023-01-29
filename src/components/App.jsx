@@ -1,16 +1,11 @@
-import HomePage from "./HomePage/HomePage";
-import { Image } from "./Image/Image";
+import HomePage from './HomePage/HomePage';
+import { Container } from './App.styled';
+
 export const App = () => {
   return (
-    <div
-      style={{
-        backgroundColor: 'blue',
-        
-      }}
-    >
-      <Image />
+    <Container>
       <HomePage />
-    </div>
+    </Container>
   );
   /* <Routes>
       <Route path="/" element={<Layout />}>
