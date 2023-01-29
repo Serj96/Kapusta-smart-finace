@@ -1,8 +1,17 @@
 import HomePage from "./HomePage/HomePage";
+import { Image } from "./Image/Image";
 export const App = () => {
   return (
-    <HomePage/>
-  )
+    <div
+      style={{
+        backgroundColor: 'blue',
+        
+      }}
+    >
+      <Image />
+      <HomePage />
+    </div>
+  );
   /* <Routes>
       <Route path="/" element={<Layout />}>
         <Route path="register" element={"!token" ? <div /> : <Navigate to={"/contacts"} replace />} />

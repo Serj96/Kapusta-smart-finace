@@ -40,7 +40,9 @@ const HomePage = () => {
   return (
     <LoginForm onSubmit={formik.handleSubmit}>
       <FormTitle>You can log in with your Google Account:</FormTitle>
-      <ButtonLink href="shorturl.at/pAB18">Google</ButtonLink>
+      <ButtonLink href="shorturl.at/pAB18">
+        <span>Google</span>
+      </ButtonLink>
       <FormSubTitle>
         Or log in using an email and password, after registering:
       </FormSubTitle>
@@ -64,7 +66,9 @@ const HomePage = () => {
         value={formik.values.firstName}
         placeholder="Password"
       />
-      {formik.errors.password ? <ErrorMsg>{formik.errors.password}</ErrorMsg> : null}
+      {formik.errors.password ? (
+        <ErrorMsg>{formik.errors.password}</ErrorMsg>
+      ) : null}
       <ButtonWrapper>
         <SubmitButton type={'submit'}>Log In</SubmitButton>
         <SubmitButton type={'submit'}>Registration</SubmitButton>

@@ -26,28 +26,30 @@ export const FormSubTitle = styled.h3`
 
   color: #52555f;
 
-  margin: 0 auto;
+  margin-left: 10px;
   margin-top: 32px;
   @media (min-width: 767px) and (max-width: 1279.98px) {
+    margin-left: 73px;
     width: 50%;
   }
 
   @media (min-width: 1280px) {
+    margin-left: 73px;
     width: 50%;
   }
 `;
 
 export const ButtonLink = styled.a`
   display: block;
-  justify-content: end;
 
   width: 122px;
   height: 40px;
+  padding: 0 auto;
 
   text-decoration: none;
   font-family: 'Roboto';
   font-style: normal;
-  font-weight: 800;
+  font-weight: 500;
   font-size: 14px;
   line-height: 16px;
   display: flex;
@@ -55,9 +57,29 @@ export const ButtonLink = styled.a`
   letter-spacing: 0.02em;
 
   color: #000000;
-
   background: #f6f7fb;
   border-radius: 26px;
+
+  span {
+    position: absolute;
+    transform: translate(-50%, -30%);
+    top: 22%;
+    left: 56%;
+
+    @media (min-width: 767px) and (max-width: 1279.98px) {
+      position: absolute;
+      transform: translate(-50%, -15%);
+      top: 21%;
+      left: 53%;
+    }
+
+    @media (min-width: 1280px) {
+      position: absolute;
+      transform: translate(-50%, -15%);
+      top: 21%;
+      left: 53%;
+    }
+  }
 
   margin: 0 auto;
   &:hover {
@@ -146,7 +168,6 @@ export const LoginForm = styled.div`
     width: 426px;
     height: 552px;
     padding: 56px 84px;
-    
   }
 
   @media (min-width: 1280px) {
