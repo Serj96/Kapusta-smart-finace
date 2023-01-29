@@ -9,7 +9,7 @@ import {
   CloseSvg,
   Backdrop,
 } from './ModalWindowNav.styled';
-import { SubmitButton } from 'components/Theme/Button/Button';
+import { DismissButton, LogOutButton } from 'components/Theme/Button/Button';
 import close from '../../images/close.svg';
 
 const modalRoot = document.getElementById('modal-root');
@@ -32,6 +32,7 @@ export const ModalWindow = ({ children, closeModal, dispatch }) => {
       closeModal();
     }
   };
+
   // закрити по бекдропу
   const handleBackdropClose = event => {
     if (event.target === event.currentTarget) {
@@ -49,16 +50,16 @@ export const ModalWindow = ({ children, closeModal, dispatch }) => {
         <Wrapper>
           <Text>{children}</Text>
           <ButtonWrapper>
-            <SubmitButton
+            <LogOutButton
               type="button"
               dispatch={dispatch}
               closeModal={closeModal}
             >
               Yes
-            </SubmitButton>
-            <SubmitButton type="button" closeModal={closeModal}>
+            </LogOutButton>
+            <DismissButton type="button" closeModal={closeModal}>
               No
-            </SubmitButton>
+            </DismissButton>
           </ButtonWrapper>
         </Wrapper>
       </Modal>
