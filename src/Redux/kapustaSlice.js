@@ -46,7 +46,7 @@ export const kapustaSlice = createSlice({
             state.accessToken = action.payload.accessToken;
             state.auth.userData.balance = action.payload.userData.balance;
             state.auth.userData.transactions = action.payload.userData.transactions;
-            state.auth.email = action.payload.email;
+            state.auth.user.email = action.payload.userData.email;
         }).addCase(login.rejected, (state, action) => {
             state.error = action.payload;
             state.loading = false;
@@ -188,7 +188,7 @@ export const kapustaSlice = createSlice({
 const persistConfig = {
     key: 'local-key',
     storage,
-    whitelist: ['accessToken', 'refreshToken', 'sid', 'isLoggedIn']
+    whitelist: ['accessToken', 'refreshToken', 'sid','isLoggedIn']
 }
 export const kapustaReducer = persistReducer(persistConfig, kapustaSlice.reducer)
 export const getIsLoggedIn = state => state.kapusta.isLoggedIn;
@@ -201,3 +201,4 @@ export const getLoading = state => state.kapusta.loading;
 export const getAccessToken = state => state.kapusta.accessToken;
 export const getRefresh = state => state.kapusta.refresh;
 export const getError = state => state.kapusta.error;
+export const getUserMail = state=>state.kapusta.auth.user.email;

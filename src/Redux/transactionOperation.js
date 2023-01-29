@@ -32,7 +32,6 @@ export const getIncome = createAsyncThunk(
     setToken(state.kapusta.accessToken);
     try {
       const { data } = await axios.get('/transaction/income');
-
       return data;
     } catch (error) {
       return rejectWithValue(error);
