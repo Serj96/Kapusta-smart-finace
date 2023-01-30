@@ -10,7 +10,6 @@ import {
 } from './Registration.styled';
 import { SubmitButton } from '../Theme/Button/Button';
 import googleIcon from '../image/googleIcon.svg';
-import { Link } from 'react-router-dom';
 
 const validate = values => {
   const errors = {};
@@ -71,11 +70,9 @@ export const Registration = () => {
         <ErrorMsg>{formik.errors.password}</ErrorMsg>
       ) : null}
       <ButtonWrapper>
-        <LinkRegistr>
-          <Link to="/" styled={{ textDecoration: 'none' }}>
+          <LinkRegistr to="/" styled={{ textDecoration: 'none' }}>
             Log In
-          </Link>
-        </LinkRegistr>
+          </LinkRegistr>
         <SubmitButton type={'submit'}>Registration</SubmitButton>
       </ButtonWrapper>
     </LoginForm>
