@@ -25,7 +25,9 @@ export const login = createAsyncThunk('auth/login', async (data, { rejectWithVal
         return rejectWithValue(error);
     }
 })
-export const logOut = createAsyncThunk('auth/logout', async () => {
+export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
+    const state = thunkAPI.getState();
+    setToken(state.kapusta.accessToken);
     try {
         const { data } = await axios.post('/auth/logout');
         setToken();
@@ -36,14 +38,13 @@ export const logOut = createAsyncThunk('auth/logout', async () => {
 
     }
 })
-export const fetchRefresh = createAsyncThunk('auth/refresh', async (_, thunkAPI) => {
+export const refresh = createAsyncThunk('auth/refresh', async (_, thunkAPI) => {
     const state = thunkAPI.getState();
-    console.log(state);
-    const sid = state.sid;
-    setToken(state.accessToken);
+    const sid = state.kapusta.sid;
+    if (state.kapusta.refreshToken === null) return state;
+    setToken(state.kapusta.refreshToken);
     try {
         const { data } = await axios.post('/auth/refresh', { sid })
-        console.log(data);
         return data;
     } catch (error) {
         console.log(error);

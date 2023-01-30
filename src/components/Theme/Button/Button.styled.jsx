@@ -3,11 +3,13 @@ import { myTheme } from '../Theme';
 export const Button = styled.button`
   width: 125px;
   height: 44px;
-  padding: 12px 34px;
+  padding: 12px 15px;
+
   color: ${myTheme.colors.primary};
   border: 2px solid #f6f7fc;
   border-radius: 16px;
   background-color: inherit;
+
   text-transform: uppercase;
   font-weight: 700;
   font-size: 12px;
@@ -25,4 +27,15 @@ export const Button = styled.button`
     border: 2px solid transparent;
     box-shadow: 1px 2px 5px rgba(170, 178, 197, 0.4);
   }
+`;
+
+export const Out = styled.button`
+  width: 125px;
+  height: 44px;
+  padding: 12px 34px;
+  color: ${myTheme.backgroundColors.primary};
+  background-color: ${myTheme.colors.hover};
+  border: 2px solid #f6f7fc;
+  border-radius: 16px;
+  cursor: pointer;
 `;

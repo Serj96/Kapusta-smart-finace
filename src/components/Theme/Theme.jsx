@@ -3,6 +3,7 @@ export const myTheme = {
     backgroundColors: {
         primary: '#FFFFFF',
         secondary: '#F5F6FB',
+        
     },
     colors: {
         primary: '#52555F',

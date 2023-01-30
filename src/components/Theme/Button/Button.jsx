@@ -1,4 +1,5 @@
-import { Button } from './Button.styled';
+import { Button, Out } from './Button.styled';
+
 export const ClearButton = ({ reset }) => {
   return (
     <Button onClick={() => reset()} type="button">
@@ -7,6 +8,26 @@ export const ClearButton = ({ reset }) => {
   );
 };
 
-export const SubmitButton = ({ children, type }) => {
-  return <Button type={type}>{children}</Button>;
+export const SubmitButton = ({ children, type, buttonLog }) => {
+  return (
+    <Button type={type} buttonLog={buttonLog}>
+      {children}
+    </Button>
+  );
+};
+
+// Кнопки для модалки
+export const LogOutButton = ({ children, dispatch, closeModal }) => {
+  const handleClick = () => {
+    if (children === 'Yes') {
+      dispatch();
+      closeModal();
+    }
+  };
+
+  return <Out onClick={handleClick}>{children}</Out>;
+};
+
+export const DismissButton = ({ children, closeModal }) => {
+  return <Button onClick={closeModal}>{children}</Button>;
 };
