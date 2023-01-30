@@ -2,17 +2,15 @@ import { useFormik } from 'formik';
 import {
   FormTitle,
   FormSubTitle,
-    ButtonLink,
+  ButtonLink,
   WrapperEmail,
   ErrorMsg,
   LoginForm,
   ButtonWrapper,
-    LinkRegistr,
+  LinkRegistr,
 } from './Login.styled';
 import { SubmitButton } from '../Theme/Button/Button';
 import googleIcon from '../image/googleIcon.svg';
-
-
 
 const validate = values => {
   const errors = {};
@@ -29,16 +27,16 @@ const validate = values => {
 };
 
 export const Login = () => {
-    const formik = useFormik({
-      initialValues: {
-        email: '',
-        pasword: '',
-      },
-      validate,
-      onSubmit: values => {
-        alert(JSON.stringify(values, null, 2));
-      },
-    });
+  const formik = useFormik({
+    initialValues: {
+      email: '',
+      pasword: '',
+    },
+    validate,
+    onSubmit: values => {
+      alert(JSON.stringify(values, null, 2));
+    },
+  });
   return (
     <LoginForm onSubmit={formik.handleSubmit}>
       <FormTitle>You can log in with your Google Account:</FormTitle>
@@ -77,9 +75,10 @@ export const Login = () => {
       ) : null}
       <ButtonWrapper>
         <SubmitButton type={'submit'}>Log In</SubmitButton>
-        
-          <LinkRegistr to="/" styled={{ textDecoration: "none" }}>Registration</LinkRegistr>
-        
+
+        <LinkRegistr to="/" styled={{ textDecoration: 'none' }}>
+          Registration
+        </LinkRegistr>
       </ButtonWrapper>
     </LoginForm>
   );

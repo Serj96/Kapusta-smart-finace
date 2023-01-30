@@ -17,7 +17,7 @@ export const LoginForm = styled.form`
 
     font-size: 16px;
     font-weight: 500;
-    
+
     font-weight: 400;
     font-size: 10px;
     line-height: 12px;
@@ -46,7 +46,6 @@ export const LoginForm = styled.form`
     margin-top: 12px;
 
     &::placeholder {
-      
       font-weight: 400;
       font-size: 14px;
       line-height: 16px;
@@ -78,7 +77,7 @@ export const LoginForm = styled.form`
 
 export const FormTitle = styled.h3`
   padding: 0 20px;
-  
+
   font-weight: 400;
   font-size: 12px;
   line-height: 14px;
@@ -100,7 +99,7 @@ export const FormTitle = styled.h3`
 export const ButtonLink = styled.a`
   gap: 10px;
   justify-content: center;
-
+  width: 122px;
   height: 40px;
   padding: 0 auto;
 
@@ -147,7 +146,6 @@ export const WrapperEmail = styled.div`
 `;
 
 export const ErrorMsg = styled.div`
-  
   font-weight: 400;
   font-size: 10px;
   line-height: 12px;
