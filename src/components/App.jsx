@@ -1,10 +1,11 @@
 import HomePage from './HomePage/HomePage';
-import { Container } from './App.styled';
+import { Container, } from './App.styled';
 
 export const App = () => {
   return (
     <Container>
-      <HomePage />
+        <HomePage />
+      
     </Container>
   );
   /* <Routes>

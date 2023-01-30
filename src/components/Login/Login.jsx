@@ -2,15 +2,16 @@ import { useFormik } from 'formik';
 import {
   FormTitle,
   FormSubTitle,
-  ButtonLink,
+    ButtonLink,
+  WrapperEmail,
   ErrorMsg,
   LoginForm,
   ButtonWrapper,
-  LinkRegistr,
+    LinkRegistr,
 } from './Login.styled';
 import { SubmitButton } from '../Theme/Button/Button';
 import googleIcon from '../image/googleIcon.svg';
-import { Link } from 'react-router-dom';
+
 
 
 const validate = values => {
@@ -48,17 +49,20 @@ export const Login = () => {
       <FormSubTitle>
         Or log in using an email and password, after registering:
       </FormSubTitle>
-      <label htmlFor="email">Email :</label>
-      <input
-        id="email"
-        name="email"
-        type="email"
-        onChange={formik.handleChange}
-        value={formik.values.email}
-        placeholder="your@email.com"
-      />
-      {formik.errors.email ? <ErrorMsg>{formik.errors.email}</ErrorMsg> : null}
-
+      <WrapperEmail>
+        <label htmlFor="email">Email :</label>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          onChange={formik.handleChange}
+          value={formik.values.email}
+          placeholder="your@email.com"
+        />
+        {formik.errors.email ? (
+          <ErrorMsg>{formik.errors.email}</ErrorMsg>
+        ) : null}
+      </WrapperEmail>
       <label htmlFor="password">Password :</label>
       <input
         id="password"
@@ -73,9 +77,9 @@ export const Login = () => {
       ) : null}
       <ButtonWrapper>
         <SubmitButton type={'submit'}>Log In</SubmitButton>
-        <LinkRegistr>
-          <Link to="/" styled={{textDecoration: "none"}}>Registration</Link>
-        </LinkRegistr>
+        
+          <LinkRegistr to="/" styled={{ textDecoration: "none" }}>Registration</LinkRegistr>
+        
       </ButtonWrapper>
     </LoginForm>
   );
