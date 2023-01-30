@@ -32,6 +32,7 @@ export default function AppBarReport() {
   const navigate = useNavigate();
   const userIncomes = useSelector(getUserIncomes);
   const userExpenses = useSelector(getUserExpenses);
+  // const transactionPeriodData = useSelector(getTransactionsByPeriod);
   const balanse = useSelector(state => state.kapusta.auth.userData.balance);
   const userIncomesTotalAmount = userIncomes
     .map(item => item.amount)
@@ -47,6 +48,7 @@ export default function AppBarReport() {
 
   console.log(userIncomesTotalAmount);
   console.log(userExpensesTotalAmount);
+  // console.log(transactionPeriodData);
 
   const onBackHomePageHandler = () => {
     navigate('/home', { replace: true });
@@ -56,8 +58,11 @@ export default function AppBarReport() {
   return (
     <Container>
       <ReportHeaderWrapperTablet>
-        <ReportIoIosArrowRoundBackWrapper onClick={onBackHomePageHandler}>
-          <ReportIoIosArrowRoundBack size={36} />
+        <ReportIoIosArrowRoundBackWrapper>
+          <ReportIoIosArrowRoundBack
+            size={36}
+            onClick={onBackHomePageHandler}
+          />
           <ReportIoIosArrowRoundBackText>
             Main page
           </ReportIoIosArrowRoundBackText>
