@@ -1,6 +1,5 @@
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { getUserExpenses } from 'Redux/kapustaSlice';
 
 import {
   ReportArrowLeft,
@@ -29,29 +28,25 @@ import Tools from 'components/ReportIcons/Tools';
 import Ufo from 'components/ReportIcons/Ufo';
 
 export default function Expense() {
-  const userExpense = useSelector(getUserExpenses);
-  userExpense.map(item => console.log(item));
-
   const navigate = useNavigate();
 
   const onChangeExpensesPageHandler = () => {
-    const expenseButtonArrowLeft = document.querySelector('.arrow-left');
-    const expenseButtonArrowRight = document.querySelector('.arrow-right');
-    console.log(expenseButtonArrowLeft);
-    console.log(expenseButtonArrowRight);
-
     navigate('/home/reports', { replace: true });
-    console.log('Натиснули на ліву стрілку і перейшли на сторінку Expenses');
   };
 
   const onChangeIncomePageHandler = () => {
-    const expenseButtonArrowLeft = document.querySelector('.arrow-left');
-    const expenseButtonArrowRight = document.querySelector('.arrow-right');
-    console.log(expenseButtonArrowLeft);
-    console.log(expenseButtonArrowRight);
     navigate('income', { replace: true });
-    console.log('Натиснули на праву стрілку і перейшли на сторінку Income');
   };
+
+  const userPeriodTotal = useSelector(
+    state => state.kapusta.auth.userData.periodData
+  );
+
+  const userPeriodDataTotalExpenses = userPeriodTotal.map(item =>
+    Object.entries(item.expenses.incomesData)
+  );
+
+  const TotalExpensesArray = userPeriodDataTotalExpenses.map(item => item);
 
   return (
     <>
@@ -74,27 +69,27 @@ export default function Expense() {
         </ReportExpenseWrapper>
 
         <ReportExpenseList>
-          {userExpense.map((expense, index) => (
-            <ReportExpenseListItem key={index}>
-              <ReportExpenseListItemAmount>
-                {expense.amount}
-              </ReportExpenseListItemAmount>
-              {expense.category === 'Alcohol' && <Cocktail />}
-              {expense.category === 'Products' && <Products />}
-              {expense.category === 'Health' && <HandsHoldingHeart />}
-              {expense.category === 'Entertainment' && <Kite />}
-              {expense.category === 'Transport' && <Car />}
-              {expense.category === 'Housing' && <Couch />}
-              {expense.category === 'Technique' && <Tools />}
-              {expense.category === 'Communal, communication' && <Invoice />}
-              {expense.category === 'Sports, hobbies' && <Clay />}
-              {expense.category === 'Education' && <Boock />}
-              {expense.category === 'Other' && <Ufo />}
-              <ReportExpenseListItemText>
-                {expense.category}
-              </ReportExpenseListItemText>
-            </ReportExpenseListItem>
-          ))}
+          {TotalExpensesArray.map(item =>
+            item.map(elem => (
+              <ReportExpenseListItem key={elem[0]}>
+                <ReportExpenseListItemAmount>
+                  {elem[1].total}
+                </ReportExpenseListItemAmount>
+                {elem[0] === 'Alcohol' && <Cocktail />}
+                {elem[0] === 'Продукты' && <Products />}
+                {elem[0] === 'Health' && <HandsHoldingHeart />}
+                {elem[0] === 'Entertainment' && <Kite />}
+                {elem[0] === 'Транспорт' && <Car />}
+                {elem[0] === 'Всё для дома' && <Couch />}
+                {elem[0] === 'Technique' && <Tools />}
+                {elem[0] === 'Communal, communication' && <Invoice />}
+                {elem[0] === 'Sports, hobbies' && <Clay />}
+                {elem[0] === 'Учеба' && <Boock />}
+                {elem[0] === 'Other' && <Ufo />}
+                <ReportExpenseListItemText>{elem[0]}</ReportExpenseListItemText>
+              </ReportExpenseListItem>
+            ))
+          )}
         </ReportExpenseList>
       </ReportExpenseListWrapper>
     </>

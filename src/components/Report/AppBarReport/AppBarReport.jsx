@@ -1,13 +1,17 @@
-import { Container } from 'components/Theme/BreakPoints';
-import { Outlet, useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import { Outlet, useNavigate } from 'react-router-dom';
+import { Container } from 'components/Theme/BreakPoints';
 import { getUserIncomes, getUserExpenses } from 'Redux/kapustaSlice';
+import { months } from './Month';
 
 import {
   ReportIoIosArrowRoundBack,
   ReportArrowLeft,
   ReportArrowRight,
   ReportCurrentPeriodWrapper,
+  ReportExpenseButtonArrowLeft,
+  ReportExpenseButtonArrowRight,
   ReportDateWrapper,
   ReportCurrentPeriodText,
   ReportDateText,
@@ -28,11 +32,19 @@ import {
   ReportCurrentConfirm,
 } from './AppBarReport.styled';
 
+const currentDateMonth = new Date().getMonth();
+let monthvalue = months[currentDateMonth];
+
 export default function AppBarReport() {
+  const [currentMonthName, setCurrentMonthName] = useState(monthvalue);
+  const [currentMonthNumber, setCurrentMonthNumber] =
+    useState(currentDateMonth);
   const navigate = useNavigate();
+
   const userIncomes = useSelector(getUserIncomes);
   const userExpenses = useSelector(getUserExpenses);
-  // const transactionPeriodData = useSelector(getTransactionsByPeriod);
+  // console.log(userIncomes);
+
   const balanse = useSelector(state => state.kapusta.auth.userData.balance);
   const userIncomesTotalAmount = userIncomes
     .map(item => item.amount)
@@ -46,13 +58,35 @@ export default function AppBarReport() {
       return previousValue + amount;
     }, 0);
 
-  console.log(userIncomesTotalAmount);
-  console.log(userExpensesTotalAmount);
+  const userIncomesMonthsStats = useSelector(
+    state => state.kapusta.auth.userData.incomes.monthsStats
+  );
+
+  const userExpensesMonthsStats = useSelector(
+    state => state.kapusta.auth.userData.expenses.monthsStats
+  );
 
   const onBackHomePageHandler = () => {
     navigate('/home', { replace: true });
-    console.log('Натиснули стрілку і перейшли на сторінку Home');
   };
+
+  const onChangeMonthIncreaseHandler = () => {
+    setCurrentMonthName(months[currentMonthNumber + 1]);
+    setCurrentMonthNumber(currentMonthNumber + 1);
+  };
+
+  const onChangeMonthDecreaseHandler = () => {
+    setCurrentMonthName(months[currentMonthNumber - 1]);
+    setCurrentMonthNumber(currentMonthNumber - 1);
+  };
+
+  const userPeriodTotal = useSelector(
+    state => state.kapusta.auth.userData.periodData
+  );
+  // console.log(userPeriodTotal);
+
+  const userPeriodExpenses = userPeriodTotal.map(item => item.expenses.total);
+  const userPeriodIncomes = userPeriodTotal.map(item => item.incomes.total);
 
   return (
     <Container>
@@ -70,9 +104,19 @@ export default function AppBarReport() {
         <ReportCurrentPeriodWrapper>
           <ReportCurrentPeriodText>Current period:</ReportCurrentPeriodText>
           <ReportDateWrapper>
-            <ReportArrowLeft size={24} />
-            <ReportDateText>November 2019</ReportDateText>
-            <ReportArrowRight size={24} />
+            <ReportExpenseButtonArrowLeft
+              disabled={currentMonthNumber === 0}
+              onClick={onChangeMonthDecreaseHandler}
+            >
+              <ReportArrowLeft size={24} />
+            </ReportExpenseButtonArrowLeft>
+            <ReportDateText>{currentMonthName} 2022</ReportDateText>
+            <ReportExpenseButtonArrowRight
+              disabled={currentMonthNumber === 11}
+              onClick={onChangeMonthIncreaseHandler}
+            >
+              <ReportArrowRight size={24} />
+            </ReportExpenseButtonArrowRight>
           </ReportDateWrapper>
         </ReportCurrentPeriodWrapper>
 
@@ -91,13 +135,13 @@ export default function AppBarReport() {
         <ReportListItemIndicatorExpenses>
           <ReportListItemIndicatorText>Expenses:</ReportListItemIndicatorText>
           <ReportListItemIndicatorExpensesAmount>
-            {userExpensesTotalAmount} UAH.
+            {[...userPeriodExpenses]} UAH.
           </ReportListItemIndicatorExpensesAmount>
         </ReportListItemIndicatorExpenses>
         <ReportListItemIndicatorIncome>
           <ReportListItemIndicatorText>Income:</ReportListItemIndicatorText>
           <ReportListItemIndicatorIncomeAmount>
-            {userIncomesTotalAmount} UAH.
+            {[...userPeriodIncomes]} UAH.
           </ReportListItemIndicatorIncomeAmount>
         </ReportListItemIndicatorIncome>
       </ReportListIndicator>

@@ -73,6 +73,30 @@ export const ReportCurrentPeriodWrapper = styled.div`
   }
 `;
 
+export const ReportExpenseButtonArrowLeft = styled.button`
+  background-color: transparent;
+  width: 24px;
+  height: 24px;
+
+  border: none;
+  outline: none;
+  &:disabled {
+    background-color: transparent;
+  }
+`;
+
+export const ReportExpenseButtonArrowRight = styled.button`
+  background-color: transparent;
+  width: 24px;
+  height: 24px;
+
+  border: none;
+  outline: none;
+  &:disabled {
+    background-color: transparent;
+  }
+`;
+
 export const ReportDateWrapper = styled.div`
   display: flex;
   justify-content: center;
