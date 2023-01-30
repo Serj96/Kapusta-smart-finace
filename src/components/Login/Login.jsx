@@ -10,8 +10,9 @@ import {
 } from './Login.styled';
 import { SubmitButton } from '../Theme/Button/Button';
 import googleIcon from '../image/googleIcon.svg';
-import { Link } from 'react-router-dom';
-
+import { RegisterLink } from './Login.styled';
+import { useDispatch } from 'react-redux';
+import { login } from 'Redux/authOperaions';
 
 const validate = values => {
   const errors = {};
@@ -28,16 +29,18 @@ const validate = values => {
 };
 
 export const Login = () => {
-    const formik = useFormik({
-      initialValues: {
-        email: '',
-        pasword: '',
-      },
-      validate,
-      onSubmit: values => {
-        alert(JSON.stringify(values, null, 2));
-      },
-    });
+  const dispatch = useDispatch();
+  const formik = useFormik({
+    initialValues: {
+      email: '',
+      password: '',
+    },
+    validate,
+    onSubmit: values => {
+      // alert(JSON.stringify(values, null, 2));
+      dispatch(login(values))
+    },
+  });
   return (
     <LoginForm onSubmit={formik.handleSubmit}>
       <FormTitle>You can log in with your Google Account:</FormTitle>
@@ -74,7 +77,7 @@ export const Login = () => {
       <ButtonWrapper>
         <SubmitButton type={'submit'}>Log In</SubmitButton>
         <LinkRegistr>
-          <Link to="/" styled={{textDecoration: "none"}}>Registration</Link>
+          <RegisterLink to="/home/register">Registration</RegisterLink>
         </LinkRegistr>
       </ButtonWrapper>
     </LoginForm>

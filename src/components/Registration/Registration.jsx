@@ -10,8 +10,10 @@ import {
 } from './Registration.styled';
 import { SubmitButton } from '../Theme/Button/Button';
 import googleIcon from '../image/googleIcon.svg';
-import { Link } from 'react-router-dom';
-
+import { Link, useNavigate } from 'react-router-dom';
+import { RegisterLink } from 'components/Login/Login.styled';
+import { useDispatch } from 'react-redux';
+import { register } from 'Redux/authOperaions';
 const validate = values => {
   const errors = {};
   if (!values.email) {
@@ -27,14 +29,17 @@ const validate = values => {
 };
 
 export const Registration = () => {
+  const dispath = useDispatch();
+  const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
       email: '',
-      pasword: '',
+      password: '',
     },
     validate,
     onSubmit: values => {
-      alert(JSON.stringify(values, null, 2));
+      dispath(register(values));
+      navigate("/home")
     },
   });
   return (
@@ -71,12 +76,12 @@ export const Registration = () => {
         <ErrorMsg>{formik.errors.password}</ErrorMsg>
       ) : null}
       <ButtonWrapper>
-        <LinkRegistr>
-          <Link to="/" styled={{ textDecoration: 'none' }}>
-            Log In
-          </Link>
-        </LinkRegistr>
         <SubmitButton type={'submit'}>Registration</SubmitButton>
+        <LinkRegistr>
+          <RegisterLink to="/home" styled={{ textDecoration: 'none' }}>
+            Log In
+          </RegisterLink>
+        </LinkRegistr>
       </ButtonWrapper>
     </LoginForm>
   );

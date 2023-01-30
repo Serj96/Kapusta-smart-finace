@@ -1,9 +1,8 @@
 import { WrapperHomePage, WrapperImg } from './HomePage.styled';
-import {Login} from '../Login/Login'
+import { Login } from '../Login/Login'
 import Kapusta_mob from '../image/Kapusta_mob.png';
 import Kapusta_tablet from '../image/Kapusta_tablet.png';
 import Kapusta_desctop from '../image/Kapusta_desctop.png';
-
 const HomePage = () => {
   return (
     <WrapperHomePage
@@ -19,7 +18,7 @@ const HomePage = () => {
         />
       </WrapperImg>
       <div>
-        <Login/>
+        <Login />
       </div>
     </WrapperHomePage>
   );

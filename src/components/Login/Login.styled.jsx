@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { myTheme } from 'components/Theme/Theme';
-
+import { Link } from 'react-router-dom';
 export const FormTitle = styled.h3`
   font-family: 'Roboto';
   font-style: normal;
@@ -187,7 +187,41 @@ export const ErrorMsg = styled.div`
     padding-left: 70px;
   }
 `;
+export const RegisterLink = styled(Link)` display: block;
+gap: 10px;
+justify-content: center;
 
+width: 122px;
+height: 40px;
+padding: 0 auto;
+
+text-decoration: none;
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 500;
+font-size: 14px;
+line-height: 16px;
+display: flex;
+align-items: center;
+letter-spacing: 0.02em;
+
+color: #000000;
+background: #f6f7fb;
+border-radius: 26px;
+
+span {
+@media (min-width: 767px) and (max-width: 1279.98px) {
+}
+
+@media (min-width: 1280px) {
+}
+}
+
+margin: 0 auto;
+&:hover {
+color: ${myTheme.backgroundColors.primary};
+background-color: ${myTheme.colors.hover};
+}`;
 export const LinkRegistr = styled.div`
   display: flex;
   border: 2px solid #f6f7fc;
