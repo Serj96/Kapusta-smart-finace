@@ -19,6 +19,30 @@ export const ReportExpenseWrapper = styled.div`
   margin-bottom: 20px;
 `;
 
+export const ReportExpenseButtonArrowLeft = styled.button`
+  background-color: transparent;
+  width: 24px;
+  height: 24px;
+
+  border: none;
+  outline: none;
+  &:disabled {
+    background-color: transparent;
+  }
+`;
+
+export const ReportExpenseButtonArrowRight = styled.button`
+  background-color: transparent;
+  width: 24px;
+  height: 24px;
+
+  border: none;
+  outline: none;
+  &:disabled {
+    background-color: transparent;
+  }
+`;
+
 export const ReportExpenseText = styled.p`
   color: #000000;
 

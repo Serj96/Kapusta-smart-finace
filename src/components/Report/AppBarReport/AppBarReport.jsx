@@ -48,7 +48,6 @@ export default function AppBarReport() {
 
   console.log(userIncomesTotalAmount);
   console.log(userExpensesTotalAmount);
-  // console.log(transactionPeriodData);
 
   const onBackHomePageHandler = () => {
     navigate('/home', { replace: true });

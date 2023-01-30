@@ -5,6 +5,8 @@ import { getTransation, getUserIncomes } from 'Redux/kapustaSlice';
 import {
   ReportArrowLeft,
   ReportArrowRight,
+  ReportExpenseButtonArrowLeft,
+  ReportExpenseButtonArrowRight,
   ReportExpenseWrapper,
   ReportExpenseText,
   ReportExpenseList,
@@ -32,11 +34,20 @@ export default function Income() {
   const navigate = useNavigate();
 
   const onChangeExpensesPageHandler = () => {
-    navigate('/expenses', { replace: true });
+    const expenseButtonArrowLeft = document.querySelector('.arrow-left');
+    const expenseButtonArrowRight = document.querySelector('.arrow-right');
+    console.log(expenseButtonArrowLeft);
+    console.log(expenseButtonArrowRight);
+
+    navigate('/home/reports', { replace: true });
     console.log('Натиснули на ліву стрілку і перейшли на сторінку Expenses');
   };
 
   const onChangeIncomePageHandler = () => {
+    const expenseButtonArrowLeft = document.querySelector('.arrow-left');
+    const expenseButtonArrowRight = document.querySelector('.arrow-right');
+    console.log(expenseButtonArrowLeft);
+    console.log(expenseButtonArrowRight);
     navigate('income', { replace: true });
     console.log('Натиснули на праву стрілку і перейшли на сторінку Income');
   };
@@ -45,9 +56,20 @@ export default function Income() {
     <>
       <ReportExpenseListWrapper>
         <ReportExpenseWrapper>
-          <ReportArrowLeft onClick={onChangeExpensesPageHandler} size={24} />
+          <ReportExpenseButtonArrowLeft
+            className="arrow-left"
+            onClick={onChangeExpensesPageHandler}
+          >
+            <ReportArrowLeft size={24} />
+          </ReportExpenseButtonArrowLeft>
           <ReportExpenseText>Income</ReportExpenseText>
-          <ReportArrowRight onClick={onChangeIncomePageHandler} size={24} />
+          <ReportExpenseButtonArrowRight
+            disabled={true}
+            className="arrow-right"
+            onClick={onChangeIncomePageHandler}
+          >
+            <ReportArrowRight size={24} />
+          </ReportExpenseButtonArrowRight>
         </ReportExpenseWrapper>
 
         <ReportExpenseList>
