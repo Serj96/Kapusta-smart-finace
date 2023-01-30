@@ -29,7 +29,7 @@ const IncomePage = () => {
           <MainPageWrapper>
             <BalanceWrapper>
               <Balance />
-              <ReportsLink to={'/reports'}>
+              <ReportsLink to={'/home/reports'}>
                 <>
                   <span>Reports</span>
                   <MdBarChart size={'24px'} />
