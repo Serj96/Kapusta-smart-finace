@@ -3,18 +3,32 @@ import axios from 'axios';
 
 axios.defaults.baseURL = 'https://kapusta-backend.goit.global';
 
-const getUser = createAsyncThunk('user', async (_, { rejectWithValue }) => {
-  try {
-    const { data } = await axios.get('/user');
-    return data;
-  } catch (error) {
-    return rejectWithValue(error);
+const setToken = token => {
+  if (token) {
+    return (axios.defaults.headers.common.authorization = `Bearer ${token}`);
   }
-});
+  axios.defaults.headers.common.authorization = '';
+};
 
-const changeBalance = createAsyncThunk(
+export const getUser = createAsyncThunk(
+  'user',
+  async (_, { rejectWithValue, getState }) => {
+    const state = getState();
+    setToken(state.kapusta.accessToken);
+    try {
+      const { data } = await axios.get('/user');
+      return data;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);
+
+export const changeBalance = createAsyncThunk(
   'user/balance',
-  async (credentials, { rejectWithValue }) => {
+  async (credentials, { rejectWithValue, getState }) => {
+    const state = getState();
+    setToken(state.kapusta.accessToken);
     try {
       const { data } = await axios.patch('/user/balance', credentials);
       return data;
