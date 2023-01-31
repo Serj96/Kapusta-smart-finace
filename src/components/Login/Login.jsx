@@ -1,6 +1,5 @@
 import { useFormik } from 'formik';
 import {
-  FormSubTitle,
   ErrorMsg,
   LoginForm,
   WrapperEmail,
@@ -58,18 +57,16 @@ export const Login = () => {
           // https://team-project-kapusta.onrender.com/api/auth/google
           href="*"
         >
-          <img
-            src={googleIcon}
-            className="GoogleEmblem"
-            alt="google"
-          />
+          <img src={googleIcon} className="GoogleEmblem" alt="google" />
           Google
         </GoogleBtn>
-        <FormSubTitle>
+        <p className="buttonGoogleRegText">
           Or log in using an email and password, after registering:
-        </FormSubTitle>
+        </p>
         <WrapperEmail>
-          <label htmlFor="email">Email :</label>
+          <label className="emailLabel" htmlFor="email">
+            Email :
+          </label>
           <input
             id="email"
             name="email"
@@ -82,7 +79,9 @@ export const Login = () => {
             <ErrorMsg>{formik.errors.email}</ErrorMsg>
           ) : null}
         </WrapperEmail>
-        <label htmlFor="password">Password :</label>
+        <label className="passwordLabel" htmlFor="password">
+          Password :
+        </label>
         <input
           id="password"
           name="password"

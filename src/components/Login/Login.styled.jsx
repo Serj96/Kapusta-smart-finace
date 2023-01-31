@@ -31,11 +31,7 @@ export const LoginDiv = styled.div`
       letter-spacing: 0.18em;
       text-transform: uppercase;
     }
-    // .textunderLogo {
-    //   font-size: 16px;
-    //   line-height: 19px;
-    //   letter-spacing: 0.18em;
-    // }
+   
     .logo {
       width: 306px;
     }
@@ -46,6 +42,7 @@ export const LoginDiv = styled.div`
     .logo {
     width: 377px;
     }
+
    .loginDiv {
     padding-top: 117px;
     display: flex;
@@ -78,36 +75,38 @@ export const LoginForm = styled.form`
   padding-left: 20px;
   padding-right: 20px;
 
-  label {
-    font-size: 16px;
-    font-weight: 500;
+  .buttonGoogleRegText {
+    margin-top: 32px;
+  }
 
-    font-weight: 400;
+  .emailLabel {
+    display: flex;
+    margin-top: 16px;
+    margin-bottom: 12px;
     font-size: 10px;
     line-height: 12px;
-
     letter-spacing: 0.04em;
+    color: #000000;
+  }
 
+  .passwordLabel {
+    display: flex;
+    padding-top: 20px;
     margin-bottom: 12px;
-
-    @media (min-width: 767px) and (max-width: 1279.98px) {
-    }
-
-    @media (min-width: 1280px) {
-    }
+    font-size: 10px;
+    line-height: 12px;
+    letter-spacing: 0.04em;
+    color: #000000;
   }
 
   input {
-    display: block;
-    width: 220px;
+    width: 240px;
     height: 52px;
-
+    padding: 17px;
     background: #f6f7fb;
-    border-radius: 30px;
     border: none;
-    padding-left: 20px;
-
-    margin-top: 12px;
+    border-radius: 30px;
+    margin-bottom: 5px;
 
     &::placeholder {
       font-weight: 400;
@@ -189,24 +188,7 @@ export const GoogleBtn = styled.a`
   }
 `;
 
-export const FormSubTitle = styled.h3`
-  padding-right: 24px;
 
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 14px;
-  letter-spacing: 0.04em;
-
-  color: #52555f;
-
-  margin-bottom: 16px;
-
-  @media (min-width: 767px) {
-    margin-bottom: 20px;
-  }
-`;
 
 export const WrapperEmail = styled.div`
   margin-bottom: 20px;
