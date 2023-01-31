@@ -11,6 +11,7 @@ import {
   BalanceWrapper,
   ExpensePageWrapper,
   MainPageWrapper,
+  Page,
   ReportsLink,
   TableSummaryWrapper,
 } from './ExpensesPage.styled';
@@ -26,32 +27,34 @@ const ExpensesPage = () => {
       {isMobScreen && <Form />}
       {isTabScreen && (
         <>
-          <MainPageWrapper>
-            <BalanceWrapper>
-              <Balance />
-              <ReportsLink to={'/home/reports'}>
-                <>
-                  <span>Reports</span>
-                  <MdBarChart size={'24px'} />
-                </>
-              </ReportsLink>
-            </BalanceWrapper>
-            <div>
-              <NavLink />
-              <ExpensePageWrapper>
-                <div>
+          <Page>
+            <MainPageWrapper>
+              <BalanceWrapper>
+                <Balance />
+                <ReportsLink to={'/home/reports'}>
+                  <>
+                    <span>Reports</span>
+                    <MdBarChart size={'24px'} />
+                  </>
+                </ReportsLink>
+              </BalanceWrapper>
+              <div>
+                <NavLink />
+                <ExpensePageWrapper>
                   <div>
-                    <Form />
-                    <TableSummaryWrapper>
-                      <ExpenseTable />
-                      {isAfterDescScreen && <Summary />}
-                    </TableSummaryWrapper>
+                    <div>
+                      <Form />
+                      <TableSummaryWrapper>
+                        <ExpenseTable />
+                        {isAfterDescScreen && <Summary />}
+                      </TableSummaryWrapper>
+                    </div>
                   </div>
-                </div>
-              </ExpensePageWrapper>
-            </div>
-            {isBeforeDescScreen && <Summary />}
-          </MainPageWrapper>
+                </ExpensePageWrapper>
+              </div>
+              {isBeforeDescScreen && <Summary />}
+            </MainPageWrapper>
+          </Page>
         </>
       )}
     </>

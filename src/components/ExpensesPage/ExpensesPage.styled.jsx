@@ -3,6 +3,12 @@ import { Link } from 'react-router-dom';
 
 import { myTheme } from 'components/Theme/Theme';
 
+export const Page = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
 export const MainPageWrapper = styled.div`
   width: 704px;
 

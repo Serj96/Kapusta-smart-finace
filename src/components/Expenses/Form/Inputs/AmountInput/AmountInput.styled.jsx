@@ -19,6 +19,10 @@ export const AmounInput = styled.input`
   border: 2px solid ${myTheme.backgroundColors.primary};
   border-radius: 22px 0px 0px 22px;
 
+  &:focus-visible {
+    outline: none;
+  }
+
   &::placeholder {
     font-weight: 700;
     font-size: 12px;
@@ -31,6 +35,7 @@ export const AmounInput = styled.input`
   }
 
   @media screen and (min-width: 768px) {
+    padding: 8px;
     margin: 0;
     width: 70px;
     height: 44px;

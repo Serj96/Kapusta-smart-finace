@@ -1,8 +1,6 @@
 import { FormProvider, useForm } from 'react-hook-form';
-// import { yupResolver } from '@hookform/resolvers/yup';
-// import * as yup from 'yup';
-import 'react-datepicker/dist/react-datepicker.css';
-import { format, parseISO } from 'date-fns';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
 import { FaArrowLeft } from 'react-icons/fa';
 import { useMediaQuery } from 'react-responsive';
 
@@ -10,25 +8,28 @@ import { ClearButton, SubmitButton } from 'components/Theme/Button/Button';
 import DescriptionInput from './Inputs/DescriptionInput/DescriptionInput';
 import AmountInput from './Inputs/AmountInput/AmountInput';
 import CategoryInput from './Inputs/CategoryInput/CategoryInput';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import DateInput from './Inputs/DateInput/DateInput';
 import { BackLink, BtnWrapper, FormStyle, InputsWrapper } from './Form.styled';
+import { useDispatch } from 'react-redux';
+import { addExpense, addIncome } from 'Redux/transactionOperation';
 
-// const schema = yup
-//   .object({
-//     description: yup.string().required(),
-//     amount: yup.number().integer().required(),
-//     date: yup.string().required(),
-//     category: yup.string().required(),
-//   })
-//   .required();
+const schema = yup
+  .object({
+    description: yup.string().required(),
+    amount: yup.number().integer().required(),
+    date: yup.string().required(),
+    category: yup.string().required(),
+  })
+  .required();
 
 export const Form = () => {
   const isMobScreen = useMediaQuery({ query: '(max-width: 767.98px)' });
   const isTabScreen = useMediaQuery({ query: '(min-width: 768px)' });
 
   const navigate = useNavigate();
-  // const location = useLocation();
+  const location = useLocation();
+  const dispatch = useDispatch();
 
   const methods = useForm({
     mode: 'onChange',
@@ -37,7 +38,7 @@ export const Form = () => {
       description: '',
       category: '',
     },
-    // resolver: yupResolver(schema),
+    resolver: yupResolver(schema),
   });
 
   const {
@@ -46,20 +47,18 @@ export const Form = () => {
     formState: { isSubmitSuccessful },
   } = methods;
 
-  const onSubmit = ({ date, ...rest }) => {
-    const data = format(parseISO(date), 'yy.MM.dd');
+  const onSubmit = data => {
     console.log(data);
-    // console.log({ data, ...rest });
 
-    // const key = location.pathname;
+    const key = location.pathname;
 
-    // if (key === '/expenses') console.log('ExpensesPage', data);
+    if (key === '/home/expenses') dispatch(addExpense(data));
 
-    // if (key === '/income') console.log('IncomePage', data);
+    if (key === '/home/income') dispatch(addIncome(data));
 
     reset();
 
-    if (isSubmitSuccessful) return navigate('/home');
+    if (isMobScreen && isSubmitSuccessful) return navigate('/home');
   };
 
   return (
