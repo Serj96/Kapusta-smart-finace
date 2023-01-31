@@ -30,15 +30,17 @@ import {
 } from './AppBarReport.styled';
 
 const currentDateMonth = new Date().getMonth();
-let monthvalue = months[currentDateMonth];
+let monthName = months[currentDateMonth];
 
 export default function AppBarReport() {
-  const [currentMonthName, setCurrentMonthName] = useState(monthvalue);
+  const [currentMonthName, setCurrentMonthName] = useState(monthName);
   const [currentMonthNumber, setCurrentMonthNumber] =
     useState(currentDateMonth);
 
+  console.log(typeof currentDateMonth);
+
   console.log('Теперішній місяць номер згідно з Date', currentDateMonth);
-  console.log('Теперішній місяць назва згідно з Date', monthvalue);
+  console.log('Теперішній місяць назва згідно з Date', monthName);
   console.log(
     'Теперішній місяць номер у стейті згідно з індексом',
     currentMonthNumber
@@ -47,7 +49,7 @@ export default function AppBarReport() {
     'Теперішній місяць назва у стейті згідно з індексом',
     currentMonthName
   );
-  console.log('=======================================================');
+  console.log('===============================================');
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -58,20 +60,70 @@ export default function AppBarReport() {
 
   const onChangeMonthIncreaseHandler = () => {
     setCurrentMonthName(months[currentMonthNumber + 1]);
-    setCurrentMonthNumber(currentMonthNumber + 1);
+    setCurrentMonthNumber(prevState => prevState + 1);
 
     onFetchCurrentPeriodHandler(currentMonthNumber);
   };
 
   const onChangeMonthDecreaseHandler = () => {
+    // setCurrentMonthName(months[currentMonthNumber - 1]);
+    // setCurrentMonthNumber(currentMonthNumber - 1);
     setCurrentMonthName(months[currentMonthNumber - 1]);
-    setCurrentMonthNumber(currentMonthNumber - 1);
+    setCurrentMonthNumber(prevState => prevState - 1);
 
     onFetchCurrentPeriodHandler(currentMonthNumber);
   };
 
   const onFetchCurrentPeriodHandler = currentMonthNumber => {
     switch (currentMonthNumber) {
+      // case 0:
+      //   dispatch(getTransactionsByPeriod('01'));
+      //   break;
+
+      // case 1:
+      //   dispatch(getTransactionsByPeriod('02'));
+      //   break;
+
+      // case 2:
+      //   dispatch(getTransactionsByPeriod('03'));
+      //   break;
+
+      // case 3:
+      //   dispatch(getTransactionsByPeriod('04'));
+      //   break;
+
+      // case 4:
+      //   dispatch(getTransactionsByPeriod('05'));
+      //   break;
+
+      // case 5:
+      //   dispatch(getTransactionsByPeriod('06'));
+      //   break;
+
+      // case 6:
+      //   dispatch(getTransactionsByPeriod('07'));
+      //   break;
+
+      // case 7:
+      //   dispatch(getTransactionsByPeriod('08'));
+      //   break;
+
+      // case 8:
+      //   dispatch(getTransactionsByPeriod('09'));
+      //   break;
+
+      // case 9:
+      //   dispatch(getTransactionsByPeriod('10'));
+      //   break;
+
+      // case 10:
+      //   dispatch(getTransactionsByPeriod('11'));
+      //   break;
+
+      // case 11:
+      //   dispatch(getTransactionsByPeriod('12'));
+      //   break;
+
       case 0:
         dispatch(getTransactionsByPeriod('01'));
         break;
@@ -131,7 +183,8 @@ export default function AppBarReport() {
 
   useEffect(() => {
     dispatch(getTransactionsByPeriod('01'));
-    setCurrentMonthNumber(currentMonthNumber);
+    // onFetchCurrentPeriodHandler(currentMonthNumber);
+    // setCurrentMonthNumber(currentMonthNumber);
     // eslint-disable-next-line
   }, [dispatch]);
 
