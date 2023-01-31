@@ -63,8 +63,6 @@ export const LoginDiv = styled.div`
 export const LoginForm = styled.form`
   border-radius: 30px;
   background-color: white;
-  font-family: 'Roboto';
-  font-style: normal;
   font-weight: 400;
   font-size: 12px;
   line-height: 14px;
@@ -188,15 +186,6 @@ export const GoogleBtn = styled.a`
   }
 `;
 
-
-
-export const WrapperEmail = styled.div`
-  margin-bottom: 20px;
-  @media (min-width: 767px) {
-    margin-bottom: 32px;
-  }
-`;
-
 export const ErrorMsg = styled.div`
   font-weight: 400;
   font-size: 10px;
@@ -209,9 +198,15 @@ export const ErrorMsg = styled.div`
 
   color: #eb5757;
 `;
+export const ButtonWrapper = styled.div`
+  display: flex;
+  margin-top: 40px;
+  padding-bottom: 40px;
+  justify-content: space-between;
+`;
 
 export const SubmitButton = styled.button`
-  width: 50%;
+  
 
   padding: 12px 29px;
 
@@ -234,8 +229,7 @@ export const SubmitButton = styled.button`
 `;
 
 export const LinkRegistr = styled(NavLink)`
-  width: 50%;
-
+  
   padding: 12px 14px;
 
   text-decoration: none;
@@ -256,10 +250,4 @@ export const LinkRegistr = styled(NavLink)`
   &:hover {
     color: ${myTheme.backgroundColors.primary};
     background-color: ${myTheme.colors.hover};
-`;
-export const ButtonWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  margin-top: 40px;
 `;

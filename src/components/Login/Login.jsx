@@ -2,7 +2,6 @@ import { useFormik } from 'formik';
 import {
   ErrorMsg,
   LoginForm,
-  WrapperEmail,
   ButtonWrapper,
   SubmitButton,
   LinkRegistr,
@@ -63,7 +62,6 @@ export const Login = () => {
         <p className="buttonGoogleRegText">
           Or log in using an email and password, after registering:
         </p>
-        <WrapperEmail>
           <label className="emailLabel" htmlFor="email">
             Email :
           </label>
@@ -78,7 +76,6 @@ export const Login = () => {
           {formik.errors.email ? (
             <ErrorMsg>{formik.errors.email}</ErrorMsg>
           ) : null}
-        </WrapperEmail>
         <label className="passwordLabel" htmlFor="password">
           Password :
         </label>
