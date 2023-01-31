@@ -10,6 +10,7 @@ import {
   ReportsLink,
 } from 'components/ExpensesPage/ExpensesPage.styled';
 import React from 'react';
+import { Container } from 'components/App.styled';
 
 const Home = () => {
   const isMobScreen = useMediaQuery({ query: '(max-width: 767.98px)' });
@@ -18,18 +19,20 @@ const Home = () => {
     <>
       {isMobScreen && (
         <>
-          <BalanceWrapper>
-            <Balance />
-            <ReportsLink to={'/reports'}>
-              <>
-                <span>Reports</span>
-                <MdBarChart size={'24px'} />
-              </>
-            </ReportsLink>
-          </BalanceWrapper>
-          {/* <DateInput /> */}
-          <ExpenseList />
-          <NavLink />
+          <Container>
+            <BalanceWrapper>
+              <Balance />
+              <ReportsLink to={'/reports'}>
+                <>
+                  <span>Reports</span>
+                  <MdBarChart size={'24px'} />
+                </>
+              </ReportsLink>
+            </BalanceWrapper>
+            {/* <DateInput /> */}
+            <ExpenseList />
+            <NavLink />
+          </Container>
         </>
       )}
     </>
