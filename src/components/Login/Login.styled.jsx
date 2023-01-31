@@ -157,31 +157,35 @@ export const TopTextDiv = styled.div`
   }
 `;
 
-export const ButtonLink = styled.a`
-  gap: 10px;
-  justify-content: center;
-  width: 122px;
-  height: 40px;
-  padding: 0 auto;
+export const GoogleBtn = styled.a`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border: none;
+  width: 116px;
+  height: 44px;
+  background: #f5f6fb;
+  border-radius: 16px;
+  color: #52555f;
+
   margin: 0 auto;
-  margin-bottom: 32px;
-
-  text-decoration: none;
-
-  font-weight: 500;
+  padding: 10px 20px;
   font-size: 14px;
   line-height: 16px;
-  display: flex;
-  align-items: center;
-  letter-spacing: 0.02em;
-
   color: #000000;
-  background: #f6f7fb;
-  border-radius: 26px;
+  box-shadow: 1px 3px 5px rgba(82, 85, 95, 0.15);
 
   &:hover {
     color: ${myTheme.backgroundColors.primary};
     background-color: ${myTheme.colors.hover};
+  }
+
+  .GoogleEmblem {
+    display: flex;
+    width: 18px;
+    align-items: baseline;
+    justify-content: center;
   }
 `;
 

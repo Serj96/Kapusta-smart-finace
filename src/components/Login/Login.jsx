@@ -1,7 +1,6 @@
 import { useFormik } from 'formik';
 import {
   FormSubTitle,
-  ButtonLink,
   ErrorMsg,
   LoginForm,
   WrapperEmail,
@@ -10,6 +9,7 @@ import {
   LinkRegistr,
   LoginDiv,
   TopTextDiv,
+  GoogleBtn,
 } from './Login.styled';
 import googleIcon from '../../images/googleIcon.svg';
 import kapustaSvg from '../../images/loginPageKAPUSTA.svg';
@@ -54,10 +54,17 @@ export const Login = () => {
           <p className="topGoogleRegText">You can log in with your Google</p>
           <span className="topGoogleRegTextspan"> Account:</span>
         </TopTextDiv>
-        <ButtonLink href="shorturl.at/pAB18">
-          <img src={googleIcon} alt="googleIcon" />
-          <span>Google</span>
-        </ButtonLink>
+        <GoogleBtn
+          // https://team-project-kapusta.onrender.com/api/auth/google
+          href="*"
+        >
+          <img
+            src={googleIcon}
+            className="GoogleEmblem"
+            alt="google"
+          />
+          Google
+        </GoogleBtn>
         <FormSubTitle>
           Or log in using an email and password, after registering:
         </FormSubTitle>
