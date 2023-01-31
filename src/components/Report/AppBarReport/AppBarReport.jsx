@@ -5,7 +5,7 @@ import { getTransactionsByPeriod } from 'Redux/transactionOperation';
 import { Container } from 'components/Theme/BreakPoints';
 // import { getUserIncomes, getUserExpenses } from 'Redux/kapustaSlice';
 import { months } from './Month';
-
+import StatsReport from 'components/StatsReport/StatsReport';
 import { ReportBalance } from '../Balance/ReportBalance';
 
 import {
@@ -245,6 +245,7 @@ export default function AppBarReport() {
         </ReportListItemIndicatorIncome>
       </ReportListIndicator>
       <Outlet />
+      <StatsReport />
     </Container>
   );
 }
