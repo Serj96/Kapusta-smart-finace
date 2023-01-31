@@ -9,9 +9,8 @@ import {
   LinkRegistr,
 } from './Registration.styled';
 import { SubmitButton } from '../Theme/Button/Button';
-import googleIcon from '../image/googleIcon.svg';
-import { Link, useNavigate } from 'react-router-dom';
-import { RegisterLink } from 'components/Login/Login.styled';
+import googleIcon from '../../images/googleIcon.svg';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { register } from 'Redux/authOperaions';
 const validate = values => {
@@ -77,11 +76,9 @@ export const Registration = () => {
       ) : null}
       <ButtonWrapper>
         <SubmitButton type={'submit'}>Registration</SubmitButton>
-        <LinkRegistr>
-          <RegisterLink to="/home" styled={{ textDecoration: 'none' }}>
+          <LinkRegistr to="/home" styled={{ textDecoration: 'none' }}>
             Log In
-          </RegisterLink>
-        </LinkRegistr>
+          </LinkRegistr>
       </ButtonWrapper>
     </LoginForm>
   );

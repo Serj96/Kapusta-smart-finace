@@ -1,4 +1,5 @@
-import HomePage from './HomePage/HomePage';
+// import HomePage from './HomePage/HomePage';
+import LoginPage from 'LoginPage/LoginPage';
 import { useSelector } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
 import { getSid } from 'Redux/kapustaSlice';
@@ -18,7 +19,7 @@ export const App = () => {
         <Route
           index
           element={
-            !token ? <HomePage /> : <Navigate to={'/home/expenses'} replace />
+            !token ? <LoginPage /> : <Navigate to={'/home/expenses'} replace />
           }
         />
         <Route
@@ -39,7 +40,7 @@ export const App = () => {
           path="income"
           element={token ? <IncomePage /> : <Navigate to={'/home'} />}
         />
-        <Route path='reports' element={<AppBarReport />} >
+        <Route path="reports" element={<AppBarReport />}>
           <Route index element={<Expense />} />
           <Route
             path="income"
