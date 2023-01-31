@@ -1,6 +1,5 @@
 import { useFormik } from 'formik';
 import {
-  FormTitle,
   FormSubTitle,
   ButtonLink,
   ErrorMsg,
@@ -10,6 +9,7 @@ import {
   SubmitButton,
   LinkRegistr,
   LoginDiv,
+  TopTextDiv,
 } from './Login.styled';
 import googleIcon from '../../images/googleIcon.svg';
 import kapustaSvg from '../../images/loginPageKAPUSTA.svg';
@@ -44,13 +44,16 @@ export const Login = () => {
     },
   });
   return (
-      <LoginDiv>
+    <LoginDiv>
       <div className="logoDiv">
         <img className="logo" src={kapustaSvg} alt="kapusta"></img>
         <p className="textunderLogo">Smart Finance</p>
       </div>
       <LoginForm onSubmit={formik.handleSubmit}>
-        <FormTitle>You can log in with your Google Account:</FormTitle>
+        <TopTextDiv>
+          <p className="topGoogleRegText">You can log in with your Google</p>
+          <span className="topGoogleRegTextspan"> Account:</span>
+        </TopTextDiv>
         <ButtonLink href="shorturl.at/pAB18">
           <img src={googleIcon} alt="googleIcon" />
           <span>Google</span>

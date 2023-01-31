@@ -64,8 +64,6 @@ export const LoginDiv = styled.div`
 `;
 
 export const LoginForm = styled.form`
-  /* display: flex;
-  flex-direction: column; */
   border-radius: 30px;
   background-color: white;
   font-family: 'Roboto';
@@ -73,12 +71,9 @@ export const LoginForm = styled.form`
   font-weight: 400;
   font-size: 12px;
   line-height: 14px;
-  /* text-align: center; */
   letter-spacing: 0.04em;
 
   box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
-  /* height: 500px;
-  */
   color: #52555f;
   padding-left: 20px;
   padding-right: 20px;
@@ -134,29 +129,32 @@ export const LoginForm = styled.form`
   @media screen and (min-width: 767px) {
     width: 426px;
     margin: 0 auto;
-  }
-`;
-
-export const FormTitle = styled.h3`
-  padding: 0 20px;
-
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 14px;
-  text-align: center;
-  letter-spacing: 0.04em;
-
-  margin-bottom: 16px;
-  margin-top: 0px;
-  color: #52555f;
-  @media (min-width: 767px) and (max-width: 1279.98px) {
-    width: 426px;
-    margin: 0 auto;
 
     padding-left: 84px;
     padding-right: 84px;
   }
-  
+`;
+
+export const TopTextDiv = styled.div`
+  padding-top: 40px;
+  flex-direction: column;
+  display: flex;
+  margin-bottom: 40px;
+  align-items: center;
+
+  .topGoogleRegTextspan {
+    padding-left: 3px;
+  }
+
+  @media screen and (min-width: 768px) {
+    align-items: baseline;
+    justify-content: center;
+    flex-direction: row;
+
+    .topGoogleRegTextspan {
+      display: inline-flex;
+    }
+  }
 `;
 
 export const ButtonLink = styled.a`
