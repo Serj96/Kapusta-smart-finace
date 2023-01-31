@@ -5,7 +5,6 @@ export const SummaryWrapper = styled.div`
   background-color: #f5f6fb;
   border: 2px solid #ffffff;
   border-radius: 16px 16px 16px 0;
-  overflow-y: scroll;
 
   @media screen and (max-width: 1279.98px) {
     height: 278px;

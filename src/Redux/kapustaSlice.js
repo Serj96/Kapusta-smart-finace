@@ -17,16 +17,11 @@ const initialState = {
   auth: {
     user: { email: null, id: null },
     userData: {
-      balance: 309944,
+
+      balance: null,
       transactions: [],
-      incomes: {
-        incomes: [],
-        monthsStats: [],
-      },
-      expenses: {
-        expenses: [],
-        monthsStats: [],
-      },
+      incomes: { incomes: [], monthsStats: [] },
+      expenses: { expenses: [], monthsStats: [] },
       category: { income: [], expense: [] },
       periodData: [],
     },
@@ -110,7 +105,6 @@ const kapustaSlice = createSlice({
       .addCase(getIncome.fulfilled, (state, action) => {
         state.refresh = false;
         state.loading = false;
-        state.auth.userData.expenses.expenses = [];
         state.auth.userData.incomes.incomes = action.payload.incomes;
         state.auth.userData.incomes.monthsStats = action.payload.monthsStats;
       })
@@ -129,7 +123,6 @@ const kapustaSlice = createSlice({
           ...state.auth.userData.incomes.incomes,
           action.payload.transaction,
         ];
-        state.auth.userData.incomes.monthsStats = action.payload.monthsStats;
       })
       .addCase(addIncome.rejected, (state, action) => {
         state.loading = false;
@@ -143,7 +136,10 @@ const kapustaSlice = createSlice({
         state.refresh = false;
         state.loading = false;
         state.auth.userData.expenses.expenses = action.payload.expenses;
-        state.auth.userData.incomes.incomes = [];
+
+ 
+        state.auth.userData.expenses.monthsStats = action.payload.monthsStats;
+
       })
       .addCase(getExpense.rejected, (state, action) => {
         state.loading = false;
@@ -212,9 +208,7 @@ const kapustaSlice = createSlice({
       .addCase(getTransactionsByPeriod.fulfilled, (state, action) => {
         state.refresh = false;
         state.loading = false;
-        // state.auth.userData.periodData = action.payload;
-        // state.auth.userData.periodData.push(action.payload);
-        state.auth.userData.periodData = [action.payload];
+        state.auth.userData.periodData = action.payload;
       })
       .addCase(getTransactionsByPeriod.rejected, (state, action) => {
         state.loading = false;
@@ -272,3 +266,17 @@ export const getAccessToken = state => state.kapusta.accessToken;
 export const getRefresh = state => state.kapusta.refresh;
 export const getError = state => state.kapusta.error;
 export const getUserMail = state => state.kapusta.auth.user.email;
+
+export const getExpensesCategory = state =>
+  state.kapusta.auth.userData.category.expense;
+
+export const getIncomeCategory = state =>
+  state.kapusta.auth.userData.category.income;
+
+export const getSummaryExpenses = state =>
+  state.kapusta.auth.userData.expenses.monthsStats;
+
+export const getSummaryIncome = state =>
+  state.kapusta.auth.userData.incomes.monthsStats;
+
+export const getUserBalance = state => state.kapusta.auth.userData.balance;

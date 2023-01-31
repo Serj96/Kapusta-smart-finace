@@ -10,6 +10,10 @@ export const DescrInput = styled.input`
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
 
+  &:focus-visible {
+    outline: none;
+  }
+
   ::placeholder {
     font-size: 12px;
     line-height: 1.17;
