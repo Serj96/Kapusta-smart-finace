@@ -15,6 +15,7 @@ import {
   ReportsLink,
   TableSummaryWrapper,
 } from '../ExpensesPage/ExpensesPage.styled';
+import { Container } from 'components/App.styled';
 
 const IncomePage = () => {
   const isMobScreen = useMediaQuery({ query: '(max-width: 767.98px)' });
@@ -24,7 +25,11 @@ const IncomePage = () => {
 
   return (
     <>
-      {isMobScreen && <Form />}
+      {isMobScreen && (
+        <Container>
+          <Form />
+        </Container>
+      )}
       {isTabScreen && (
         <>
           <Page>

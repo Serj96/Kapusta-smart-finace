@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Modal } from '../Modal/Modal';
+import TransactionDeleteModal from '../Modal/TransactionDeleteModal/TransactionDeleteModal';
 
 import {
   ExpItem,
@@ -10,7 +12,22 @@ import {
   Wrapper,
 } from './ExpenseItem.styled';
 
-const ExpenseItem = ({ description, date, Category, sum }) => {
+const ExpenseItem = ({ _id, description, date, category, amount }) => {
+  const [swohModalDelete, setShowModalDelete] = useState(false);
+
+  const onModal = () => {
+    setShowModalDelete(true);
+    if (swohModalDelete) return setShowModalDelete(false);
+  };
+
+  const formatSum = sum => {
+    const format = sum.toString().includes('-');
+    if (format === false) {
+      return '-' + sum;
+    }
+    return sum;
+  };
+
   return (
     <>
       <ExpItem>
@@ -18,17 +35,22 @@ const ExpenseItem = ({ description, date, Category, sum }) => {
           <ExpDesription>{description}</ExpDesription>
           <Wrapper>
             <ExpDate>{date}</ExpDate>
-            <ExpDate>{Category}</ExpDate>
+            <ExpDate>{category}</ExpDate>
           </Wrapper>
         </div>
         <Wrapper>
-          <ExpSum>{sum}</ExpSum>
+          <ExpSum>{formatSum(amount)}</ExpSum>
 
-          <ExpButton type="button">
+          <ExpButton type="button" onClick={onModal}>
             <DeleteIcon />
           </ExpButton>
         </Wrapper>
       </ExpItem>
+      {swohModalDelete && (
+        <Modal onClose={onModal}>
+          <TransactionDeleteModal id={_id} onClose={onModal} />
+        </Modal>
+      )}
     </>
   );
 };

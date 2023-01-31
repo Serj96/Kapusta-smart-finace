@@ -16,9 +16,9 @@ export const App = () => {
   const token = useSelector(getSid);
   // const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   dispatch(refresh());
-  // }, [dispatch]);
+  useEffect(() => {
+    dispatch(refresh());
+  }, [dispatch]);
 
   return (
     <Routes>

@@ -48,8 +48,6 @@ export const Form = () => {
   } = methods;
 
   const onSubmit = data => {
-    console.log(data);
-
     const key = location.pathname;
 
     if (key === '/home/expenses') dispatch(addExpense(data));
