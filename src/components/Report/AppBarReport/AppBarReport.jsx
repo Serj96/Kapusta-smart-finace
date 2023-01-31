@@ -6,6 +6,8 @@ import { Container } from 'components/Theme/BreakPoints';
 // import { getUserIncomes, getUserExpenses } from 'Redux/kapustaSlice';
 import { months } from './Month';
 
+import { ReportBalance } from '../Balance/ReportBalance';
+
 import {
   ReportIoIosArrowRoundBack,
   ReportArrowLeft,
@@ -16,10 +18,6 @@ import {
   ReportDateWrapper,
   ReportCurrentPeriodText,
   ReportDateText,
-  ReportCurrentBalanceWrapper,
-  ReportCurrentBalanceText,
-  ReportCurrentAmountWrapper,
-  ReportCurrentAmount,
   ReportListIndicator,
   ReportListItemIndicatorExpenses,
   ReportListItemIndicatorIncome,
@@ -29,8 +27,6 @@ import {
   ReportIoIosArrowRoundBackText,
   ReportIoIosArrowRoundBackWrapper,
   ReportHeaderWrapperTablet,
-  ReportCurrentConfirmWrapper,
-  ReportCurrentConfirm,
 } from './AppBarReport.styled';
 
 const currentDateMonth = new Date().getMonth();
@@ -41,8 +37,17 @@ export default function AppBarReport() {
   const [currentMonthNumber, setCurrentMonthNumber] =
     useState(currentDateMonth);
 
-  console.log(currentMonthNumber);
-  console.log(currentDateMonth);
+  console.log('Теперішній місяць номер згідно з Date', currentDateMonth);
+  console.log('Теперішній місяць назва згідно з Date', monthvalue);
+  console.log(
+    'Теперішній місяць номер у стейті згідно з індексом',
+    currentMonthNumber
+  );
+  console.log(
+    'Теперішній місяць назва у стейті згідно з індексом',
+    currentMonthName
+  );
+  console.log('=======================================================');
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -50,7 +55,7 @@ export default function AppBarReport() {
   // const userIncomes = useSelector(getUserIncomes);
   // const userExpenses = useSelector(getUserExpenses);
 
-  const balanse = useSelector(state => state.kapusta.auth.userData.balance);
+  // const balanse = useSelector(state => state.kapusta.auth.userData.balance);
   // const userIncomesTotalAmount = userIncomes
   //   .map(item => item.amount)
   //   .reduce((previousValue, amount) => {
@@ -152,7 +157,8 @@ export default function AppBarReport() {
 
   useEffect(() => {
     dispatch(getTransactionsByPeriod('01'));
-    setCurrentMonthNumber(currentMonthNumber + 1);
+    // setCurrentMonthNumber(currentMonthNumber + 1);
+    setCurrentMonthNumber(currentMonthNumber);
     // eslint-disable-next-line
   }, [dispatch]);
 
@@ -195,8 +201,26 @@ export default function AppBarReport() {
             </ReportExpenseButtonArrowRight>
           </ReportDateWrapper>
         </ReportCurrentPeriodWrapper>
+        <ReportBalance />
 
-        <ReportCurrentBalanceWrapper>
+        {/* <BalanceFormWrapper>
+          <TitleBalance>Balance:</TitleBalance>
+          <Form onSubmit={handleSubmit(onSubmit)}>
+            <AmountInput
+              {...register('balance')}
+              type="text"
+              placeholder="00.00 UAH"
+            />
+            {errors?.amount && (
+              <div style={{ color: '#ff4545' }}>
+                this field is required and must be a number
+              </div>
+            )}
+            <ConfirmBtn type="submit">Confirm</ConfirmBtn>
+          </Form>
+        </BalanceFormWrapper> */}
+
+        {/* <ReportCurrentBalanceWrapper>
           <ReportCurrentBalanceText>Balance:</ReportCurrentBalanceText>
           <ReportCurrentAmountWrapper>
             <ReportCurrentAmount>{balanse} UAH</ReportCurrentAmount>
@@ -204,7 +228,7 @@ export default function AppBarReport() {
           <ReportCurrentConfirmWrapper>
             <ReportCurrentConfirm>Confirm</ReportCurrentConfirm>
           </ReportCurrentConfirmWrapper>
-        </ReportCurrentBalanceWrapper>
+        </ReportCurrentBalanceWrapper> */}
       </ReportHeaderWrapperTablet>
 
       <ReportListIndicator>

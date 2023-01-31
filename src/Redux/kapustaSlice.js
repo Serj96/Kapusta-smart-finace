@@ -17,7 +17,7 @@ const initialState = {
   auth: {
     user: { email: null, id: null },
     userData: {
-      balance: 309944,
+      balance: 12032,
       transactions: [],
       incomes: {
         incomes: [],
@@ -212,8 +212,6 @@ const kapustaSlice = createSlice({
       .addCase(getTransactionsByPeriod.fulfilled, (state, action) => {
         state.refresh = false;
         state.loading = false;
-        // state.auth.userData.periodData = action.payload;
-        // state.auth.userData.periodData.push(action.payload);
         state.auth.userData.periodData = [action.payload];
       })
       .addCase(getTransactionsByPeriod.rejected, (state, action) => {
