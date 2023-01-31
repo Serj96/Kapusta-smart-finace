@@ -44,9 +44,6 @@ export default function AppBarReport() {
   console.log(currentMonthNumber);
   console.log(currentDateMonth);
 
-  console.log(currentDateMonth.toString() + 1);
-  console.log(typeof currentDateMonth);
-
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -151,16 +148,12 @@ export default function AppBarReport() {
     state => state.kapusta.auth.userData.periodData
   );
 
-  console.log(userPeriodTotal);
+  // console.log(userPeriodTotal);
 
   useEffect(() => {
-    dispatch(
-      getTransactionsByPeriod(
-        currentDateMonth === 0
-          ? currentDateMonth.toString() + 1
-          : currentDateMonth
-      )
-    );
+    dispatch(getTransactionsByPeriod('01'));
+    setCurrentMonthNumber(currentMonthNumber + 1);
+    // eslint-disable-next-line
   }, [dispatch]);
 
   const userPeriodExpenses = userPeriodTotal.map(
