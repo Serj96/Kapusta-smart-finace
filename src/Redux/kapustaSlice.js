@@ -128,13 +128,13 @@ const initialState = {
           {
             description: 'Fitness',
             amount: 50,
-            date: '2022-03-16',
+            date: '2022-10-16',
             category: 'Sports, hobbies',
           },
           {
             description: 'IT-courses',
             amount: 50,
-            date: '2022-06-12',
+            date: '2022-10-12',
             category: 'Education',
           },
           {
@@ -165,7 +165,7 @@ const initialState = {
       periodData: [
         {
           incomes: {
-            total: 12060,
+            incomeTotal: 12060,
             incomesData: {
               'З/П': {
                 total: 12000,
@@ -185,8 +185,8 @@ const initialState = {
             },
           },
           expenses: {
-            total: 7210,
-            incomesData: {
+            expenseTotal: 7210,
+            expensesData: {
               Транспорт: {
                 total: 4000,
                 СТО: 3500,
@@ -394,7 +394,9 @@ const kapustaSlice = createSlice({
       .addCase(getTransactionsByPeriod.fulfilled, (state, action) => {
         state.refresh = false;
         state.loading = false;
-        state.auth.userData.periodData = action.payload;
+        // state.auth.userData.periodData = action.payload;
+        // state.auth.userData.periodData.push(action.payload);
+        state.auth.userData.periodData = [action.payload];
       })
       .addCase(getTransactionsByPeriod.rejected, (state, action) => {
         state.loading = false;

@@ -1,5 +1,7 @@
-import { useNavigate } from 'react-router-dom';
+// import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+// import { getTransactionsByPeriod } from 'Redux/transactionOperation';
 
 import {
   ReportArrowLeft,
@@ -29,6 +31,7 @@ import Ufo from 'components/ReportIcons/Ufo';
 
 export default function Expense() {
   const navigate = useNavigate();
+  // const dispatch = useDispatch();
 
   const onChangeExpensesPageHandler = () => {
     navigate('/home/reports', { replace: true });
@@ -43,7 +46,7 @@ export default function Expense() {
   );
 
   const userPeriodDataTotalExpenses = userPeriodTotal.map(item =>
-    Object.entries(item.expenses.incomesData)
+    Object.entries(item.expenses.expensesData)
   );
 
   const TotalExpensesArray = userPeriodDataTotalExpenses.map(item => item);
@@ -73,7 +76,7 @@ export default function Expense() {
             item.map(elem => (
               <ReportExpenseListItem key={elem[0]}>
                 <ReportExpenseListItemAmount>
-                  {elem[1].total}
+                  {elem[1].expenseTotal}
                 </ReportExpenseListItemAmount>
                 {elem[0] === 'Alcohol' && <Cocktail />}
                 {elem[0] === 'Продукты' && <Products />}

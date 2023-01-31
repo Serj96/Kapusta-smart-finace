@@ -1,5 +1,7 @@
-import { useNavigate } from 'react-router-dom';
+// import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+// import { getTransactionsByPeriod } from 'Redux/transactionOperation';
 
 import {
   ReportArrowLeft,
@@ -20,6 +22,7 @@ import OutherIncomes from 'components/ReportIcons/OutherIncomes';
 
 export default function Income() {
   const navigate = useNavigate();
+  // const dispatch = useDispatch();
 
   const onChangeExpensesPageHandler = () => {
     navigate('/home/reports', { replace: true });
@@ -64,7 +67,7 @@ export default function Income() {
             item.map(elem => (
               <ReportExpenseListItem key={elem[0]}>
                 <ReportExpenseListItemAmount>
-                  {elem[1].total}
+                  {elem[1].incomeTotal}
                 </ReportExpenseListItemAmount>
                 {elem[0] === 'З/П' && <Salary />}
                 {elem[0] === 'Аванс' && <OutherIncomes />}

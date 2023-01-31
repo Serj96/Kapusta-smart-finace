@@ -125,6 +125,7 @@ export const getTransactionsByPeriod = createAsyncThunk(
         `/transaction/period-data?date=2023-${date}`
       );
 
+      console.log(data);
       return data;
     } catch (error) {
       return rejectWithValue(error);

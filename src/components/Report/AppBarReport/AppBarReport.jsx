@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Outlet, useNavigate } from 'react-router-dom';
+import { getTransactionsByPeriod } from 'Redux/transactionOperation';
 import { Container } from 'components/Theme/BreakPoints';
-import { getUserIncomes, getUserExpenses } from 'Redux/kapustaSlice';
+// import { getUserIncomes, getUserExpenses } from 'Redux/kapustaSlice';
 import { months } from './Month';
 
 import {
@@ -39,32 +40,39 @@ export default function AppBarReport() {
   const [currentMonthName, setCurrentMonthName] = useState(monthvalue);
   const [currentMonthNumber, setCurrentMonthNumber] =
     useState(currentDateMonth);
-  const navigate = useNavigate();
 
-  const userIncomes = useSelector(getUserIncomes);
-  const userExpenses = useSelector(getUserExpenses);
-  // console.log(userIncomes);
+  console.log(currentMonthNumber);
+  console.log(currentDateMonth);
+
+  console.log(currentDateMonth.toString() + 1);
+  console.log(typeof currentDateMonth);
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  // const userIncomes = useSelector(getUserIncomes);
+  // const userExpenses = useSelector(getUserExpenses);
 
   const balanse = useSelector(state => state.kapusta.auth.userData.balance);
-  const userIncomesTotalAmount = userIncomes
-    .map(item => item.amount)
-    .reduce((previousValue, amount) => {
-      return previousValue + amount;
-    }, 0);
+  // const userIncomesTotalAmount = userIncomes
+  //   .map(item => item.amount)
+  //   .reduce((previousValue, amount) => {
+  //     return previousValue + amount;
+  //   }, 0);
 
-  const userExpensesTotalAmount = userExpenses
-    .map(item => item.amount)
-    .reduce((previousValue, amount) => {
-      return previousValue + amount;
-    }, 0);
+  // const userExpensesTotalAmount = userExpenses
+  //   .map(item => item.amount)
+  //   .reduce((previousValue, amount) => {
+  //     return previousValue + amount;
+  //   }, 0);
 
-  const userIncomesMonthsStats = useSelector(
-    state => state.kapusta.auth.userData.incomes.monthsStats
-  );
+  // const userIncomesMonthsStats = useSelector(
+  //   state => state.kapusta.auth.userData.incomes.monthsStats
+  // );
 
-  const userExpensesMonthsStats = useSelector(
-    state => state.kapusta.auth.userData.expenses.monthsStats
-  );
+  // const userExpensesMonthsStats = useSelector(
+  //   state => state.kapusta.auth.userData.expenses.monthsStats
+  // );
 
   const onBackHomePageHandler = () => {
     navigate('/home', { replace: true });
@@ -73,20 +81,95 @@ export default function AppBarReport() {
   const onChangeMonthIncreaseHandler = () => {
     setCurrentMonthName(months[currentMonthNumber + 1]);
     setCurrentMonthNumber(currentMonthNumber + 1);
+
+    onFetchCurrentPeriodHandler(currentMonthNumber);
   };
 
   const onChangeMonthDecreaseHandler = () => {
     setCurrentMonthName(months[currentMonthNumber - 1]);
     setCurrentMonthNumber(currentMonthNumber - 1);
+
+    onFetchCurrentPeriodHandler(currentMonthNumber);
+  };
+
+  const onFetchCurrentPeriodHandler = currentMonthNumber => {
+    switch (currentMonthNumber) {
+      case 0:
+        dispatch(getTransactionsByPeriod('01'));
+        break;
+
+      case 1:
+        dispatch(getTransactionsByPeriod('02'));
+        break;
+
+      case 2:
+        dispatch(getTransactionsByPeriod('03'));
+        break;
+
+      case 3:
+        dispatch(getTransactionsByPeriod('04'));
+        break;
+
+      case 4:
+        dispatch(getTransactionsByPeriod('05'));
+        break;
+
+      case 5:
+        dispatch(getTransactionsByPeriod('06'));
+        break;
+
+      case 6:
+        dispatch(getTransactionsByPeriod('07'));
+        break;
+
+      case 7:
+        dispatch(getTransactionsByPeriod('08'));
+        break;
+
+      case 8:
+        dispatch(getTransactionsByPeriod('09'));
+        break;
+
+      case 9:
+        dispatch(getTransactionsByPeriod('10'));
+        break;
+
+      case 10:
+        dispatch(getTransactionsByPeriod('11'));
+        break;
+
+      case 11:
+        dispatch(getTransactionsByPeriod('12'));
+        break;
+
+      default:
+        return;
+    }
   };
 
   const userPeriodTotal = useSelector(
     state => state.kapusta.auth.userData.periodData
   );
-  // console.log(userPeriodTotal);
 
-  const userPeriodExpenses = userPeriodTotal.map(item => item.expenses.total);
-  const userPeriodIncomes = userPeriodTotal.map(item => item.incomes.total);
+  console.log(userPeriodTotal);
+
+  useEffect(() => {
+    dispatch(
+      getTransactionsByPeriod(
+        currentDateMonth === 0
+          ? currentDateMonth.toString() + 1
+          : currentDateMonth
+      )
+    );
+  }, [dispatch]);
+
+  const userPeriodExpenses = userPeriodTotal.map(
+    item => item?.expenses.expenseTotal
+  );
+
+  const userPeriodIncomes = userPeriodTotal.map(
+    item => item?.incomes.incomeTotal
+  );
 
   return (
     <Container>
