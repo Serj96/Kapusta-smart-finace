@@ -36,7 +36,7 @@ export const TableC = styled.div`
   margin-top: 0px;
   border: 2px solid #f5f6fb;
 
-  overflow-y: scroll;
+  overflow-y: auto;
 `;
 
 export const Th = styled.th`
@@ -50,6 +50,18 @@ export const Th = styled.th`
   color: #000000;
 `;
 
+const color = ({ path }) => {
+  switch (path) {
+    case '/home/expenses':
+      return '#E7192E';
+
+    case '/home/income':
+      return '#407946';
+    default:
+      return '#52555f';
+  }
+};
+
 export const Td = styled.td`
   padding: 12px;
   text-align: left;
@@ -58,6 +70,12 @@ export const Td = styled.td`
   line-height: 1.17;
   letter-spacing: 0.04em;
 
-  color: #52555f;
+  /* color: #52555f; */
   border-bottom: 2px solid #f5f6fb;
+
+  color: ${color};
+
+  &:last-child {
+    font-weight: 700;
+  }
 `;

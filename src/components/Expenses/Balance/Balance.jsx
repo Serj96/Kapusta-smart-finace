@@ -9,10 +9,14 @@ import {
   Form,
   TitleBalance,
 } from './Balance.styled';
+import { useEffect } from 'react';
+import { getSid, getUserBalance } from 'Redux/kapustaSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { changeBalance, getUser } from 'Redux/userOperations';
 
 const schema = yup
   .object({
-    balance: yup
+    newBalance: yup
       .number()
       .min(1)
       .max(1000000000)
@@ -21,21 +25,30 @@ const schema = yup
   .required();
 
 const Balance = () => {
+  const dispatch = useDispatch();
+  const sid = useSelector(getSid);
+  const balance = useSelector(getUserBalance);
+
+  useEffect(() => {
+    if (sid) dispatch(getUser());
+  }, [dispatch, sid]);
+
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm({
     defaultValues: {
-      amount: 0,
+      newBalance: balance,
     },
     mode: 'onChange',
     resolver: yupResolver(schema),
   });
 
-  console.log(errors);
   const onSubmit = data => {
-    console.log('balance:', data);
+    dispatch(changeBalance(data));
+    reset();
   };
 
   return (
@@ -44,9 +57,10 @@ const Balance = () => {
         <TitleBalance>Balance:</TitleBalance>
         <Form onSubmit={handleSubmit(onSubmit)}>
           <AmountInput
-            {...register('balance')}
+            {...register('newBalance')}
+            name="newBalance"
             type="text"
-            placeholder="00.00 UAH"
+            placeholder={`${balance}.00 UAH`}
           />
           {errors?.amount && (
             <div style={{ color: '#ff4545' }}>

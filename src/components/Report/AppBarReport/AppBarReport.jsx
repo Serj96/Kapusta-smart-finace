@@ -52,30 +52,6 @@ export default function AppBarReport() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  // const userIncomes = useSelector(getUserIncomes);
-  // const userExpenses = useSelector(getUserExpenses);
-
-  // const balanse = useSelector(state => state.kapusta.auth.userData.balance);
-  // const userIncomesTotalAmount = userIncomes
-  //   .map(item => item.amount)
-  //   .reduce((previousValue, amount) => {
-  //     return previousValue + amount;
-  //   }, 0);
-
-  // const userExpensesTotalAmount = userExpenses
-  //   .map(item => item.amount)
-  //   .reduce((previousValue, amount) => {
-  //     return previousValue + amount;
-  //   }, 0);
-
-  // const userIncomesMonthsStats = useSelector(
-  //   state => state.kapusta.auth.userData.incomes.monthsStats
-  // );
-
-  // const userExpensesMonthsStats = useSelector(
-  //   state => state.kapusta.auth.userData.expenses.monthsStats
-  // );
-
   const onBackHomePageHandler = () => {
     navigate('/home', { replace: true });
   };
@@ -153,11 +129,8 @@ export default function AppBarReport() {
     state => state.kapusta.auth.userData.periodData
   );
 
-  // console.log(userPeriodTotal);
-
   useEffect(() => {
     dispatch(getTransactionsByPeriod('01'));
-    // setCurrentMonthNumber(currentMonthNumber + 1);
     setCurrentMonthNumber(currentMonthNumber);
     // eslint-disable-next-line
   }, [dispatch]);
@@ -192,7 +165,7 @@ export default function AppBarReport() {
             >
               <ReportArrowLeft size={24} />
             </ReportExpenseButtonArrowLeft>
-            <ReportDateText>{currentMonthName} 2022</ReportDateText>
+            <ReportDateText>{currentMonthName} 2023</ReportDateText>
             <ReportExpenseButtonArrowRight
               disabled={currentMonthNumber === 11}
               onClick={onChangeMonthIncreaseHandler}
@@ -202,33 +175,6 @@ export default function AppBarReport() {
           </ReportDateWrapper>
         </ReportCurrentPeriodWrapper>
         <ReportBalance />
-
-        {/* <BalanceFormWrapper>
-          <TitleBalance>Balance:</TitleBalance>
-          <Form onSubmit={handleSubmit(onSubmit)}>
-            <AmountInput
-              {...register('balance')}
-              type="text"
-              placeholder="00.00 UAH"
-            />
-            {errors?.amount && (
-              <div style={{ color: '#ff4545' }}>
-                this field is required and must be a number
-              </div>
-            )}
-            <ConfirmBtn type="submit">Confirm</ConfirmBtn>
-          </Form>
-        </BalanceFormWrapper> */}
-
-        {/* <ReportCurrentBalanceWrapper>
-          <ReportCurrentBalanceText>Balance:</ReportCurrentBalanceText>
-          <ReportCurrentAmountWrapper>
-            <ReportCurrentAmount>{balanse} UAH</ReportCurrentAmount>
-          </ReportCurrentAmountWrapper>
-          <ReportCurrentConfirmWrapper>
-            <ReportCurrentConfirm>Confirm</ReportCurrentConfirm>
-          </ReportCurrentConfirmWrapper>
-        </ReportCurrentBalanceWrapper> */}
       </ReportHeaderWrapperTablet>
 
       <ReportListIndicator>

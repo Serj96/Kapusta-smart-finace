@@ -5,8 +5,10 @@ import { Controller, useFormContext } from 'react-hook-form';
 import { FaRegCalendarAlt } from 'react-icons/fa';
 import { DateBtn } from './DateInput.styled';
 
+import format from 'date-fns/format';
+
 const ExampleCustomInput = forwardRef(({ value, onClick }, ref) => (
-  <DateBtn className="example-custom-input" onClick={onClick} ref={ref}>
+  <DateBtn onClick={onClick} ref={ref} type="button">
     <FaRegCalendarAlt size={'20px'} />
     {value}
   </DateBtn>
@@ -16,41 +18,29 @@ export const DateInput = () => {
   const [startDate, setStartDate] = useState(new Date());
   const {
     control,
+    // eslint-disable-next-line
     formState: { errors },
   } = useFormContext(); // retrieve all hook methods
 
   return (
-    <Controller
-      control={control}
-      name="date"
-      render={({ field }) => (
-        <ReactDatePicker
-          onChange={date => field.onChange(date)}
-          selected={startDate}
-          // onChange={date => setStartDate(date)}
-          customInput={<ExampleCustomInput />}
-        />
-      )}
-    ></Controller>
+    <>
+      <Controller
+        control={control}
+        name="date"
+        render={({ field }) => (
+          <ReactDatePicker
+            onChange={date => {
+              setStartDate(date);
+              return field.onChange(format(date, 'yyyy-MM-dd'));
+            }}
+            selected={startDate}
+            dateFormat="yy.MM.dd"
+            customInput={<ExampleCustomInput />}
+          />
+        )}
+      />
+    </>
   );
-
-  // return (
-  //   <>
-
-  //      <FaRegCalendarAlt size={'20px'} width="20px" height={'20px'} />
-  //     <Controller
-  //       control={control}
-  //       name="date"
-  //       render={({ field }) => (
-  //         <ReactDatePicker
-  //           placeholderText="Select date"
-  //           onChange={date => field.onChange(date)}
-  //           selected={field.value}
-  //         />
-  //       )}
-  //     />
-  //   </>
-  // );
 };
 
 export default DateInput;

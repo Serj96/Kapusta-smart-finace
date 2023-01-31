@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { useFormContext } from 'react-hook-form';
 import { FaCalculator } from 'react-icons/fa';
 import { useMediaQuery } from 'react-responsive';
@@ -13,19 +14,30 @@ const AmountInput = () => {
 
   const {
     register,
+    // eslint-disable-next-line
     formState: { errors },
   } = useFormContext(); // retrieve all hook methods
 
+  // const ref = useRef(null);
+
+  // useEffect(() => {
+  //   if (ref && ref.current) {
+  //     console.log(ref.current);
+  //   }
+  // }, []);
+
   return (
     <>
+      {/* <input type="text " placeholder="input" ref={ref} /> */}
       <AmountWrapper>
         <AmounInput
           {...register('amount')}
           type="text"
           placeholder={placeholder}
+          // innerRef={ref}
         />
         <IconBtn type="button">
-          <FaCalculator size={'20px'} />
+          <FaCalculator size={'20px'} color={'#52555F'} />
         </IconBtn>
       </AmountWrapper>
     </>

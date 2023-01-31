@@ -39,7 +39,7 @@ export const AmountInput = styled.input`
   font-weight: 700;
   font-size: 12px;
   line-height: 1.17;
-  text-align: right;
+  text-align: center;
   letter-spacing: 0.02em;
   text-transform: uppercase;
   color: ${myTheme.colors.secondary};
