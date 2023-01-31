@@ -1,5 +1,5 @@
 import HomePage from './HomePage/HomePage';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
 import { getSid } from 'Redux/kapustaSlice';
 import { Registration } from './Registration/Registration';
@@ -10,11 +10,11 @@ import Expense from 'pages/Report/Expenses/Expenses';
 import Income from 'pages/Report/Income/Income';
 import ExpensesPage from './ExpensesPage/ExpensesPage';
 import IncomePage from './IncomePage/IncomePage';
-import { useEffect } from 'react';
-import { refresh } from 'Redux/authOperaions';
+// import { useEffect } from 'react';
+// import { refresh } from 'Redux/authOperaions';
 export const App = () => {
   const token = useSelector(getSid);
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   // useEffect(() => {
   //   dispatch(refresh());

@@ -70,8 +70,7 @@ export default function Income() {
                   {elem[1].incomeTotal}
                 </ReportExpenseListItemAmount>
                 {elem[0] === 'З/П' && <Salary />}
-                {elem[0] === 'Аванс' && <OutherIncomes />}
-                {elem[0] === 'Премія' && <OutherIncomes />}
+                {elem[0] === 'Доп. доход' && <OutherIncomes />}
                 <ReportExpenseListItemText>{elem[0]}</ReportExpenseListItemText>
               </ReportExpenseListItem>
             ))

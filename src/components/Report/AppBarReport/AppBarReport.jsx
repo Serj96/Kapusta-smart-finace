@@ -6,6 +6,8 @@ import { Container } from 'components/Theme/BreakPoints';
 // import { getUserIncomes, getUserExpenses } from 'Redux/kapustaSlice';
 import { months } from './Month';
 
+import { ReportBalance } from '../Balance/ReportBalance';
+
 import {
   ReportIoIosArrowRoundBack,
   ReportArrowLeft,
@@ -16,10 +18,6 @@ import {
   ReportDateWrapper,
   ReportCurrentPeriodText,
   ReportDateText,
-  ReportCurrentBalanceWrapper,
-  ReportCurrentBalanceText,
-  ReportCurrentAmountWrapper,
-  ReportCurrentAmount,
   ReportListIndicator,
   ReportListItemIndicatorExpenses,
   ReportListItemIndicatorIncome,
@@ -29,47 +27,32 @@ import {
   ReportIoIosArrowRoundBackText,
   ReportIoIosArrowRoundBackWrapper,
   ReportHeaderWrapperTablet,
-  ReportCurrentConfirmWrapper,
-  ReportCurrentConfirm,
 } from './AppBarReport.styled';
 
 const currentDateMonth = new Date().getMonth();
-let monthvalue = months[currentDateMonth];
+let monthName = months[currentDateMonth];
 
 export default function AppBarReport() {
-  const [currentMonthName, setCurrentMonthName] = useState(monthvalue);
+  const [currentMonthName, setCurrentMonthName] = useState(monthName);
   const [currentMonthNumber, setCurrentMonthNumber] =
     useState(currentDateMonth);
 
-  console.log(currentMonthNumber);
-  console.log(currentDateMonth);
+  console.log(typeof currentDateMonth);
+
+  console.log('Теперішній місяць номер згідно з Date', currentDateMonth);
+  console.log('Теперішній місяць назва згідно з Date', monthName);
+  console.log(
+    'Теперішній місяць номер у стейті згідно з індексом',
+    currentMonthNumber
+  );
+  console.log(
+    'Теперішній місяць назва у стейті згідно з індексом',
+    currentMonthName
+  );
+  console.log('===============================================');
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
-  // const userIncomes = useSelector(getUserIncomes);
-  // const userExpenses = useSelector(getUserExpenses);
-
-  const balanse = useSelector(state => state.kapusta.auth.userData.balance);
-  // const userIncomesTotalAmount = userIncomes
-  //   .map(item => item.amount)
-  //   .reduce((previousValue, amount) => {
-  //     return previousValue + amount;
-  //   }, 0);
-
-  // const userExpensesTotalAmount = userExpenses
-  //   .map(item => item.amount)
-  //   .reduce((previousValue, amount) => {
-  //     return previousValue + amount;
-  //   }, 0);
-
-  // const userIncomesMonthsStats = useSelector(
-  //   state => state.kapusta.auth.userData.incomes.monthsStats
-  // );
-
-  // const userExpensesMonthsStats = useSelector(
-  //   state => state.kapusta.auth.userData.expenses.monthsStats
-  // );
 
   const onBackHomePageHandler = () => {
     navigate('/home', { replace: true });
@@ -77,20 +60,70 @@ export default function AppBarReport() {
 
   const onChangeMonthIncreaseHandler = () => {
     setCurrentMonthName(months[currentMonthNumber + 1]);
-    setCurrentMonthNumber(currentMonthNumber + 1);
+    setCurrentMonthNumber(prevState => prevState + 1);
 
     onFetchCurrentPeriodHandler(currentMonthNumber);
   };
 
   const onChangeMonthDecreaseHandler = () => {
+    // setCurrentMonthName(months[currentMonthNumber - 1]);
+    // setCurrentMonthNumber(currentMonthNumber - 1);
     setCurrentMonthName(months[currentMonthNumber - 1]);
-    setCurrentMonthNumber(currentMonthNumber - 1);
+    setCurrentMonthNumber(prevState => prevState - 1);
 
     onFetchCurrentPeriodHandler(currentMonthNumber);
   };
 
   const onFetchCurrentPeriodHandler = currentMonthNumber => {
     switch (currentMonthNumber) {
+      // case 0:
+      //   dispatch(getTransactionsByPeriod('01'));
+      //   break;
+
+      // case 1:
+      //   dispatch(getTransactionsByPeriod('02'));
+      //   break;
+
+      // case 2:
+      //   dispatch(getTransactionsByPeriod('03'));
+      //   break;
+
+      // case 3:
+      //   dispatch(getTransactionsByPeriod('04'));
+      //   break;
+
+      // case 4:
+      //   dispatch(getTransactionsByPeriod('05'));
+      //   break;
+
+      // case 5:
+      //   dispatch(getTransactionsByPeriod('06'));
+      //   break;
+
+      // case 6:
+      //   dispatch(getTransactionsByPeriod('07'));
+      //   break;
+
+      // case 7:
+      //   dispatch(getTransactionsByPeriod('08'));
+      //   break;
+
+      // case 8:
+      //   dispatch(getTransactionsByPeriod('09'));
+      //   break;
+
+      // case 9:
+      //   dispatch(getTransactionsByPeriod('10'));
+      //   break;
+
+      // case 10:
+      //   dispatch(getTransactionsByPeriod('11'));
+      //   break;
+
+      // case 11:
+      //   dispatch(getTransactionsByPeriod('12'));
+      //   break;
+
       case 0:
         dispatch(getTransactionsByPeriod('01'));
         break;
@@ -148,11 +181,10 @@ export default function AppBarReport() {
     state => state.kapusta.auth.userData.periodData
   );
 
-  // console.log(userPeriodTotal);
-
   useEffect(() => {
     dispatch(getTransactionsByPeriod('01'));
-    setCurrentMonthNumber(currentMonthNumber + 1);
+    // onFetchCurrentPeriodHandler(currentMonthNumber);
+    // setCurrentMonthNumber(currentMonthNumber);
     // eslint-disable-next-line
   }, [dispatch]);
 
@@ -186,7 +218,7 @@ export default function AppBarReport() {
             >
               <ReportArrowLeft size={24} />
             </ReportExpenseButtonArrowLeft>
-            <ReportDateText>{currentMonthName} 2022</ReportDateText>
+            <ReportDateText>{currentMonthName} 2023</ReportDateText>
             <ReportExpenseButtonArrowRight
               disabled={currentMonthNumber === 11}
               onClick={onChangeMonthIncreaseHandler}
@@ -195,16 +227,7 @@ export default function AppBarReport() {
             </ReportExpenseButtonArrowRight>
           </ReportDateWrapper>
         </ReportCurrentPeriodWrapper>
-
-        <ReportCurrentBalanceWrapper>
-          <ReportCurrentBalanceText>Balance:</ReportCurrentBalanceText>
-          <ReportCurrentAmountWrapper>
-            <ReportCurrentAmount>{balanse} UAH</ReportCurrentAmount>
-          </ReportCurrentAmountWrapper>
-          <ReportCurrentConfirmWrapper>
-            <ReportCurrentConfirm>Confirm</ReportCurrentConfirm>
-          </ReportCurrentConfirmWrapper>
-        </ReportCurrentBalanceWrapper>
+        <ReportBalance />
       </ReportHeaderWrapperTablet>
 
       <ReportListIndicator>

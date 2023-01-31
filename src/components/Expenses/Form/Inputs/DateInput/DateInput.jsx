@@ -18,6 +18,7 @@ export const DateInput = () => {
   const [startDate, setStartDate] = useState(new Date());
   const {
     control,
+    // eslint-disable-next-line
     formState: { errors },
   } = useFormContext(); // retrieve all hook methods
 

@@ -30,6 +30,7 @@ export default function CategoryInput() {
 
   const {
     control,
+    // eslint-disable-next-line
     formState: { errors },
   } = useFormContext();
 
