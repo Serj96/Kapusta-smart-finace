@@ -1,10 +1,13 @@
-import { useNavigate } from 'react-router-dom';
+// import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { getUserExpenses } from 'Redux/kapustaSlice';
+import { useNavigate } from 'react-router-dom';
+// import { getTransactionsByPeriod } from 'Redux/transactionOperation';
 
 import {
   ReportArrowLeft,
   ReportArrowRight,
+  ReportExpenseButtonArrowLeft,
+  ReportExpenseButtonArrowRight,
   ReportExpenseWrapper,
   ReportExpenseText,
   ReportExpenseList,
@@ -27,52 +30,69 @@ import Tools from 'components/ReportIcons/Tools';
 import Ufo from 'components/ReportIcons/Ufo';
 
 export default function Expense() {
-  const userExpense = useSelector(getUserExpenses);
-  userExpense.map(item => console.log(item));
-
   const navigate = useNavigate();
+  // const dispatch = useDispatch();
 
   const onChangeExpensesPageHandler = () => {
-    navigate('/expenses', { replace: true });
-    console.log('Натиснули на ліву стрілку і перейшли на сторінку Expenses');
+    navigate('/home/reports', { replace: true });
   };
 
   const onChangeIncomePageHandler = () => {
     navigate('income', { replace: true });
-    console.log('Натиснули на праву стрілку і перейшли на сторінку Income');
   };
+
+  const userPeriodTotal = useSelector(
+    state => state.kapusta.auth.userData.periodData
+  );
+
+  const userPeriodDataTotalExpenses = userPeriodTotal.map(item =>
+    Object.entries(item.expenses.expensesData)
+  );
+
+  const TotalExpensesArray = userPeriodDataTotalExpenses.map(item => item);
 
   return (
     <>
       <ReportExpenseListWrapper>
         <ReportExpenseWrapper>
-          <ReportArrowLeft onClick={onChangeExpensesPageHandler} size={24} />
+          <ReportExpenseButtonArrowLeft
+            disabled={true}
+            className="arrow-left"
+            onClick={onChangeExpensesPageHandler}
+          >
+            <ReportArrowLeft size={24} />
+          </ReportExpenseButtonArrowLeft>
           <ReportExpenseText>Expenses</ReportExpenseText>
-          <ReportArrowRight onClick={onChangeIncomePageHandler} size={24} />
+          <ReportExpenseButtonArrowRight
+            className="arrow-right"
+            onClick={onChangeIncomePageHandler}
+          >
+            <ReportArrowRight size={24} />
+          </ReportExpenseButtonArrowRight>
         </ReportExpenseWrapper>
 
         <ReportExpenseList>
-          {userExpense.map((expense, index) => (
-            <ReportExpenseListItem key={index}>
-              <ReportExpenseListItemAmount>
-                {expense.amount}
-              </ReportExpenseListItemAmount>
-              {expense.category === 'Alcohol' && <Cocktail />}
-              {expense.category === 'Products' && <Products />}
-              {expense.category === 'Health' && <HandsHoldingHeart />}
-              {expense.category === 'Entertainment' && <Kite />}
-              {expense.category === 'Transport' && <Car />}
-              {expense.category === 'Housing' && <Couch />}
-              {expense.category === 'Technique' && <Tools />}
-              {expense.category === 'Communal, communication' && <Invoice />}
-              {expense.category === 'Sports, hobbies' && <Clay />}
-              {expense.category === 'Education' && <Boock />}
-              {expense.category === 'Other' && <Ufo />}
-              <ReportExpenseListItemText>
-                {expense.category}
-              </ReportExpenseListItemText>
-            </ReportExpenseListItem>
-          ))}
+          {TotalExpensesArray.map(item =>
+            item.map(elem => (
+              <ReportExpenseListItem key={elem[0]}>
+                <ReportExpenseListItemAmount>
+                  {elem[1].expenseTotal}
+                </ReportExpenseListItemAmount>
+                {elem[0] === 'Alcohol' && <Cocktail />}
+                {elem[0] === 'Продукты' && <Products />}
+                {elem[0] === 'Health' && <HandsHoldingHeart />}
+                {elem[0] === 'Entertainment' && <Kite />}
+                {elem[0] === 'Транспорт' && <Car />}
+                {elem[0] === 'Всё для дома' && <Couch />}
+                {elem[0] === 'Technique' && <Tools />}
+                {elem[0] === 'Communal, communication' && <Invoice />}
+                {elem[0] === 'Sports, hobbies' && <Clay />}
+                {elem[0] === 'Учеба' && <Boock />}
+                {elem[0] === 'Other' && <Ufo />}
+                <ReportExpenseListItemText>{elem[0]}</ReportExpenseListItemText>
+              </ReportExpenseListItem>
+            ))
+          )}
         </ReportExpenseList>
       </ReportExpenseListWrapper>
     </>

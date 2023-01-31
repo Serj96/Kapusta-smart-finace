@@ -2,6 +2,8 @@ import styled from '@emotion/styled';
 import { RiArrowLeftSLine } from 'react-icons/ri';
 import { RiArrowRightSLine } from 'react-icons/ri';
 
+// import Rectangle from '../../images/Rectangle.svg';
+
 export const ReportArrowLeft = styled(RiArrowLeftSLine)`
   fill: #ff751d;
 `;
@@ -17,6 +19,30 @@ export const ReportExpenseWrapper = styled.div`
 
   margin-top: 0;
   margin-bottom: 20px;
+`;
+
+export const ReportExpenseButtonArrowLeft = styled.button`
+  background-color: transparent;
+  width: 24px;
+  height: 24px;
+
+  border: none;
+  outline: none;
+  &:disabled {
+    background-color: transparent;
+  }
+`;
+
+export const ReportExpenseButtonArrowRight = styled.button`
+  background-color: transparent;
+  width: 24px;
+  height: 24px;
+
+  border: none;
+  outline: none;
+  &:disabled {
+    background-color: transparent;
+  }
 `;
 
 export const ReportExpenseText = styled.p`
@@ -62,7 +88,8 @@ export const ReportExpenseListItem = styled.li`
   flex-direction: column;
   margin-bottom: 15px;
 
-  /* background-image: url('../../images/Rectangle.svg'); */
+  /* background-image: url('../../images/Rectangle2.svg'); */
+  /* background-image: url(''); */
   /* background-image: url('https://cdn2.iconfinder.com/data/icons/avatars-60/5985/34-Father-512.png'); */
 
   background-size: 50px 50px;

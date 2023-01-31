@@ -1,10 +1,13 @@
-import { useNavigate } from 'react-router-dom';
+// import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { getTransation, getUserIncomes } from 'Redux/kapustaSlice';
+import { useNavigate } from 'react-router-dom';
+// import { getTransactionsByPeriod } from 'Redux/transactionOperation';
 
 import {
   ReportArrowLeft,
   ReportArrowRight,
+  ReportExpenseButtonArrowLeft,
+  ReportExpenseButtonArrowRight,
   ReportExpenseWrapper,
   ReportExpenseText,
   ReportExpenseList,
@@ -18,55 +21,61 @@ import Salary from 'components/ReportIcons/Salary';
 import OutherIncomes from 'components/ReportIcons/OutherIncomes';
 
 export default function Income() {
-  const categories = useSelector(
-    state => state.kapusta.auth.userData.category.income
-  );
-  console.log(categories);
-
-  const transactions = useSelector(getTransation);
-  console.log(transactions);
-
-  const userIncomes = useSelector(getUserIncomes);
-  userIncomes.map(item => console.log(item));
-
   const navigate = useNavigate();
+  // const dispatch = useDispatch();
 
   const onChangeExpensesPageHandler = () => {
-    navigate('/expenses', { replace: true });
-    console.log('Натиснули на ліву стрілку і перейшли на сторінку Expenses');
+    navigate('/home/reports', { replace: true });
   };
 
   const onChangeIncomePageHandler = () => {
     navigate('income', { replace: true });
-    console.log('Натиснули на праву стрілку і перейшли на сторінку Income');
   };
+
+  const userPeriodTotal = useSelector(
+    state => state.kapusta.auth.userData.periodData
+  );
+
+  const userPeriodDataTotalIncomes = userPeriodTotal.map(item =>
+    Object.entries(item.incomes.incomesData)
+  );
+
+  const TotalIncomesArray = userPeriodDataTotalIncomes.map(item => item);
 
   return (
     <>
       <ReportExpenseListWrapper>
         <ReportExpenseWrapper>
-          <ReportArrowLeft onClick={onChangeExpensesPageHandler} size={24} />
+          <ReportExpenseButtonArrowLeft
+            className="arrow-left"
+            onClick={onChangeExpensesPageHandler}
+          >
+            <ReportArrowLeft size={24} />
+          </ReportExpenseButtonArrowLeft>
           <ReportExpenseText>Income</ReportExpenseText>
-          <ReportArrowRight onClick={onChangeIncomePageHandler} size={24} />
+          <ReportExpenseButtonArrowRight
+            disabled={true}
+            className="arrow-right"
+            onClick={onChangeIncomePageHandler}
+          >
+            <ReportArrowRight size={24} />
+          </ReportExpenseButtonArrowRight>
         </ReportExpenseWrapper>
 
         <ReportExpenseList>
-          {userIncomes.map((income, index) => (
-            <ReportExpenseListItem key={index}>
-              <ReportExpenseListItemAmount>
-                {income.amount}
-              </ReportExpenseListItemAmount>
-              {income.category === 'Salary' && <Salary />}
-              {income.category === 'Outher' && <OutherIncomes />}
-              {income.category === 'Pension' && <OutherIncomes />}
-              {income.category === 'Premium' && <OutherIncomes />}
-              {income.category === 'Win' && <OutherIncomes />}
-              {income.category === 'Advance' && <OutherIncomes />}
-              <ReportExpenseListItemText>
-                {income.category}
-              </ReportExpenseListItemText>
-            </ReportExpenseListItem>
-          ))}
+          {TotalIncomesArray.map(item =>
+            item.map(elem => (
+              <ReportExpenseListItem key={elem[0]}>
+                <ReportExpenseListItemAmount>
+                  {elem[1].incomeTotal}
+                </ReportExpenseListItemAmount>
+                {elem[0] === 'З/П' && <Salary />}
+                {elem[0] === 'Аванс' && <OutherIncomes />}
+                {elem[0] === 'Премія' && <OutherIncomes />}
+                <ReportExpenseListItemText>{elem[0]}</ReportExpenseListItemText>
+              </ReportExpenseListItem>
+            ))
+          )}
         </ReportExpenseList>
       </ReportExpenseListWrapper>
     </>
