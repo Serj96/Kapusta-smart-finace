@@ -12,6 +12,7 @@ import ExpensesPage from './ExpensesPage/ExpensesPage';
 import IncomePage from './IncomePage/IncomePage';
 import { useEffect } from 'react';
 import { refresh } from 'Redux/authOperaions';
+import { NotFound } from './NotFound/NotFound';
 export const App = () => {
   const token = useSelector(getSid);
   const dispatch = useDispatch();
@@ -55,7 +56,7 @@ export const App = () => {
           />
         </Route>
       </Route>
-      <Route path="*" element={<Navigate to={'/home'} />} />
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 };
