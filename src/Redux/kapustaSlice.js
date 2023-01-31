@@ -17,6 +17,7 @@ const initialState = {
   auth: {
     user: { email: null, id: null },
     userData: {
+
       balance: null,
       transactions: [],
       incomes: { incomes: [], monthsStats: [] },
@@ -104,7 +105,6 @@ const kapustaSlice = createSlice({
       .addCase(getIncome.fulfilled, (state, action) => {
         state.refresh = false;
         state.loading = false;
-        // state.auth.userData.expenses.expenses = [];
         state.auth.userData.incomes.incomes = action.payload.incomes;
         state.auth.userData.incomes.monthsStats = action.payload.monthsStats;
       })
@@ -123,7 +123,6 @@ const kapustaSlice = createSlice({
           ...state.auth.userData.incomes.incomes,
           action.payload.transaction,
         ];
-        // state.auth.userData.incomes.monthsStats = action.payload.monthsStats;
       })
       .addCase(addIncome.rejected, (state, action) => {
         state.loading = false;
@@ -137,8 +136,10 @@ const kapustaSlice = createSlice({
         state.refresh = false;
         state.loading = false;
         state.auth.userData.expenses.expenses = action.payload.expenses;
-        // state.auth.userData.incomes.incomes = [];
+
+ 
         state.auth.userData.expenses.monthsStats = action.payload.monthsStats;
+
       })
       .addCase(getExpense.rejected, (state, action) => {
         state.loading = false;
