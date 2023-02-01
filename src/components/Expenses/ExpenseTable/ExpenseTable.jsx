@@ -1,14 +1,13 @@
 import React, { useEffect } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { getSid, getUserExpenses, getUserIncomes } from 'Redux/kapustaSlice';
-import {
-  deleteTransaction,
-  getExpense,
-  getIncome,
-} from 'Redux/transactionOperation';
+import { getExpense, getIncome } from 'Redux/transactionOperation';
 
 import { DeleteIcon, ExpButton } from '../ExpenseItem/ExpenseItem.styled';
+import { Modal } from '../Modal/Modal';
+import TransactionDeleteModal from '../Modal/TransactionDeleteModal/TransactionDeleteModal';
 import {
   Table,
   TableC,
@@ -21,15 +20,22 @@ import {
 const ExpenseTable = () => {
   const { pathname } = useLocation();
   const dispatch = useDispatch();
-  const ExpensesList = useSelector(getUserExpenses);
-  const IncomeList = useSelector(getUserIncomes);
+  const expensesList = useSelector(getUserExpenses);
+  const incomeList = useSelector(getUserIncomes);
   const sid = useSelector(getSid);
+
+  const [swohModalDelete, setShowModalDelete] = useState(false);
 
   useEffect(() => {
     if (sid && pathname === '/home/expenses') dispatch(getExpense());
 
     if (sid && pathname === '/home/income') dispatch(getIncome());
   }, [dispatch, pathname, sid]);
+
+  const onModal = () => {
+    setShowModalDelete(true);
+    if (swohModalDelete) return setShowModalDelete(false);
+  };
 
   const formatSum = sum => {
     const format = sum.toString().includes('-');
@@ -60,7 +66,7 @@ const ExpenseTable = () => {
           <Table cellpadding="0" cellspacing="0" border="0">
             <tbody>
               {pathname === '/home/expenses' &&
-                ExpensesList?.map(
+                expensesList?.map(
                   ({ _id, date, description, category, amount }) => (
                     <tr key={_id}>
                       <Td>{date}</Td>
@@ -75,19 +81,21 @@ const ExpenseTable = () => {
                           }}
                         >
                           {formatSum(amount)}
-                          <ExpButton
-                            type="button"
-                            onClick={() => dispatch(deleteTransaction(_id))}
-                          >
+                          <ExpButton type="button" onClick={onModal}>
                             <DeleteIcon />
                           </ExpButton>
                         </div>
                       </Td>
+                      {swohModalDelete && (
+                        <Modal onClose={onModal}>
+                          <TransactionDeleteModal id={_id} onClose={onModal} />
+                        </Modal>
+                      )}
                     </tr>
                   )
                 )}
               {pathname === '/home/income' &&
-                IncomeList?.map(
+                incomeList?.map(
                   ({ _id, date, description, category, amount }) => (
                     <tr key={_id}>
                       <Td>{date}</Td>
@@ -102,14 +110,16 @@ const ExpenseTable = () => {
                           }}
                         >
                           {amount}
-                          <ExpButton
-                            type="button"
-                            onClick={() => dispatch(deleteTransaction(_id))}
-                          >
+                          <ExpButton type="button" onClick={onModal}>
                             <DeleteIcon />
                           </ExpButton>
                         </div>
                       </Td>
+                      {swohModalDelete && (
+                        <Modal onClose={onModal}>
+                          <TransactionDeleteModal id={_id} onClose={onModal} />
+                        </Modal>
+                      )}
                     </tr>
                   )
                 )}

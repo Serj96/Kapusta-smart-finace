@@ -1,6 +1,7 @@
 export const colourStyles = {
   control: styles => ({
     ...styles,
+    backgroundColor: 'transparent',
     borderRadius: 'none',
     border: '2px solid #fff',
     borderBottomRightRadius: '16px',

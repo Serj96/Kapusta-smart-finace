@@ -7,7 +7,7 @@ import { StyledHeader } from './AppBar.styled';
 export const AppBar = () => {
   return (
     <StyledHeader>
-      <Link to="/">
+      <Link to="/home">
         <img src={logo} alt="logo" />
       </Link>
       <AuthNav />
