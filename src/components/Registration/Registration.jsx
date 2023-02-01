@@ -10,6 +10,7 @@ import {
 } from './Registration.styled';
 import { SubmitButton } from '../Theme/Button/Button';
 import googleIcon from '../image/googleIcon.svg';
+// eslint-disable-next-line
 import { Link, useNavigate } from 'react-router-dom';
 import { RegisterLink } from 'components/Login/Login.styled';
 import { useDispatch } from 'react-redux';
@@ -39,7 +40,7 @@ export const Registration = () => {
     validate,
     onSubmit: values => {
       dispath(register(values));
-      navigate("/home")
+      navigate('/home');
     },
   });
   return (

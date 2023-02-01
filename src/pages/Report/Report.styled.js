@@ -82,6 +82,7 @@ export const ReportExpenseList = styled.ul`
 `;
 
 export const ReportExpenseListItem = styled.li`
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -102,6 +103,80 @@ export const ReportExpenseListItem = styled.li`
 
   @media (min-width: 768px) {
     width: calc((100% - 30px) / 6);
+  }
+`;
+
+export const ReportExpenseListItemContentWrapper = styled.div`
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+`;
+
+export const ReportExpenseListItemBackground = styled.span`
+  position: absolute;
+  z-index: 1;
+  background-color: #f5f6fb;
+  border-radius: 40px;
+
+  /* &:hover,
+  &:focus {
+    background-color: #ffdac0;
+  } */
+
+  @media (max-width: 767.98px) {
+    top: 15px;
+    left: 19px;
+    width: 57px;
+    height: 41px;
+  }
+
+  @media (min-width: 768px) and (max-width: 1279.98px) {
+    top: 15px;
+    left: 23px;
+    width: 60px;
+    height: 45px;
+  }
+
+  @media (min-width: 1280px) {
+    top: 15px;
+    left: 40px;
+    width: 63px;
+    height: 47px;
+  }
+`;
+
+export const ReportExpenseListItemBackgroundIncome = styled.span`
+  position: absolute;
+  z-index: 1;
+  background-color: #f5f6fb;
+  border-radius: 40px;
+
+  /* &:hover,
+  &:focus {
+    background-color: #ffdac0;
+  } */
+
+  @media (max-width: 767.98px) {
+    top: 15px;
+    left: 14px;
+    width: 57px;
+    height: 41px;
+  }
+
+  @media (min-width: 768px) and (max-width: 1279.98px) {
+    top: 15px;
+    left: 20px;
+    width: 60px;
+    height: 45px;
+  }
+
+  @media (min-width: 1280px) {
+    top: 15px;
+    left: 37px;
+    width: 63px;
+    height: 47px;
   }
 `;
 
