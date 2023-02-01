@@ -115,13 +115,6 @@ export const LoginForm = styled.form`
       color: #a6abb9;
     }
 
-    @media (min-width: 767px) and (max-width: 1279.98px) {
-      width: 229px;
-    }
-
-    @media (min-width: 1280px) {
-      width: 229px;
-    }
   }
   @media screen and (min-width: 767px) {
     width: 426px;
