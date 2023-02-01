@@ -3,6 +3,10 @@ import { myTheme } from 'components/Theme/Theme';
 import { NavLink } from 'react-router-dom';
 
 export const LoginDiv = styled.div`
+
+  margin-left: 170px;
+  margin-right: 170px;
+
   .textunderLogo {
     font-size: 13px;
     line-height: 15px;
@@ -12,6 +16,7 @@ export const LoginDiv = styled.div`
     padding-right: 100px;
     margin: 0 auto;
   }
+
   .logo {
     width: 183px;
   }
@@ -23,7 +28,10 @@ export const LoginDiv = styled.div`
     padding-top: 86px;
     margin-bottom: 50px;
   }
+
+
   @media screen and (min-width: 768px) {
+
     .textunderLogo {
       font-weight: 700;
       font-size: 16px;
@@ -35,28 +43,27 @@ export const LoginDiv = styled.div`
     .logo {
       width: 306px;
     }
-    margin-left: 170px;
-    margin-right: 170px;
+
+    
 
     @media screen and (min-width: 1280px) {
+    padding-top: 117px;
+    display: flex;
+    align-items: center;
+
+    padding: 0;
+    margin: 0;
+    padding-top: 117px;
+    
     .logo {
     width: 377px;
     }
 
-   .loginDiv {
-    padding-top: 117px;
-    display: flex;
-    align-items: center;
-    }
    .logoDiv {
     padding-left: 107px;
     margin-right: 157px;
     }
-  .loginDiv {
-    padding: 0;
-    margin: 0;
-    padding-top: 117px;
-  }
+  
   }
 `;
 
@@ -114,8 +121,6 @@ export const LoginForm = styled.form`
 
       color: #a6abb9;
     }
-
-    
   }
   @media screen and (min-width: 767px) {
     width: 426px;
@@ -200,8 +205,6 @@ export const ButtonWrapper = styled.div`
 `;
 
 export const SubmitButton = styled.button`
-  
-
   padding: 12px 29px;
 
   font-weight: 700;
