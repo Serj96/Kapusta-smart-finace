@@ -78,7 +78,6 @@ export const TopAuth = styled.div`
   }
   @media screen and (min-width: 1280px) {
     height: 580px;
-    // width: 1280px;
     margin: 0 auto;
     padding-left: 26px;
     padding-right: 26px;

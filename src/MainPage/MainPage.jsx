@@ -1,5 +1,6 @@
 
-import * as Styled from './MainPage.styled';
+import { MainSt, Top } from './MainPage.styled';
+// import * as Styled from './MainPage.styled';
 import Container from '../Container/Container';
 
 export const MainPage = ({ children }) => {
@@ -7,10 +8,14 @@ export const MainPage = ({ children }) => {
 
   return (
     <>
-      <Styled.MainSt>
-        <Styled.Top></Styled.Top>
+      {/* <Styled.MainAuth>
+        <Styled.TopAuth></Styled.TopAuth>
         <Container>{children}</Container>
-      </Styled.MainSt>
+      </Styled.MainAuth> */}
+      <MainSt>
+        <Top></Top>
+        <Container>{children}</Container>
+      </MainSt>
     </>
   );
 };
