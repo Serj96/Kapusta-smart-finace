@@ -3,7 +3,6 @@ import { myTheme } from 'components/Theme/Theme';
 import { NavLink } from 'react-router-dom';
 
 export const LoginDiv = styled.div`
-
   margin-left: 170px;
   margin-right: 170px;
 
@@ -29,9 +28,7 @@ export const LoginDiv = styled.div`
     margin-bottom: 50px;
   }
 
-
   @media screen and (min-width: 768px) {
-
     .textunderLogo {
       font-weight: 700;
       font-size: 16px;
@@ -39,14 +36,13 @@ export const LoginDiv = styled.div`
       letter-spacing: 0.18em;
       text-transform: uppercase;
     }
-   
+
     .logo {
       width: 306px;
     }
+  }
 
-    
-
-    @media screen and (min-width: 1280px) {
+  @media screen and (min-width: 1280px) {
     padding-top: 117px;
     display: flex;
     align-items: center;
@@ -54,16 +50,15 @@ export const LoginDiv = styled.div`
     padding: 0;
     margin: 0;
     padding-top: 117px;
-    
+
     .logo {
-    width: 377px;
+      width: 377px;
     }
 
-   .logoDiv {
-    padding-left: 107px;
-    margin-right: 157px;
+    .logoDiv {
+      padding-left: 107px;
+      margin-right: 157px;
     }
-  
   }
 `;
 
@@ -197,6 +192,7 @@ export const ErrorMsg = styled.div`
 
   color: #eb5757;
 `;
+
 export const ButtonWrapper = styled.div`
   display: flex;
   margin-top: 40px;
@@ -205,7 +201,8 @@ export const ButtonWrapper = styled.div`
 `;
 
 export const SubmitButton = styled.button`
-  padding: 12px 29px;
+  width: 116px;
+  height: 44px;
 
   font-weight: 700;
   font-size: 12px;
@@ -227,7 +224,12 @@ export const SubmitButton = styled.button`
 
 export const LinkRegistr = styled(NavLink)`
   
-  padding: 12px 14px;
+    width: 116px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
 
   text-decoration: none;
   font-weight: 700;
