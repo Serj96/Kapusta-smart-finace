@@ -1,18 +1,17 @@
 import { useFormik } from 'formik';
 import {
-  FormTitle,
-  FormSubTitle,
-  ButtonLink,
   ErrorMsg,
   LoginForm,
   ButtonWrapper,
+  SubmitButton,
   LinkRegistr,
+  LoginDiv,
+  TopTextDiv,
+  GoogleBtn,
 } from './Registration.styled';
-import { SubmitButton } from '../Theme/Button/Button';
-import googleIcon from '../image/googleIcon.svg';
-// eslint-disable-next-line
-import { Link, useNavigate } from 'react-router-dom';
-import { RegisterLink } from 'components/Login/Login.styled';
+import googleIcon from '../../images/googleIcon.svg';
+import kapustaSvg from '../../images/loginPageKAPUSTA.svg';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { register } from 'Redux/authOperaions';
 const validate = values => {
@@ -44,46 +43,61 @@ export const Registration = () => {
     },
   });
   return (
-    <LoginForm onSubmit={formik.handleSubmit}>
-      <FormTitle>You can log in with your Google Account:</FormTitle>
-      <ButtonLink href="shorturl.at/pAB18">
-        <img src={googleIcon} alt="googleIcon" />
-        <span>Google</span>
-      </ButtonLink>
-      <FormSubTitle>
-        Or log in using an email and password, after registering:
-      </FormSubTitle>
-      <label htmlFor="email">Email :</label>
-      <input
-        id="email"
-        name="email"
-        type="email"
-        onChange={formik.handleChange}
-        value={formik.values.email}
-        placeholder="your@email.com"
-      />
-      {formik.errors.email ? <ErrorMsg>{formik.errors.email}</ErrorMsg> : null}
-
-      <label htmlFor="password">Password :</label>
-      <input
-        id="password"
-        name="password"
-        type="text"
-        onChange={formik.handleChange}
-        value={formik.values.firstName}
-        placeholder="Password"
-      />
-      {formik.errors.password ? (
-        <ErrorMsg>{formik.errors.password}</ErrorMsg>
-      ) : null}
-      <ButtonWrapper>
-        <SubmitButton type={'submit'}>Registration</SubmitButton>
-        <LinkRegistr>
-          <RegisterLink to="/home" styled={{ textDecoration: 'none' }}>
+    <LoginDiv>
+      <div className="logoDiv">
+        <img className="logo" src={kapustaSvg} alt="kapusta"></img>
+        <p className="textunderLogo">Smart Finance</p>
+      </div>
+      <LoginForm onSubmit={formik.handleSubmit}>
+        <TopTextDiv>
+          <p className="topGoogleRegText">You can log in with your Google</p>
+          <span className="topGoogleRegTextspan"> Account:</span>
+        </TopTextDiv>
+        <GoogleBtn
+          // https://team-project-kapusta/api/auth/google
+          href="*"
+        >
+          <img src={googleIcon} className="GoogleEmblem" alt="google" />
+          Google
+        </GoogleBtn>
+        <p className="buttonGoogleRegText">
+          Or log in using an email and password, after registering:
+        </p>
+        <label className="emailLabel" htmlFor="email">
+          Email :
+        </label>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          onChange={formik.handleChange}
+          value={formik.values.email}
+          placeholder="your@email.com"
+        />
+        {formik.errors.email ? (
+          <ErrorMsg>{formik.errors.email}</ErrorMsg>
+        ) : null}
+        <label className="passwordLabel" htmlFor="password">
+          Password :
+        </label>
+        <input
+          id="password"
+          name="password"
+          type="text"
+          onChange={formik.handleChange}
+          value={formik.values.firstName}
+          placeholder="Password"
+        />
+        {formik.errors.password ? (
+          <ErrorMsg>{formik.errors.password}</ErrorMsg>
+        ) : null}
+        <ButtonWrapper>
+          <SubmitButton type={'submit'}>Registration</SubmitButton>
+          <LinkRegistr to="/home" styled={{ textDecoration: 'none' }}>
             Log In
-          </RegisterLink>
-        </LinkRegistr>
-      </ButtonWrapper>
-    </LoginForm>
+          </LinkRegistr>
+        </ButtonWrapper>
+      </LoginForm>
+    </LoginDiv>
   );
 };
