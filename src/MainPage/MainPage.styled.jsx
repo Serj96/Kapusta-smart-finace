@@ -20,7 +20,7 @@ export const MainSt = styled.div`
     min-height: 1024px;
 
     background: url(${group}) top 30px left 5px repeat-x,
-      url(${two}) bottom 300px left 353px no-repeat;
+      url(${two}) bottom 175px left 163px no-repeat;
   }
   @media screen and (min-width: 1280px) {
     margin: 0 auto;
@@ -32,57 +32,6 @@ export const MainSt = styled.div`
   }
 `;
 
-export const MainAuth = styled.div`
-  width: 100%;
-  margin: 0 auto;
-  background-size: 83px;
-  position: relative;
-  padding-bottom: 60px;
-
-  @media screen and (min-width: 768px) {
-    min-height: 1024px;
-    margin: 0 auto;
-    background: url(${down}) top 104px right -35px no-repeat,
-      url(${two}) bottom 100px right 90px no-repeat;
-    background-size: 83px, 160px;
-    position: relative;
-  }
-
-  @media screen and (min-width: 1280px) {
-    margin: 0 auto;
-    padding-left: 26px;
-    padding-right: 26px;
-    min-height: 850px;
-    background: url(${group}) bottom 0px left repeat-x;
-  }
-`;
-
-export const TopAuth = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -2;
-  width: 100%;
-  margin: 0 auto;
-  padding-left: 26px;
-  padding-right: 26px;
-  height: 313px;
-  border-bottom-left-radius: 100px;
-
-  background-size: 83px;
-  background-color: #f5f6fb;
-
-  @media screen and (min-width: 768px) {
-    height: 530px;
-    margin: 0 auto;
-  }
-  @media screen and (min-width: 1280px) {
-    height: 580px;
-    margin: 0 auto;
-    padding-left: 26px;
-    padding-right: 26px;
-  }
-`;
 
 export const Top = styled.div`
   position: absolute;
