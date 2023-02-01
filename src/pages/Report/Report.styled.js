@@ -120,6 +120,13 @@ export const ReportExpenseListItemAmount = styled.p`
   text-transform: uppercase;
 `;
 
+export const ReportExpenseListItemBackground = styled.span`
+  width: 70px;
+  height: 70px;
+  background-color: yellow;
+  border-radius: 40px;
+`;
+
 export const ReportExpenseListItemText = styled.p`
   margin-top: 0;
   margin-bottom: 0;

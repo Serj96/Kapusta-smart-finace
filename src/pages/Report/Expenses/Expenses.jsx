@@ -10,6 +10,7 @@ import {
   ReportExpenseText,
   ReportExpenseList,
   ReportExpenseListItem,
+  ReportExpenseListItemBackground,
   ReportExpenseListItemAmount,
   ReportExpenseListItemText,
   ReportExpenseListWrapper,
@@ -87,6 +88,7 @@ export default function Expense() {
                 {elem[0] === 'Образование' && <Boock />}
                 {elem[0] === 'Прочее' && <Ufo />}
                 <ReportExpenseListItemText>{elem[0]}</ReportExpenseListItemText>
+                <ReportExpenseListItemBackground></ReportExpenseListItemBackground>
               </ReportExpenseListItem>
             ))
           )}
