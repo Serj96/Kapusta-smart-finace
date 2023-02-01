@@ -55,7 +55,7 @@ export const ReportCurrentAmountWrapper = styled.div`
   }
 
   @media (min-width: 768px) {
-    padding: 13px 20px;
+    padding: 13px 22px;
   }
 
   @media (min-width: 1280px) {
@@ -79,10 +79,8 @@ export const ReportCurrentAmount = styled.input`
   text-transform: uppercase;
 
   &::placeholder {
-    text-align: center;
     color: #000000;
-    /* color: blue; */
-    background-color: transparent;
+    text-align: center;
 
     font-family: 'Roboto';
     font-weight: 700;
@@ -97,7 +95,7 @@ export const ReportCurrentAmount = styled.input`
   }
 
   @media (min-width: 768px) {
-    width: 90px;
+    width: 80px;
   }
 
   @media (min-width: 1280px) {

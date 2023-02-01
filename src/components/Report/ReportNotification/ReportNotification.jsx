@@ -8,8 +8,6 @@ import { getSid, getUserBalance } from 'Redux/kapustaSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeBalance, getUser } from 'Redux/userOperations';
 
-import { ErrorMessage } from 'components/Expenses/Form/Inputs/DescriptionInput/DescriptionInput.styled';
-
 import {
   ReportCurrentBalanceWrapper,
   ReportCurrentBalanceText,
@@ -28,7 +26,7 @@ const schema = yup
   })
   .required();
 
-export default function ReportBalance() {
+export default function ReportNotification() {
   const dispatch = useDispatch();
   const sid = useSelector(getSid);
   const balance = useSelector(getUserBalance);
@@ -41,6 +39,7 @@ export default function ReportBalance() {
     register,
     handleSubmit,
     reset,
+    // eslint-disable-next-line
     formState: { errors },
   } = useForm({
     defaultValues: {
@@ -56,35 +55,21 @@ export default function ReportBalance() {
     reset();
   };
 
-  const onReadOnlyHandler = () => {
-    const inputBalance = document.querySelector('.input-balance');
-    if (window.matchMedia('(max-width: 1279.98px)').matches) {
-      inputBalance?.setAttribute('readOnly', true);
-    } else {
-      return;
-    }
-  };
-
-  useEffect(() => {
-    onReadOnlyHandler();
-  }, []);
-
   return (
     <ReportCurrentBalanceWrapper onSubmit={handleSubmit(onSubmit)}>
       <ReportCurrentBalanceText>Balance:</ReportCurrentBalanceText>
       <ReportCurrentAmountWrapper>
         <ReportCurrentAmount
-          className="input-balance"
           {...register('newBalance')}
           name="newBalance"
           type="text"
           placeholder={`${balance}.00 UAH`}
         />
-        {errors?.newBalance && (
-          <ErrorMessage>
-            {'this field is required and must be a number'}
-          </ErrorMessage>
-        )}
+        {/* {errors?.amount && (
+          <div style={{ color: '#ff4545' }}>
+            this field is required and must be a number
+          </div>
+        )} */}
       </ReportCurrentAmountWrapper>
       <ReportCurrentConfirmWrapper type="submit">
         Confirm
