@@ -125,7 +125,8 @@ export const getTransactionsByPeriod = createAsyncThunk(
     setToken(state.kapusta.accessToken);
     try {
       const { data } = await axios.get(
-        `/transaction/period-data?date=2023-${date}`
+        // `/transaction/period-data?date=2023-${date}`
+        `/transaction/period-data?date=${date}`
       );
       return data;
     } catch (error) {
