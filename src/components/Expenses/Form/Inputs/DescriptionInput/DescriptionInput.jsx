@@ -5,6 +5,7 @@ import { DescrInput } from './DescriptionInput.styled';
 const DescriptionInput = () => {
   const {
     register,
+    // eslint-disable-next-line
     formState: { errors },
   } = useFormContext(); // retrieve all hook methods
 

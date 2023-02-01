@@ -1,7 +1,5 @@
-// import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-// import { getTransactionsByPeriod } from 'Redux/transactionOperation';
 
 import {
   ReportArrowLeft,
@@ -12,6 +10,8 @@ import {
   ReportExpenseText,
   ReportExpenseList,
   ReportExpenseListItem,
+  ReportExpenseListItemContentWrapper,
+  ReportExpenseListItemBackgroundIncome,
   ReportExpenseListItemAmount,
   ReportExpenseListItemText,
   ReportExpenseListWrapper,
@@ -22,7 +22,6 @@ import OutherIncomes from 'components/ReportIcons/OutherIncomes';
 
 export default function Income() {
   const navigate = useNavigate();
-  // const dispatch = useDispatch();
 
   const onChangeExpensesPageHandler = () => {
     navigate('/home/reports', { replace: true });
@@ -66,12 +65,17 @@ export default function Income() {
           {TotalIncomesArray.map(item =>
             item.map(elem => (
               <ReportExpenseListItem key={elem[0]}>
-                <ReportExpenseListItemAmount>
-                  {elem[1].incomeTotal}
-                </ReportExpenseListItemAmount>
-                {elem[0] === 'З/П' && <Salary />}
-                {elem[0] === 'Доп. доход' && <OutherIncomes />}
-                <ReportExpenseListItemText>{elem[0]}</ReportExpenseListItemText>
+                <ReportExpenseListItemContentWrapper>
+                  <ReportExpenseListItemAmount>
+                    {elem[1].incomeTotal}
+                  </ReportExpenseListItemAmount>
+                  {elem[0] === 'З/П' && <Salary />}
+                  {elem[0] === 'Доп. доход' && <OutherIncomes />}
+                  <ReportExpenseListItemText>
+                    {elem[0]}
+                  </ReportExpenseListItemText>
+                </ReportExpenseListItemContentWrapper>
+                <ReportExpenseListItemBackgroundIncome className="item"></ReportExpenseListItemBackgroundIncome>
               </ReportExpenseListItem>
             ))
           )}
