@@ -195,7 +195,6 @@ export default function AppBarReport() {
   const userPeriodIncomes = userPeriodTotal.map(
     item => item?.incomes.incomeTotal
   );
-
   return (
     <Container>
       <ReportHeaderWrapperTablet>
@@ -245,7 +244,7 @@ export default function AppBarReport() {
         </ReportListItemIndicatorIncome>
       </ReportListIndicator>
       <Outlet />
-      <StatsReport />
+      <StatsReport data1={userPeriodTotal} />
     </Container>
   );
 }

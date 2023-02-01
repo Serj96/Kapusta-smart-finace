@@ -12,19 +12,27 @@ import ChartDataLabels from 'chartjs-plugin-datalabels';
 import { Bar } from 'react-chartjs-2';
 import { StatsWrapper } from "./StatsReposrt.styled";
 import { useMediaQuery } from "react-responsive";
-
+import { useLocation } from "react-router-dom";
 const initialData = [
     { description: 'Rom', amount: 5000, date: '2023-01-01', category: 'Alcohol', },
     { description: 'Banana', amount: 800, date: '2022-04-04', category: 'Alcohol', },
     { description: 'Tablet', amount: 500, date: '2022-04-03', category: 'Alcohol', },
     { description: 'Cinema', amount: 300, date: '2023-01-17', category: 'Alcohol', }];
-
-const StatsReport = ({ data = initialData }) => {
+const initialData1 = [
+    { description: 'sada', amount: 5000, date: '2023-01-01', category: 'Alcohol', },
+    { description: 'Basdanana', amount: 800, date: '2022-04-04', category: 'Alcohol', },
+    { description: 'asda', amount: 500, date: '2022-04-03', category: 'Alcohol', },
+    { description: 'asda', amount: 300, date: '2023-01-17', category: 'Alcohol', }]
+const StatsReport = ({ data = initialData, data1 }) => {
+    const { pathname } = useLocation();
+    if (pathname === "/home/reports/income") {
+        data = initialData1;
+    }
     const isMobScreen = useMediaQuery({ query: '(max-width: 767.98px)' });
-  const isTabScreen = useMediaQuery({ query: '(min-width: 768px)' });
-  const isBeforeDescScreen = useMediaQuery({ query: '(max-width: 1279.98px)' });
-  const isAfterDescScreen = useMediaQuery({ query: '(min-width: 1280px)' });
-    
+    const isTabScreen = useMediaQuery({ query: '(min-width: 768px)' });
+    const isBeforeDescScreen = useMediaQuery({ query: '(max-width: 1279.98px)' });
+    const isAfterDescScreen = useMediaQuery({ query: '(min-width: 1280px)' });
+
     ChartJS.register(
         CategoryScale,
         LinearScale,
@@ -43,7 +51,7 @@ const StatsReport = ({ data = initialData }) => {
             backgroundColor: data.map((el, idx) => idx === 0 ? '#FF751D' : ((idx) % 3) ? '#FFDAC0' : '#FF751D'),
         }],
     };
-    
+
     const options = {
         barPercentage: 0.7,
         layout: {
@@ -76,7 +84,7 @@ const StatsReport = ({ data = initialData }) => {
                     color: '#F5F6FB',
                 }
             },
-            
+
         },
         plugins: {
             legend: {
@@ -123,7 +131,7 @@ const StatsReport = ({ data = initialData }) => {
 
     return (
         <StatsWrapper>
-            { isMobScreen && <Bar plugins={[ChartDataLabels]} options={options} data={chartData} />}
+            {isMobScreen && <Bar plugins={[ChartDataLabels]} options={options} data={chartData} />}
             {isTabScreen && isBeforeDescScreen && <Bar plugins={[ChartDataLabels]} options={options} data={chartData} />}
             {isAfterDescScreen && <Bar plugins={[ChartDataLabels]} options={options} data={chartData} />}
         </StatsWrapper>

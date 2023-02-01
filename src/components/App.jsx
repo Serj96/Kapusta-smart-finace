@@ -2,7 +2,6 @@ import HomePage from './HomePage/HomePage';
 import { useDispatch, useSelector } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
 import { getSid } from 'Redux/kapustaSlice';
-import { Registration } from './Registration/Registration';
 import { Navigate } from 'react-router-dom';
 import { Layout } from './Layout/Layout';
 import AppBarReport from './Report/AppBarReport/AppBarReport';
@@ -34,7 +33,7 @@ export const App = () => {
           path="register"
           element={
             !token ? (
-              <Registration />
+              <HomePage />
             ) : (
               <Navigate to={'/home/expenses'} replace />
             )
