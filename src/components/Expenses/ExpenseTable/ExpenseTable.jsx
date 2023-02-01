@@ -1,5 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useLocation } from 'react-router-dom';
+import { getSid, getUserExpenses, getUserIncomes } from 'Redux/kapustaSlice';
+import { getExpense, getIncome } from 'Redux/transactionOperation';
+
 import { DeleteIcon, ExpButton } from '../ExpenseItem/ExpenseItem.styled';
+import { Modal } from '../Modal/Modal';
+import TransactionDeleteModal from '../Modal/TransactionDeleteModal/TransactionDeleteModal';
 import {
   Table,
   TableC,
@@ -9,24 +17,36 @@ import {
   Th,
 } from './ExpenseTable.styled';
 
-const qwe = [
-  {
-    id: 1,
-    description: 'Undeground',
-    date: '21.11.2019',
-    Category: 'Transport',
-    sum: '- 30.00 UAH.',
-  },
-  {
-    id: 2,
-    description: 'Bananas',
-    date: '21.11.2019',
-    Category: 'Products',
-    sum: '- 50.00 UAH.',
-  },
-];
-
 const ExpenseTable = () => {
+  const { pathname } = useLocation();
+  const dispatch = useDispatch();
+  const expensesList = useSelector(getUserExpenses);
+  const incomeList = useSelector(getUserIncomes);
+  const sid = useSelector(getSid);
+
+  const [swohModalDelete, setShowModalDelete] = useState(false);
+
+  useEffect(() => {
+    if (sid && pathname === '/home/expenses') dispatch(getExpense());
+
+    if (sid && pathname === '/home/income') dispatch(getIncome());
+  }, [dispatch, pathname, sid]);
+
+  const onModal = () => {
+    setShowModalDelete(true);
+    if (swohModalDelete) return setShowModalDelete(false);
+  };
+
+  const formatSum = sum => {
+    const format = sum.toString().includes('-');
+    if (format === false) {
+      return '-' + sum;
+    }
+    return sum;
+  };
+
+  // formatSum(30);
+
   return (
     <>
       <TableWrapper>
@@ -45,27 +65,64 @@ const ExpenseTable = () => {
         <TableC>
           <Table cellpadding="0" cellspacing="0" border="0">
             <tbody>
-              {qwe.map(({ id, date, description, Category, sum }) => (
-                <tr key={id}>
-                  <Td>{date}</Td>
-                  <Td>{description}</Td>
-                  <Td>{Category}</Td>
-                  <Td>
-                    <div
-                      style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '50px',
-                      }}
-                    >
-                      {sum}
-                      <ExpButton type="button">
-                        <DeleteIcon />
-                      </ExpButton>
-                    </div>
-                  </Td>
-                </tr>
-              ))}
+              {pathname === '/home/expenses' &&
+                expensesList?.map(
+                  ({ _id, date, description, category, amount }) => (
+                    <tr key={_id}>
+                      <Td>{date}</Td>
+                      <Td>{description}</Td>
+                      <Td>{category}</Td>
+                      <Td path={pathname}>
+                        <div
+                          style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'space-between',
+                          }}
+                        >
+                          {formatSum(amount)}
+                          <ExpButton type="button" onClick={onModal}>
+                            <DeleteIcon />
+                          </ExpButton>
+                        </div>
+                      </Td>
+                      {swohModalDelete && (
+                        <Modal onClose={onModal}>
+                          <TransactionDeleteModal id={_id} onClose={onModal} />
+                        </Modal>
+                      )}
+                    </tr>
+                  )
+                )}
+              {pathname === '/home/income' &&
+                incomeList?.map(
+                  ({ _id, date, description, category, amount }) => (
+                    <tr key={_id}>
+                      <Td>{date}</Td>
+                      <Td>{description}</Td>
+                      <Td>{category}</Td>
+                      <Td path={pathname}>
+                        <div
+                          style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'space-between',
+                          }}
+                        >
+                          {amount}
+                          <ExpButton type="button" onClick={onModal}>
+                            <DeleteIcon />
+                          </ExpButton>
+                        </div>
+                      </Td>
+                      {swohModalDelete && (
+                        <Modal onClose={onModal}>
+                          <TransactionDeleteModal id={_id} onClose={onModal} />
+                        </Modal>
+                      )}
+                    </tr>
+                  )
+                )}
             </tbody>
           </Table>
         </TableC>

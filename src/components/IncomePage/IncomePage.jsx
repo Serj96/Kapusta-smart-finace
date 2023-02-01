@@ -11,9 +11,11 @@ import {
   BalanceWrapper,
   ExpensePageWrapper,
   MainPageWrapper,
+  Page,
   ReportsLink,
   TableSummaryWrapper,
 } from '../ExpensesPage/ExpensesPage.styled';
+import { Container } from 'components/App.styled';
 
 const IncomePage = () => {
   const isMobScreen = useMediaQuery({ query: '(max-width: 767.98px)' });
@@ -23,35 +25,41 @@ const IncomePage = () => {
 
   return (
     <>
-      {isMobScreen && <Form />}
+      {isMobScreen && (
+        <Container>
+          <Form />
+        </Container>
+      )}
       {isTabScreen && (
         <>
-          <MainPageWrapper>
-            <BalanceWrapper>
-              <Balance />
-              <ReportsLink to={'/home/reports'}>
-                <>
-                  <span>Reports</span>
-                  <MdBarChart size={'24px'} />
-                </>
-              </ReportsLink>
-            </BalanceWrapper>
-            <div>
-              <NavLink />
-              <ExpensePageWrapper>
-                <div>
+          <Page>
+            <MainPageWrapper>
+              <BalanceWrapper>
+                <Balance />
+                <ReportsLink to={'/home/reports'}>
+                  <>
+                    <span>Reports</span>
+                    <MdBarChart size={'24px'} />
+                  </>
+                </ReportsLink>
+              </BalanceWrapper>
+              <div>
+                <NavLink />
+                <ExpensePageWrapper>
                   <div>
-                    <Form />
-                    <TableSummaryWrapper>
-                      <ExpenseTable />
-                      {isAfterDescScreen && <Summary />}
-                    </TableSummaryWrapper>
+                    <div>
+                      <Form />
+                      <TableSummaryWrapper>
+                        <ExpenseTable />
+                        {isAfterDescScreen && <Summary />}
+                      </TableSummaryWrapper>
+                    </div>
                   </div>
-                </div>
-              </ExpensePageWrapper>
-            </div>
-            {isBeforeDescScreen && <Summary />}
-          </MainPageWrapper>
+                </ExpensePageWrapper>
+              </div>
+              {isBeforeDescScreen && <Summary />}
+            </MainPageWrapper>
+          </Page>
         </>
       )}
     </>

@@ -4,6 +4,7 @@ import { ReportExpenseListItemSvg } from './Icons.styled';
 function Ufo() {
   return (
     <ReportExpenseListItemSvg
+      className="item-icon"
       xmlns="http://www.w3.org/2000/svg"
       width="56"
       height="56"

@@ -1,74 +1,73 @@
-// import React from 'react';
+import { useEffect } from 'react';
 import { Controller, useFormContext } from 'react-hook-form';
-
-// const CategoryInput = () => {
-// const {
-//   register,
-//   control,
-//   formState: { errors },
-// } = useFormContext();
-
-//   return (
-//     <>
-//       <Controller
-//         control={control}
-//         name="category"
-//         render={({ field }) => (
-//           <Select
-//             options={options}
-//             onChange={date => field.onChange(date)}
-//             selected={field.value}
-//           />
-//         )}
-//       />
-//     </>
-//   );
-// };
-
-// export default CategoryInput;
-
-import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 
 import Select from 'react-select';
-import { register } from 'Redux/authOperaions';
-import { colorStyles } from './CategoryInput.styled';
-// import { colourOptions } from '../data';
-// import Select from 'react-select';
-
-const options = [
-  { category: 'Transport' },
-  { category: 'Products' },
-  { category: 'Health' },
-  { category: 'Alcohol' },
-  { category: 'Entertainment' },
-];
+import {
+  getExpensesCategory,
+  getIncomeCategory,
+  getSid,
+} from 'Redux/kapustaSlice';
+import {
+  getExpenseCategories,
+  getIncomeCategories,
+} from 'Redux/transactionOperation';
+import {
+  ErrorMessage,
+  ErrorPositionWrapper,
+} from '../DescriptionInput/DescriptionInput.styled';
+import { colourStyles } from './CategoryInput.styled';
 
 export default function CategoryInput() {
+  const { pathname } = useLocation();
+  const dispatch = useDispatch();
+  const expensCategory = useSelector(getExpensesCategory);
+  const incomeCategory = useSelector(getIncomeCategory);
+  const sid = useSelector(getSid);
+
+  useEffect(() => {
+    if (sid && pathname === '/home/expenses') dispatch(getExpenseCategories());
+
+    if (sid && pathname === '/home/income') dispatch(getIncomeCategories());
+  }, [dispatch, pathname, sid]);
+
   const {
-    register,
     control,
+    // eslint-disable-next-line
     formState: { errors },
   } = useFormContext();
 
+  const categories = () => {
+    if (pathname === '/home/expenses')
+      return expensCategory?.map(i => <options>{i}</options>);
+
+    if (pathname === '/home/income')
+      return incomeCategory?.map(i => <options>{i}</options>);
+  };
+
   return (
     <>
-      <Controller
-        control={control}
-        name="category"
-        render={({ field: { onChange, value, ref } }) => (
-          <Select
-            styles={colorStyles}
-            placeholder="Product category"
-            getOptionLabel={i => i.props.children.category}
-            getOptionValue={i => i.props.children.category}
-            inputRef={ref}
-            onChange={i => onChange(i.props.children.category)}
-            options={options.map(i => (
-              <options>{i}</options>
-            ))}
-          />
+      <ErrorPositionWrapper>
+        <Controller
+          control={control}
+          name="category"
+          render={({ field: { onChange, value, ref } }) => (
+            <Select
+              styles={colourStyles}
+              placeholder="Product category"
+              getOptionLabel={i => i.props.children}
+              getOptionValue={i => i.props.children}
+              inputRef={ref}
+              onChange={i => onChange(i.props.children)}
+              options={categories()}
+            />
+          )}
+        />
+        {errors?.category && (
+          <ErrorMessage>{errors?.category?.message || 'Error!'}</ErrorMessage>
         )}
-      />
+      </ErrorPositionWrapper>
     </>
   );
 }

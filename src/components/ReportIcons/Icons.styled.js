@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+// import { ReportExpenseListItemBackground } from 'pages/Report/Report.styled';
 
 export const ReportExpenseListItemSvg = styled.svg`
   margin-bottom: 8px;
@@ -6,8 +7,8 @@ export const ReportExpenseListItemSvg = styled.svg`
   transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover,
-  &:focus {
-    fill: #ff751d;
+  &:focus ReportExpenseListItemBackground {
+    background-color: #ffdac0;
   }
 `;
 

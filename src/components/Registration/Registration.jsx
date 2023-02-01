@@ -39,7 +39,7 @@ export const Registration = () => {
     validate,
     onSubmit: values => {
       dispath(register(values));
-      navigate("/home")
+      navigate('/home');
     },
   });
   return (
@@ -63,20 +63,20 @@ export const Registration = () => {
         <p className="buttonGoogleRegText">
           Or log in using an email and password, after registering:
         </p>
-          <label className="emailLabel" htmlFor="email">
-            Email :
-          </label>
-          <input
-            id="email"
-            name="email"
-            type="email"
-            onChange={formik.handleChange}
-            value={formik.values.email}
-            placeholder="your@email.com"
-          />
-          {formik.errors.email ? (
-            <ErrorMsg>{formik.errors.email}</ErrorMsg>
-          ) : null}
+        <label className="emailLabel" htmlFor="email">
+          Email :
+        </label>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          onChange={formik.handleChange}
+          value={formik.values.email}
+          placeholder="your@email.com"
+        />
+        {formik.errors.email ? (
+          <ErrorMsg>{formik.errors.email}</ErrorMsg>
+        ) : null}
         <label className="passwordLabel" htmlFor="password">
           Password :
         </label>
@@ -91,13 +91,13 @@ export const Registration = () => {
         {formik.errors.password ? (
           <ErrorMsg>{formik.errors.password}</ErrorMsg>
         ) : null}
-      <ButtonWrapper>
-        <SubmitButton type={'submit'}>Registration</SubmitButton>
+        <ButtonWrapper>
+          <SubmitButton type={'submit'}>Registration</SubmitButton>
           <LinkRegistr to="/home" styled={{ textDecoration: 'none' }}>
             Log In
           </LinkRegistr>
-      </ButtonWrapper>
+        </ButtonWrapper>
       </LoginForm>
-      </LoginDiv>
+    </LoginDiv>
   );
 };

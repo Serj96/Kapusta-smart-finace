@@ -1,7 +1,5 @@
-// import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-// import { getTransactionsByPeriod } from 'Redux/transactionOperation';
 
 import {
   ReportArrowLeft,
@@ -11,7 +9,9 @@ import {
   ReportExpenseWrapper,
   ReportExpenseText,
   ReportExpenseList,
+  ReportExpenseListItemContentWrapper,
   ReportExpenseListItem,
+  ReportExpenseListItemBackground,
   ReportExpenseListItemAmount,
   ReportExpenseListItemText,
   ReportExpenseListWrapper,
@@ -31,7 +31,6 @@ import Ufo from 'components/ReportIcons/Ufo';
 
 export default function Expense() {
   const navigate = useNavigate();
-  // const dispatch = useDispatch();
 
   const onChangeExpensesPageHandler = () => {
     navigate('/home/reports', { replace: true });
@@ -75,21 +74,26 @@ export default function Expense() {
           {TotalExpensesArray.map(item =>
             item.map(elem => (
               <ReportExpenseListItem key={elem[0]}>
-                <ReportExpenseListItemAmount>
-                  {elem[1].expenseTotal}
-                </ReportExpenseListItemAmount>
-                {elem[0] === 'Alcohol' && <Cocktail />}
-                {elem[0] === 'Продукты' && <Products />}
-                {elem[0] === 'Health' && <HandsHoldingHeart />}
-                {elem[0] === 'Entertainment' && <Kite />}
-                {elem[0] === 'Транспорт' && <Car />}
-                {elem[0] === 'Всё для дома' && <Couch />}
-                {elem[0] === 'Technique' && <Tools />}
-                {elem[0] === 'Communal, communication' && <Invoice />}
-                {elem[0] === 'Sports, hobbies' && <Clay />}
-                {elem[0] === 'Учеба' && <Boock />}
-                {elem[0] === 'Other' && <Ufo />}
-                <ReportExpenseListItemText>{elem[0]}</ReportExpenseListItemText>
+                <ReportExpenseListItemContentWrapper>
+                  <ReportExpenseListItemAmount>
+                    {elem[1].expenseTotal}
+                  </ReportExpenseListItemAmount>
+                  {elem[0] === 'Алкоголь' && <Cocktail />}
+                  {elem[0] === 'Продукты' && <Products />}
+                  {elem[0] === 'Здоровье' && <HandsHoldingHeart />}
+                  {elem[0] === 'Развлечения' && <Kite />}
+                  {elem[0] === 'Транспорт' && <Car />}
+                  {elem[0] === 'Всё для дома' && <Couch />}
+                  {elem[0] === 'Техника' && <Tools />}
+                  {elem[0] === 'Коммуналка и связь' && <Invoice />}
+                  {elem[0] === 'Спорт и хобби' && <Clay />}
+                  {elem[0] === 'Образование' && <Boock />}
+                  {elem[0] === 'Прочее' && <Ufo />}
+                  <ReportExpenseListItemText>
+                    {elem[0]}
+                  </ReportExpenseListItemText>
+                </ReportExpenseListItemContentWrapper>
+                <ReportExpenseListItemBackground className="item"></ReportExpenseListItemBackground>
               </ReportExpenseListItem>
             ))
           )}
