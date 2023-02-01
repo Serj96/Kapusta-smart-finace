@@ -199,7 +199,7 @@ export const ButtonWrapper = styled.div`
 `;
 
 export const SubmitButton = styled.button`
-  padding: 12px 29px;
+  padding: 12px 14px;
 
   font-weight: 700;
   font-size: 12px;
@@ -221,7 +221,7 @@ export const SubmitButton = styled.button`
 
 export const LinkRegistr = styled(NavLink)`
   
-  padding: 12px 14px;
+  padding: 12px 33px;
 
   text-decoration: none;
   font-weight: 700;
