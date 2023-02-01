@@ -13,6 +13,10 @@ import {
   getExpenseCategories,
   getIncomeCategories,
 } from 'Redux/transactionOperation';
+import {
+  ErrorMessage,
+  ErrorPositionWrapper,
+} from '../DescriptionInput/DescriptionInput.styled';
 import { colourStyles } from './CategoryInput.styled';
 
 export default function CategoryInput() {
@@ -44,21 +48,26 @@ export default function CategoryInput() {
 
   return (
     <>
-      <Controller
-        control={control}
-        name="category"
-        render={({ field: { onChange, value, ref } }) => (
-          <Select
-            styles={colourStyles}
-            placeholder="Product category"
-            getOptionLabel={i => i.props.children}
-            getOptionValue={i => i.props.children}
-            inputRef={ref}
-            onChange={i => onChange(i.props.children)}
-            options={categories()}
-          />
+      <ErrorPositionWrapper>
+        <Controller
+          control={control}
+          name="category"
+          render={({ field: { onChange, value, ref } }) => (
+            <Select
+              styles={colourStyles}
+              placeholder="Product category"
+              getOptionLabel={i => i.props.children}
+              getOptionValue={i => i.props.children}
+              inputRef={ref}
+              onChange={i => onChange(i.props.children)}
+              options={categories()}
+            />
+          )}
+        />
+        {errors?.category && (
+          <ErrorMessage>{errors?.category?.message || 'Error!'}</ErrorMessage>
         )}
-      />
+      </ErrorPositionWrapper>
     </>
   );
 }

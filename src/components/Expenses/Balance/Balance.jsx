@@ -14,6 +14,10 @@ import { useEffect } from 'react';
 import { getSid, getUserBalance } from 'Redux/kapustaSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeBalance, getUser } from 'Redux/userOperations';
+import {
+  ErrorMessage,
+  ErrorPositionWrapper,
+} from '../Form/Inputs/DescriptionInput/DescriptionInput.styled';
 
 const schema = yup
   .object({
@@ -57,18 +61,20 @@ const Balance = () => {
       <BalanceFormWrapper>
         <TitleBalance>Balance:</TitleBalance>
         <Form onSubmit={handleSubmit(onSubmit)}>
-          <AmountInput
-            {...register('newBalance')}
-            name="newBalance"
-            type="text"
-            placeholder={`${balance}.00 UAH`}
-          />
-          <DarkModal />
-          {errors?.amount && (
-            <div style={{ color: '#ff4545' }}>
-              this field is required and must be a number
-            </div>
-          )}
+          <ErrorPositionWrapper>
+            <AmountInput
+              {...register('newBalance')}
+              name="newBalance"
+              type="text"
+              placeholder={`${balance}.00 UAH`}
+            />
+            {balance === 0 && <DarkModal />}
+            {errors?.newBalance && (
+              <ErrorMessage>
+                {'this field is required and must be a number'}
+              </ErrorMessage>
+            )}
+          </ErrorPositionWrapper>
           <ConfirmBtn type="submit">Confirm</ConfirmBtn>
         </Form>
       </BalanceFormWrapper>

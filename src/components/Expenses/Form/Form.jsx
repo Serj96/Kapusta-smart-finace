@@ -16,10 +16,15 @@ import { addExpense, addIncome } from 'Redux/transactionOperation';
 
 const schema = yup
   .object({
-    description: yup.string().required(),
-    amount: yup.number().integer().required(),
-    date: yup.string().required(),
-    category: yup.string().required(),
+    description: yup.string().required('This field is required'),
+    amount: yup
+      .number()
+      .integer()
+      .min(1)
+      .max(1000000000)
+      .required('This field is required'),
+    date: yup.string().required('Select date'),
+    category: yup.string().required('Select category'),
   })
   .required();
 
