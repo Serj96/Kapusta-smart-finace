@@ -1,6 +1,26 @@
 import styled from '@emotion/styled';
 import { myTheme } from 'components/Theme/Theme';
 
+export const ErrorPositionWrapper = styled.div`
+  position: relative;
+
+  @media screen and (max-width: 767.98px) {
+    position: static;
+  }
+`;
+
+export const ErrorMessage = styled.p`
+  position: absolute;
+  top: 100%;
+  left: 0;
+  color: red;
+  font-size: 12px;
+
+  @media screen and (max-width: 767.98px) {
+    position: static;
+  }
+`;
+
 export const DescrInput = styled.input`
   width: 280px;
   height: 44px;
@@ -9,6 +29,10 @@ export const DescrInput = styled.input`
   border: 2px solid ${myTheme.backgroundColors.primary};
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
+
+  &:focus-visible {
+    outline: none;
+  }
 
   ::placeholder {
     font-size: 12px;

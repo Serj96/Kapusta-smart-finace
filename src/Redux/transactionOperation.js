@@ -13,11 +13,12 @@ const setToken = token => {
 
 export const addIncome = createAsyncThunk(
   'transaction/income/add',
-  async (credentials, { rejectWithValue, getState }) => {
+  async (credentials, { rejectWithValue, getState, dispatch }) => {
     const state = getState();
     setToken(state.kapusta.accessToken);
     try {
       const { data } = await axios.post('/transaction/income', credentials);
+      dispatch(getIncome());
       return data;
     } catch (error) {
       return rejectWithValue(error);
@@ -41,11 +42,13 @@ export const getIncome = createAsyncThunk(
 
 export const addExpense = createAsyncThunk(
   'transaction/expense/add',
-  async (credentials, { rejectWithValue, getState }) => {
+  async (credentials, { rejectWithValue, getState, dispatch }) => {
     const state = getState();
     setToken(state.kapusta.accessToken);
     try {
       const { data } = await axios.post('/transaction/expense', credentials);
+      dispatch(getExpense());
+
       return data;
     } catch (error) {
       return rejectWithValue(error);
@@ -69,7 +72,7 @@ export const getExpense = createAsyncThunk(
 );
 
 export const deleteTransaction = createAsyncThunk(
-  'transaction',
+  'transaction/delete',
   async (transactionId, { rejectWithValue, dispatch, getState }) => {
     const state = getState();
     setToken(state.kapusta.accessToken);
@@ -122,9 +125,9 @@ export const getTransactionsByPeriod = createAsyncThunk(
     setToken(state.kapusta.accessToken);
     try {
       const { data } = await axios.get(
-        `/transaction/period-data?date=2023-${date}`
+        // `/transaction/period-data?date=2023-${date}`
+        `/transaction/period-data?date=${date}`
       );
-
       return data;
     } catch (error) {
       return rejectWithValue(error);

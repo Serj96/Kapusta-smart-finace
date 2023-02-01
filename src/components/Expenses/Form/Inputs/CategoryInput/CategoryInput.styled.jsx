@@ -1,6 +1,7 @@
-export const colorStyles = {
+export const colourStyles = {
   control: styles => ({
     ...styles,
+    backgroundColor: 'transparent',
     borderRadius: 'none',
     border: '2px solid #fff',
     borderBottomRightRadius: '16px',
@@ -20,11 +21,23 @@ export const colorStyles = {
       },
     },
   }),
-  option: styles => {
+  option: (styles, state) => {
     return {
       ...styles,
+      '&:hover': { backgroundColor: '#F5F6FB', color: ' #52555F' },
+      backgroundColor: state.isFocused ? '#F5F6FB' : 'normal',
+      color: state.isFocused ? '#52555F' : '#C7CCDC',
+    };
+  },
+  placeholder: defaultStyles => {
+    return {
+      ...defaultStyles,
+      fontSize: '12px',
+      lineHeight: '14px',
+      display: 'flex',
+      alignItems: 'center',
+      letterSpacing: ' 0.02em',
       color: '#C7CCDC',
-      // ':selection': { backgroundColor: '#F5F6FB', color: ' #52555F' },
     };
   },
 };

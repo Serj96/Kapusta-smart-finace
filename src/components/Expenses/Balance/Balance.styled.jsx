@@ -39,7 +39,7 @@ export const AmountInput = styled.input`
   font-weight: 700;
   font-size: 12px;
   line-height: 1.17;
-  text-align: right;
+  text-align: center;
   letter-spacing: 0.02em;
   text-transform: uppercase;
   color: ${myTheme.colors.secondary};
@@ -68,6 +68,7 @@ export const ConfirmBtn = styled.button`
   border: 2px solid ${myTheme.backgroundColors.primary};
   border-radius: 0px 22px 22px 0px;
   cursor: pointer;
+  background-color: transparent;
 
   transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
     background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
