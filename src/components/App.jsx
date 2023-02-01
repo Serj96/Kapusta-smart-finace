@@ -47,7 +47,10 @@ export const App = () => {
           path="income"
           element={token ? <IncomePage /> : <Navigate to={'/home'} />}
         />
-        <Route path="reports" element={token ? <AppBarReport /> : <Navigate to={"/home"} />}>
+        <Route
+          path="reports"
+          element={token ? <AppBarReport /> : <Navigate to={'/home'} />}
+        >
           <Route index element={<Expense />} />
           <Route
             path="income"
