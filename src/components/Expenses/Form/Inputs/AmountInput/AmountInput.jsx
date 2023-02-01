@@ -3,6 +3,10 @@ import React from 'react';
 import { useFormContext } from 'react-hook-form';
 import { FaCalculator } from 'react-icons/fa';
 import { useMediaQuery } from 'react-responsive';
+import {
+  ErrorMessage,
+  ErrorPositionWrapper,
+} from '../DescriptionInput/DescriptionInput.styled';
 
 import { AmounInput, AmountWrapper, IconBtn } from './AmountInput.styled';
 
@@ -29,17 +33,24 @@ const AmountInput = () => {
   return (
     <>
       {/* <input type="text " placeholder="input" ref={ref} /> */}
-      <AmountWrapper>
-        <AmounInput
-          {...register('amount')}
-          type="text"
-          placeholder={placeholder}
-          // innerRef={ref}
-        />
-        <IconBtn type="button">
-          <FaCalculator size={'20px'} color={'#52555F'} />
-        </IconBtn>
-      </AmountWrapper>
+      <ErrorPositionWrapper>
+        <AmountWrapper>
+          <AmounInput
+            {...register('amount')}
+            type="text"
+            placeholder={placeholder}
+            // innerRef={ref}
+          />
+          <IconBtn type="button">
+            <FaCalculator size={'20px'} color={'#52555F'} />
+          </IconBtn>
+          {errors?.amount && (
+            <ErrorMessage>
+              {'This field is required and must be a number'}
+            </ErrorMessage>
+          )}
+        </AmountWrapper>
+      </ErrorPositionWrapper>
     </>
   );
 };
