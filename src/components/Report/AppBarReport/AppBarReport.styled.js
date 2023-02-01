@@ -183,14 +183,14 @@ export const ReportListItemIndicatorExpenses = styled.li`
     flex-direction: column;
     padding: 10px;
 
-    width: 70px;
+    width: 120px;
   }
 
   @media (min-width: 768px) {
     padding: 15px 20px 15px 130px;
 
     &::after {
-      left: 356px;
+      left: 340px;
       height: 36px;
     }
   }
@@ -205,7 +205,7 @@ export const ReportListItemIndicatorIncome = styled.li`
     flex-direction: column;
     padding: 10px;
 
-    width: 70px;
+    width: 120px;
   }
 
   @media (min-width: 768px) {
