@@ -3,9 +3,6 @@ import { myTheme } from 'components/Theme/Theme';
 import { NavLink } from 'react-router-dom';
 
 export const LoginDiv = styled.div`
-  margin-left: 170px;
-  margin-right: 170px;
-
   .textunderLogo {
     font-size: 13px;
     line-height: 15px;
@@ -29,6 +26,9 @@ export const LoginDiv = styled.div`
   }
 
   @media screen and (min-width: 768px) {
+    margin-left: 170px;
+    margin-right: 170px;
+    
     .textunderLogo {
       font-weight: 700;
       font-size: 16px;
@@ -77,6 +77,10 @@ export const LoginForm = styled.form`
 
   .buttonGoogleRegText {
     margin-top: 32px;
+
+    @media screen and (min-width: 768px) {
+      padding-right: 20px;
+    }
   }
 
   .emailLabel {
