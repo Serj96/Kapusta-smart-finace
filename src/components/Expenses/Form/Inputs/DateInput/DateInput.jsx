@@ -6,6 +6,10 @@ import { FaRegCalendarAlt } from 'react-icons/fa';
 import { DateBtn } from './DateInput.styled';
 
 import format from 'date-fns/format';
+import {
+  ErrorMessage,
+  ErrorPositionWrapper,
+} from '../DescriptionInput/DescriptionInput.styled';
 
 const ExampleCustomInput = forwardRef(({ value, onClick }, ref) => (
   <DateBtn onClick={onClick} ref={ref} type="button">
@@ -18,27 +22,32 @@ export const DateInput = () => {
   const [startDate, setStartDate] = useState(new Date());
   const {
     control,
-    // eslint-disable-next-line
     formState: { errors },
   } = useFormContext(); // retrieve all hook methods
 
   return (
     <>
-      <Controller
-        control={control}
-        name="date"
-        render={({ field }) => (
-          <ReactDatePicker
-            onChange={date => {
-              setStartDate(date);
-              return field.onChange(format(date, 'yyyy-MM-dd'));
-            }}
-            selected={startDate}
-            dateFormat="yy.MM.dd"
-            customInput={<ExampleCustomInput />}
-          />
+      <ErrorPositionWrapper>
+        <Controller
+          control={control}
+          name="date"
+          rules={{ required: true }}
+          render={({ field, fieldState: { error } }) => (
+            <ReactDatePicker
+              onChange={date => {
+                setStartDate(date);
+                return field.onChange(format(date, 'yyyy-MM-dd'));
+              }}
+              selected={startDate}
+              dateFormat="yy.MM.dd"
+              customInput={<ExampleCustomInput />}
+            />
+          )}
+        />
+        {errors?.date && (
+          <ErrorMessage>{errors?.date?.message || 'Error!'}</ErrorMessage>
         )}
-      />
+      </ErrorPositionWrapper>
     </>
   );
 };

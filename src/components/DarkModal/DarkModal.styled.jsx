@@ -11,9 +11,13 @@ export const Backdrop = styled.div`
 `;
 
 export const Window = styled.div`
-  position: fixed;
-  top: 250px;
-  left: 50%;
+  z-index: 1;
+  position: absolute;
+  top: 190px;
+  left: auto;
+  /* position: fixed; */
+  /* top: 250px;
+  left: 50%; */
 
   max-height: 163px;
   max-width: 280px;
@@ -24,17 +28,19 @@ export const Window = styled.div`
   background: linear-gradient(117.84deg, #1d346a 2.84%, #031634 67.28%);
   box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
 
-  transform: translateX(-50%);
+  /* transform: translateX(-50%); */
 
   @media screen and (min-width: 768px) {
-    max-width: 288px;
-    top: 160px;
+    top: 115%;
+    width: 288px;
+    /* max-width: 288px; */
+    /* top: 160px;  */
   }
 
   @media screen and (min-width: 1280px) {
-    max-width: 288px;
-    top: 130px;
-    left: 39%;
+    /* max-width: 288px; */
+    /* top: 130px;
+    left: 39%; */
   }
 
   &:before {
