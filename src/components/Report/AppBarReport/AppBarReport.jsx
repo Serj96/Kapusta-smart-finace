@@ -102,13 +102,13 @@ export default function AppBarReport() {
         <ReportListItemIndicatorExpenses>
           <ReportListItemIndicatorText>Expenses:</ReportListItemIndicatorText>
           <ReportListItemIndicatorExpensesAmount>
-            {[...userPeriodExpenses]} UAH.
+            - {[...userPeriodExpenses]} UAH.
           </ReportListItemIndicatorExpensesAmount>
         </ReportListItemIndicatorExpenses>
         <ReportListItemIndicatorIncome>
           <ReportListItemIndicatorText>Income:</ReportListItemIndicatorText>
           <ReportListItemIndicatorIncomeAmount>
-            {[...userPeriodIncomes]} UAH.
+            + {[...userPeriodIncomes]} UAH.
           </ReportListItemIndicatorIncomeAmount>
         </ReportListItemIndicatorIncome>
       </ReportListIndicator>

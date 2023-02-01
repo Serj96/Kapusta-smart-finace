@@ -9,9 +9,7 @@ import {
   ReportExpenseWrapper,
   ReportExpenseText,
   ReportExpenseList,
-  ReportExpenseListItemContentWrapper,
   ReportExpenseListItem,
-  ReportExpenseListItemBackground,
   ReportExpenseListItemAmount,
   ReportExpenseListItemText,
   ReportExpenseListWrapper,
@@ -49,6 +47,7 @@ export default function Expense() {
   );
 
   const TotalExpensesArray = userPeriodDataTotalExpenses.map(item => item);
+  console.log(TotalExpensesArray);
 
   return (
     <>
@@ -74,26 +73,21 @@ export default function Expense() {
           {TotalExpensesArray.map(item =>
             item.map(elem => (
               <ReportExpenseListItem key={elem[0]}>
-                <ReportExpenseListItemContentWrapper>
-                  <ReportExpenseListItemAmount>
-                    {elem[1].expenseTotal}
-                  </ReportExpenseListItemAmount>
-                  {elem[0] === 'Алкоголь' && <Cocktail />}
-                  {elem[0] === 'Продукты' && <Products />}
-                  {elem[0] === 'Здоровье' && <HandsHoldingHeart />}
-                  {elem[0] === 'Развлечения' && <Kite />}
-                  {elem[0] === 'Транспорт' && <Car />}
-                  {elem[0] === 'Всё для дома' && <Couch />}
-                  {elem[0] === 'Техника' && <Tools />}
-                  {elem[0] === 'Коммуналка и связь' && <Invoice />}
-                  {elem[0] === 'Спорт и хобби' && <Clay />}
-                  {elem[0] === 'Образование' && <Boock />}
-                  {elem[0] === 'Прочее' && <Ufo />}
-                  <ReportExpenseListItemText>
-                    {elem[0]}
-                  </ReportExpenseListItemText>
-                </ReportExpenseListItemContentWrapper>
-                <ReportExpenseListItemBackground className="item"></ReportExpenseListItemBackground>
+                <ReportExpenseListItemAmount>
+                  {elem[1].total}
+                </ReportExpenseListItemAmount>
+                {elem[0] === 'Алкоголь' && <Cocktail />}
+                {elem[0] === 'Продукты' && <Products />}
+                {elem[0] === 'Здоровье' && <HandsHoldingHeart />}
+                {elem[0] === 'Развлечения' && <Kite />}
+                {elem[0] === 'Транспорт' && <Car />}
+                {elem[0] === 'Всё для дома' && <Couch />}
+                {elem[0] === 'Техника' && <Tools />}
+                {elem[0] === 'Коммуналка и связь' && <Invoice />}
+                {elem[0] === 'Спорт и хобби' && <Clay />}
+                {elem[0] === 'Образование' && <Boock />}
+                {elem[0] === 'Прочее' && <Ufo />}
+                <ReportExpenseListItemText>{elem[0]}</ReportExpenseListItemText>
               </ReportExpenseListItem>
             ))
           )}

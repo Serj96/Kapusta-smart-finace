@@ -60,6 +60,7 @@ export const ReportCurrentAmountWrapper = styled.div`
 
   @media (min-width: 1280px) {
     margin-right: 16px;
+    cursor: pointer;
   }
 `;
 
@@ -97,11 +98,9 @@ export const ReportCurrentAmount = styled.input`
     width: 80px;
   }
 
-  /* &[value] {
-    font-family: cursive;
-    font-size: 24px;
-    color: gray;
-  } */
+  @media (min-width: 1280px) {
+    cursor: pointer;
+  }
 `;
 
 export const ReportCurrentConfirmWrapper = styled.button`
@@ -112,6 +111,8 @@ export const ReportCurrentConfirmWrapper = styled.button`
   background-color: transparent;
   border: none;
   outline: none;
+
+  cursor: pointer;
 
   @media (max-width: 1279.98px) {
     position: absolute;

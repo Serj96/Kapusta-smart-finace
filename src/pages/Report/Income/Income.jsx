@@ -10,8 +10,6 @@ import {
   ReportExpenseText,
   ReportExpenseList,
   ReportExpenseListItem,
-  ReportExpenseListItemContentWrapper,
-  ReportExpenseListItemBackgroundIncome,
   ReportExpenseListItemAmount,
   ReportExpenseListItemText,
   ReportExpenseListWrapper,
@@ -65,17 +63,12 @@ export default function Income() {
           {TotalIncomesArray.map(item =>
             item.map(elem => (
               <ReportExpenseListItem key={elem[0]}>
-                <ReportExpenseListItemContentWrapper>
-                  <ReportExpenseListItemAmount>
-                    {elem[1].incomeTotal}
-                  </ReportExpenseListItemAmount>
-                  {elem[0] === 'З/П' && <Salary />}
-                  {elem[0] === 'Доп. доход' && <OutherIncomes />}
-                  <ReportExpenseListItemText>
-                    {elem[0]}
-                  </ReportExpenseListItemText>
-                </ReportExpenseListItemContentWrapper>
-                <ReportExpenseListItemBackgroundIncome className="item"></ReportExpenseListItemBackgroundIncome>
+                <ReportExpenseListItemAmount>
+                  {elem[1].total}
+                </ReportExpenseListItemAmount>
+                {elem[0] === 'З/П' && <Salary />}
+                {elem[0] === 'Доп. доход' && <OutherIncomes />}
+                <ReportExpenseListItemText>{elem[0]}</ReportExpenseListItemText>
               </ReportExpenseListItem>
             ))
           )}
