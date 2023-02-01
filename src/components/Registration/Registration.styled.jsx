@@ -12,6 +12,7 @@ export const LoginDiv = styled.div`
     padding-right: 100px;
     margin: 0 auto;
   }
+
   .logo {
     width: 183px;
   }
@@ -23,7 +24,11 @@ export const LoginDiv = styled.div`
     padding-top: 86px;
     margin-bottom: 50px;
   }
+
   @media screen and (min-width: 768px) {
+    margin-left: 170px;
+    margin-right: 170px;
+
     .textunderLogo {
       font-weight: 700;
       font-size: 16px;
@@ -31,32 +36,29 @@ export const LoginDiv = styled.div`
       letter-spacing: 0.18em;
       text-transform: uppercase;
     }
-   
+
     .logo {
       width: 306px;
     }
-    margin-left: 170px;
-    margin-right: 170px;
+  }
 
-    @media screen and (min-width: 1280px) {
-    .logo {
-    width: 377px;
-    }
-
-   .loginDiv {
+  @media screen and (min-width: 1280px) {
     padding-top: 117px;
     display: flex;
     align-items: center;
-    }
-   .logoDiv {
-    padding-left: 107px;
-    margin-right: 157px;
-    }
-  .loginDiv {
+
     padding: 0;
     margin: 0;
     padding-top: 117px;
-  }
+
+    .logo {
+      width: 377px;
+    }
+
+    .logoDiv {
+      padding-left: 107px;
+      margin-right: 157px;
+    }
   }
 `;
 
@@ -75,6 +77,10 @@ export const LoginForm = styled.form`
 
   .buttonGoogleRegText {
     margin-top: 32px;
+
+    @media screen and (min-width: 768px) {
+      padding-right: 20px;
+    }
   }
 
   .emailLabel {
@@ -114,7 +120,6 @@ export const LoginForm = styled.form`
 
       color: #a6abb9;
     }
-
   }
   @media screen and (min-width: 767px) {
     width: 426px;
@@ -191,6 +196,7 @@ export const ErrorMsg = styled.div`
 
   color: #eb5757;
 `;
+
 export const ButtonWrapper = styled.div`
   display: flex;
   margin-top: 40px;
@@ -199,7 +205,8 @@ export const ButtonWrapper = styled.div`
 `;
 
 export const SubmitButton = styled.button`
-  padding: 12px 14px;
+  width: 116px;
+  height: 44px;
 
   font-weight: 700;
   font-size: 12px;
@@ -221,7 +228,12 @@ export const SubmitButton = styled.button`
 
 export const LinkRegistr = styled(NavLink)`
   
-  padding: 12px 33px;
+    width: 116px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
 
   text-decoration: none;
   font-weight: 700;
@@ -241,4 +253,5 @@ export const LinkRegistr = styled(NavLink)`
   &:hover {
     color: ${myTheme.backgroundColors.primary};
     background-color: ${myTheme.colors.hover};
+  }
 `;

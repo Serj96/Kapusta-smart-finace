@@ -253,4 +253,5 @@ export const LinkRegistr = styled(NavLink)`
   &:hover {
     color: ${myTheme.backgroundColors.primary};
     background-color: ${myTheme.colors.hover};
+  }
 `;
