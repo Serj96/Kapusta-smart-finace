@@ -1,22 +1,6 @@
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-
-import {
-  ReportArrowLeft,
-  ReportArrowRight,
-  ReportExpenseButtonArrowLeft,
-  ReportExpenseButtonArrowRight,
-  ReportExpenseWrapper,
-  ReportExpenseText,
-  ReportExpenseList,
-  ReportExpenseListItemContentWrapper,
-  ReportExpenseListItem,
-  ReportExpenseListItemBackground,
-  ReportExpenseListItemAmount,
-  ReportExpenseListItemText,
-  ReportExpenseListWrapper,
-} from '../Report.styled';
-
+import { getDataByPeriod } from 'Redux/kapustaSlice';
 import Boock from 'components/ReportIcons/Boock';
 import Kite from 'components/ReportIcons/Kite';
 import Car from 'components/ReportIcons/Car';
@@ -28,9 +12,23 @@ import Products from 'components/ReportIcons/Products';
 import Invoice from 'components/ReportIcons/Invoice';
 import Tools from 'components/ReportIcons/Tools';
 import Ufo from 'components/ReportIcons/Ufo';
+import {
+  ReportArrowLeft,
+  ReportArrowRight,
+  ReportExpenseButtonArrowLeft,
+  ReportExpenseButtonArrowRight,
+  ReportExpenseWrapper,
+  ReportExpenseText,
+  ReportExpenseList,
+  ReportExpenseListItem,
+  ReportExpenseListItemAmount,
+  ReportExpenseListItemText,
+  ReportExpenseListWrapper,
+} from '../Report.styled';
 
 export default function Expense() {
   const navigate = useNavigate();
+  const userPeriodTotal = useSelector(getDataByPeriod);
 
   const onChangeExpensesPageHandler = () => {
     navigate('/home/reports', { replace: true });
@@ -40,10 +38,6 @@ export default function Expense() {
     navigate('income', { replace: true });
   };
 
-  const userPeriodTotal = useSelector(
-    state => state.kapusta.auth.userData.periodData
-  );
-
   const userPeriodDataTotalExpenses = userPeriodTotal.map(item =>
     Object.entries(item.expenses.expensesData)
   );
@@ -52,31 +46,31 @@ export default function Expense() {
 
   return (
     <>
-      <ReportExpenseListWrapper>
-        <ReportExpenseWrapper>
-          <ReportExpenseButtonArrowLeft
-            disabled={true}
-            className="arrow-left"
-            onClick={onChangeExpensesPageHandler}
-          >
-            <ReportArrowLeft size={24} />
-          </ReportExpenseButtonArrowLeft>
-          <ReportExpenseText>Expenses</ReportExpenseText>
-          <ReportExpenseButtonArrowRight
-            className="arrow-right"
-            onClick={onChangeIncomePageHandler}
-          >
-            <ReportArrowRight size={24} />
-          </ReportExpenseButtonArrowRight>
-        </ReportExpenseWrapper>
+      {TotalExpensesArray.length > 0 && TotalExpensesArray[0].length > 0 && (
+        <ReportExpenseListWrapper>
+          <ReportExpenseWrapper>
+            <ReportExpenseButtonArrowLeft
+              disabled
+              className="arrow-left"
+              onClick={onChangeExpensesPageHandler}
+            >
+              <ReportArrowLeft size={24} />
+            </ReportExpenseButtonArrowLeft>
+            <ReportExpenseText>Expenses</ReportExpenseText>
+            <ReportExpenseButtonArrowRight
+              className="arrow-right"
+              onClick={onChangeIncomePageHandler}
+            >
+              <ReportArrowRight size={24} />
+            </ReportExpenseButtonArrowRight>
+          </ReportExpenseWrapper>
 
-        <ReportExpenseList>
-          {TotalExpensesArray.map(item =>
-            item.map(elem => (
-              <ReportExpenseListItem key={elem[0]}>
-                <ReportExpenseListItemContentWrapper>
+          <ReportExpenseList>
+            {TotalExpensesArray.map(item =>
+              item.map(elem => (
+                <ReportExpenseListItem key={elem[0]}>
                   <ReportExpenseListItemAmount>
-                    {elem[1].expenseTotal}
+                    {elem[1].total}
                   </ReportExpenseListItemAmount>
                   {elem[0] === 'Алкоголь' && <Cocktail />}
                   {elem[0] === 'Продукты' && <Products />}
@@ -92,13 +86,12 @@ export default function Expense() {
                   <ReportExpenseListItemText>
                     {elem[0]}
                   </ReportExpenseListItemText>
-                </ReportExpenseListItemContentWrapper>
-                <ReportExpenseListItemBackground className="item"></ReportExpenseListItemBackground>
-              </ReportExpenseListItem>
-            ))
-          )}
-        </ReportExpenseList>
-      </ReportExpenseListWrapper>
+                </ReportExpenseListItem>
+              ))
+            )}
+          </ReportExpenseList>
+        </ReportExpenseListWrapper>
+      )}
     </>
   );
 }

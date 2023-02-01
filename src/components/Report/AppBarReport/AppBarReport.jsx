@@ -2,11 +2,11 @@ import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { format, subMonths, addMonths } from 'date-fns';
+import { getDataByPeriod, getLoading } from 'Redux/kapustaSlice';
 import { getTransactionsByPeriod } from 'Redux/transactionOperation';
 import { Container } from 'components/Theme/BreakPoints';
 import StatsReport from 'components/StatsReport/StatsReport';
-import { ReportBalance } from '../Balance/ReportBalance';
-
+import ReportBalance from '../Balance/ReportBalance';
 import {
   ReportIoIosArrowRoundBack,
   ReportArrowLeft,
@@ -29,10 +29,13 @@ import {
 } from './AppBarReport.styled';
 
 export default function AppBarReport() {
-  const [selectedSeriod, setSelectedSeriod] = useState(() => new Date());
-
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const userPeriodTotal = useSelector(getDataByPeriod);
+  const isLoading = useSelector(getLoading);
+  const [selectedSeriod, setSelectedSeriod] = useState(() => new Date());
+
+  console.log('завантаження:', isLoading, 'data з бекенду:', userPeriodTotal);
 
   const onBackHomePageHandler = () => {
     navigate('/home', { replace: true });
@@ -48,10 +51,6 @@ export default function AppBarReport() {
     setSelectedSeriod(previousDate);
   };
 
-  const userPeriodTotal = useSelector(
-    state => state.kapusta.auth.userData.periodData
-  );
-
   const userPeriodExpenses = userPeriodTotal.map(
     item => item?.expenses.expenseTotal
   );
@@ -65,7 +64,7 @@ export default function AppBarReport() {
   }, [dispatch, selectedSeriod]);
 
   return (
-    <Container>
+    <Container style={{ paddingBottom: 80 }}>
       <ReportHeaderWrapperTablet>
         <ReportIoIosArrowRoundBackWrapper>
           <ReportIoIosArrowRoundBack
@@ -102,13 +101,13 @@ export default function AppBarReport() {
         <ReportListItemIndicatorExpenses>
           <ReportListItemIndicatorText>Expenses:</ReportListItemIndicatorText>
           <ReportListItemIndicatorExpensesAmount>
-            {[...userPeriodExpenses]} UAH.
+            - {[...userPeriodExpenses]} UAH.
           </ReportListItemIndicatorExpensesAmount>
         </ReportListItemIndicatorExpenses>
         <ReportListItemIndicatorIncome>
           <ReportListItemIndicatorText>Income:</ReportListItemIndicatorText>
           <ReportListItemIndicatorIncomeAmount>
-            {[...userPeriodIncomes]} UAH.
+            + {[...userPeriodIncomes]} UAH.
           </ReportListItemIndicatorIncomeAmount>
         </ReportListItemIndicatorIncome>
       </ReportListIndicator>
