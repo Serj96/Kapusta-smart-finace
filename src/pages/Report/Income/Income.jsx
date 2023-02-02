@@ -24,12 +24,12 @@ export default function Income() {
   const userPeriodTotal = useSelector(getDataByPeriod);
   const dispatch = useDispatch();
   const onChangeExpensesPageHandler = () => {
-    dispatch(setIconData({ id: null, data: [] }))
+    dispatch(setIconData({ id: null, data: [] }));
     navigate('/home/reports', { replace: true });
   };
 
   const onChangeIncomePageHandler = () => {
-    dispatch(setIconData({ id: null, data: [] }))
+    dispatch(setIconData({ id: null, data: [] }));
     navigate('income', { replace: true });
   };
 
@@ -38,12 +38,11 @@ export default function Income() {
   );
 
   const TotalIncomesArray = userPeriodDataTotalIncomes.map(item => item);
-  const onClickIcon = (e) => {
+  const onClickIcon = e => {
     if (e.target.nodeName !== 'svg' && e.target.nodeName !== 'path') return;
     const dataToSet = userPeriodTotal.map(item => item);
-    dispatch(setIconData({ id: e.target.id, data: dataToSet }))
-
-  }
+    dispatch(setIconData({ id: e.target.id, data: dataToSet }));
+  };
   return (
     <>
       <ReportExpenseListWrapper>
@@ -69,7 +68,7 @@ export default function Income() {
               item.map(elem => (
                 <ReportExpenseListItem key={elem[0]}>
                   <ReportExpenseListItemAmount>
-                    {elem[1].total}
+                    {elem[1].total}.00
                   </ReportExpenseListItemAmount>
                   {elem[0] === 'З/П' && <Salary />}
                   {elem[0] === 'Доп. доход' && <OutherIncomes />}
