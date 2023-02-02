@@ -12,9 +12,8 @@ import React from 'react';
 
 import DateInput from 'components/Expenses/Form/Inputs/DateInput/DateInput';
 
-import { Container } from 'components/Theme/BreakPoints';
-
-
+// import { Container } from 'components/Theme/BreakPoints';
+import { Container } from 'components/App.styled';
 const Home = () => {
   const isMobScreen = useMediaQuery({ query: '(max-width: 767.98px)' });
 
