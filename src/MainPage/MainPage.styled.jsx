@@ -27,11 +27,11 @@ export const MainSt = styled.div`
     padding-left: 26px;
     padding-right: 26px;
     min-height: 1024px;
+    /* padding-bottom: 0; */
     background: url(${group}) top 30px left 5px repeat-x,
       url(${two}) bottom 90px left 260px no-repeat;
   }
 `;
-
 
 export const Top = styled.div`
   position: absolute;

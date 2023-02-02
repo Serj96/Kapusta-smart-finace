@@ -4,7 +4,7 @@ import { Outlet, useNavigate } from 'react-router-dom';
 import { format, subMonths, addMonths } from 'date-fns';
 import { getDataByPeriod, getLoading } from 'Redux/kapustaSlice';
 import { getTransactionsByPeriod } from 'Redux/transactionOperation';
-import { Container } from 'components/Theme/BreakPoints';
+// import { Container } from 'components/Theme/BreakPoints';
 import StatsReport from 'components/StatsReport/StatsReport';
 import ReportBalance from '../Balance/ReportBalance';
 import {
@@ -64,7 +64,7 @@ export default function AppBarReport() {
   }, [dispatch, selectedSeriod]);
 
   return (
-    <Container style={{ paddingBottom: 80 }}>
+    <div style={{ paddingBottom: 80 }}>
       <ReportHeaderWrapperTablet>
         <ReportIoIosArrowRoundBackWrapper>
           <ReportIoIosArrowRoundBack
@@ -113,6 +113,6 @@ export default function AppBarReport() {
       </ReportListIndicator>
       <Outlet />
       <StatsReport data1={userPeriodTotal} />
-    </Container>
+    </div>
   );
 }

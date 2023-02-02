@@ -70,6 +70,7 @@ export const ReportCurrentAmount = styled.input`
 
   border: none;
   outline: none;
+  background-color: transparent;
 
   font-family: 'Roboto';
   font-weight: 700;
@@ -81,7 +82,6 @@ export const ReportCurrentAmount = styled.input`
   &::placeholder {
     text-align: center;
     color: #000000;
-    /* color: blue; */
     background-color: transparent;
 
     font-family: 'Roboto';
