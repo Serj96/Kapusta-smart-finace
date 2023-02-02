@@ -278,4 +278,7 @@ export const ReportHeaderWrapperTablet = styled.div`
     padding-top: 40px;
     margin-bottom: 32px;
   }
+  @media (min-width: 768px) and (max-width: 1279.98px) {
+    width: 704px;
+  }
 `;

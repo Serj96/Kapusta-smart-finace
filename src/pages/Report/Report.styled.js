@@ -92,9 +92,13 @@ export const ReportExpenseList = styled.ul`
 
   background: #ffffff;
 
+  @media (min-width: 768px) and (max-width: 1279.98px) {
+    align-self: center;
+  }
+
   @media (min-width: 768px) {
     margin-bottom: 0;
-    width: 620px;
+    width: 623px;
     margin-left: auto;
     margin-right: auto;
   }
