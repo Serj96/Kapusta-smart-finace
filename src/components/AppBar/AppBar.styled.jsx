@@ -4,9 +4,11 @@ export const StyledHeader = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 13px 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 
   @media screen and (min-width: 768px) {
-    padding: 13px 32px;
+     padding-top: 13px;
+  padding-bottom: 13px;
   }
 `;
