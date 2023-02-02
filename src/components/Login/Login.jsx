@@ -7,9 +7,7 @@ import {
   LinkRegistr,
   LoginDiv,
   TopTextDiv,
-  GoogleBtn,
 } from './Login.styled';
-import googleIcon from '../../images/googleIcon.svg';
 import kapustaSvg from '../../images/loginPageKAPUSTA.svg';
 import { useDispatch } from 'react-redux';
 import { login } from 'Redux/authOperaions';
@@ -52,37 +50,30 @@ export const Login = () => {
           <p className="topGoogleRegText">You can log in with your Google</p>
           <span className="topGoogleRegTextspan"> Account:</span>
         </TopTextDiv>
-        <GoogleBtn
-          // https://team-project-kapusta.onrender.com/api/auth/google
-          href="*"
-        >
-          <img src={googleIcon} className="GoogleEmblem" alt="google" />
-          Google
-        </GoogleBtn>
         <p className="buttonGoogleRegText">
           Or log in using an email and password, after registering:
         </p>
-          <label className="emailLabel" htmlFor="email">
-            Email :
-          </label>
-          <input
-            id="email"
-            name="email"
-            type="email"
-            onChange={formik.handleChange}
-            value={formik.values.email}
-            placeholder="your@email.com"
-          />
-          {formik.errors.email ? (
-            <ErrorMsg>{formik.errors.email}</ErrorMsg>
-          ) : null}
+        <label className="emailLabel" htmlFor="email">
+          Email :
+        </label>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          onChange={formik.handleChange}
+          value={formik.values.email}
+          placeholder="your@email.com"
+        />
+        {formik.errors.email ? (
+          <ErrorMsg>{formik.errors.email}</ErrorMsg>
+        ) : null}
         <label className="passwordLabel" htmlFor="password">
           Password :
         </label>
         <input
           id="password"
           name="password"
-          type="text"
+          type="password"
           onChange={formik.handleChange}
           value={formik.values.firstName}
           placeholder="Password"
