@@ -64,7 +64,17 @@ export default function AppBarReport() {
   }, [dispatch, selectedSeriod]);
 
   return (
-    <div style={{ paddingBottom: 80 }}>
+    <div
+      style={{
+        paddingBottom: 80,
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        // alignItems: 'center',
+      }}
+    >
       <ReportHeaderWrapperTablet>
         <ReportIoIosArrowRoundBackWrapper>
           <ReportIoIosArrowRoundBack
