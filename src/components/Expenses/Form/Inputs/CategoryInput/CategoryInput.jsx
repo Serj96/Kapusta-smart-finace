@@ -52,7 +52,6 @@ export default function CategoryInput() {
           control={control}
           name="category"
           render={({ field: { onChange, value, ref } }) => {
-            console.log(value);
             return (
               <Select
                 ref={ref}

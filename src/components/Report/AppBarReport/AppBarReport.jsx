@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { format, subMonths, addMonths } from 'date-fns';
-import { getDataByPeriod, getLoading } from 'Redux/kapustaSlice';
+import { getDataByPeriod } from 'Redux/kapustaSlice';
 import { getTransactionsByPeriod } from 'Redux/transactionOperation';
 import { setIconData } from 'Redux/kapustaSlice';
 // import { Container } from 'components/Theme/BreakPoints';
@@ -33,10 +33,7 @@ export default function AppBarReport() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const userPeriodTotal = useSelector(getDataByPeriod);
-  const isLoading = useSelector(getLoading);
   const [selectedSeriod, setSelectedSeriod] = useState(() => new Date());
-
-  console.log('завантаження:', isLoading, 'data з бекенду:', userPeriodTotal);
 
   const onBackHomePageHandler = () => {
     dispatch(setIconData({ id: null, data: [] }))
