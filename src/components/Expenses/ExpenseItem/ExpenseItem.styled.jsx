@@ -32,6 +32,15 @@ export const ExpSum = styled.span`
   font-size: 12px;
   line-height: 1.17;
   letter-spacing: 0.04em;
+  color: #e7192e;
+`;
+
+export const IncSum = styled.span`
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1.17;
+  letter-spacing: 0.04em;
+  color: #407946;
 `;
 
 export const ExpButton = styled.button`

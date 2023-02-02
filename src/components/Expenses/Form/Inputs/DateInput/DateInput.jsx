@@ -3,13 +3,19 @@ import ReactDatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { Controller, useFormContext } from 'react-hook-form';
 import { FaRegCalendarAlt } from 'react-icons/fa';
-import { DateBtn } from './DateInput.styled';
+import {
+  DateBtn,
+  DateInputWrapper,
+  DatePickerWrapper,
+} from './DateInput.styled';
 
 import format from 'date-fns/format';
 import {
   ErrorMessage,
   ErrorPositionWrapper,
 } from '../DescriptionInput/DescriptionInput.styled';
+import { useDispatch } from 'react-redux';
+import { setDateInput } from 'Redux/kapustaSlice';
 
 const ExampleCustomInput = forwardRef(({ value, onClick }, ref) => (
   <DateBtn onClick={onClick} ref={ref} type="button">
@@ -19,15 +25,31 @@ const ExampleCustomInput = forwardRef(({ value, onClick }, ref) => (
 ));
 
 export const DateInput = () => {
+  const dispatch = useDispatch();
   const [startDate, setStartDate] = useState(new Date());
-  const {
-    control,
-    formState: { errors },
-  } = useFormContext(); // retrieve all hook methods
+
+  // const {
+  //   control,
+  //   formState: { errors },
+  // } = useFormContext(); // retrieve all hook methods
 
   return (
     <>
-      <ErrorPositionWrapper>
+      <DateInputWrapper>
+        <DatePickerWrapper>
+          <ReactDatePicker
+            name="date"
+            selected={startDate}
+            dateFormat="yy.MM.dd"
+            customInput={<ExampleCustomInput />}
+            onChange={e => {
+              setStartDate(e);
+              dispatch(setDateInput(format(e, 'yyyy-MM-dd')));
+            }}
+          />
+        </DatePickerWrapper>
+      </DateInputWrapper>
+      {/* <ErrorPositionWrapper>
         <Controller
           control={control}
           name="date"
@@ -47,7 +69,7 @@ export const DateInput = () => {
         {errors?.date && (
           <ErrorMessage>{errors?.date?.message || 'Error!'}</ErrorMessage>
         )}
-      </ErrorPositionWrapper>
+      </ErrorPositionWrapper> */}
     </>
   );
 };

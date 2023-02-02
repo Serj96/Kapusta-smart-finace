@@ -3,7 +3,6 @@ import { MdBarChart } from 'react-icons/md';
 
 import Balance from 'components/Expenses/Balance/Balance';
 import ExpenseList from 'components/Expenses/ExpenseList/ExpenseList';
-// import DateInput from 'components/Expenses/Form/Inputs/DateInput';
 import NavLink from 'components/Expenses/NavLink/NavLink';
 import {
   BalanceWrapper,
@@ -11,6 +10,7 @@ import {
 } from 'components/ExpensesPage/ExpensesPage.styled';
 import React from 'react';
 import { Container } from 'components/App.styled';
+import DateInput from 'components/Expenses/Form/Inputs/DateInput/DateInput';
 
 const Home = () => {
   const isMobScreen = useMediaQuery({ query: '(max-width: 767.98px)' });
@@ -29,7 +29,7 @@ const Home = () => {
                 </>
               </ReportsLink>
             </BalanceWrapper>
-            {/* <DateInput /> */}
+            <DateInput />
             <ExpenseList />
             <NavLink />
           </Container>

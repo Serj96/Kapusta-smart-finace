@@ -2,9 +2,11 @@ import styled from '@emotion/styled';
 
 export const SummaryWrapper = styled.div`
   width: 230px;
+  height: 278px;
   background-color: #f5f6fb;
   border: 2px solid #ffffff;
   border-radius: 16px 16px 16px 0;
+  overflow: hidden;
 
   @media screen and (max-width: 1279.98px) {
     height: 278px;

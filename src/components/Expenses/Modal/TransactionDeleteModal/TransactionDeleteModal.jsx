@@ -18,7 +18,13 @@ const TransactionDeleteModal = ({ id, onClose }) => {
     <TransactionDeleteModalWrapper>
       <TransactionDeleteModalText>Are you sure?</TransactionDeleteModalText>
       <TransactionDeleteBtnWrapper>
-        <TransactionDeleteBtn onClick={() => dispatch(deleteTransaction(id))}>
+        <TransactionDeleteBtn
+          onClick={() =>
+            dispatch(deleteTransaction(id))
+              .unwrap()
+              .then(() => onClose())
+          }
+        >
           Yes
         </TransactionDeleteBtn>
         <TransactionDeleteBtn onClick={onClose}>No</TransactionDeleteBtn>

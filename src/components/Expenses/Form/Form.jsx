@@ -11,8 +11,9 @@ import CategoryInput from './Inputs/CategoryInput/CategoryInput';
 import { useLocation, useNavigate } from 'react-router-dom';
 import DateInput from './Inputs/DateInput/DateInput';
 import { BackLink, BtnWrapper, FormStyle, InputsWrapper } from './Form.styled';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addExpense, addIncome } from 'Redux/transactionOperation';
+import { getDateInput } from 'Redux/kapustaSlice';
 
 const schema = yup
   .object({
@@ -23,12 +24,13 @@ const schema = yup
       .min(1)
       .max(1000000000)
       .required('This field is required'),
-    date: yup.string().required('Select date'),
     category: yup.string().required('Select category'),
   })
   .required();
 
 export const Form = () => {
+  const dateInput = useSelector(getDateInput);
+
   const isMobScreen = useMediaQuery({ query: '(max-width: 767.98px)' });
   const isTabScreen = useMediaQuery({ query: '(min-width: 768px)' });
 
@@ -39,7 +41,6 @@ export const Form = () => {
   const methods = useForm({
     mode: 'onChange',
     defaultValues: {
-      date: '',
       description: '',
       category: '',
     },
@@ -49,15 +50,25 @@ export const Form = () => {
   const {
     handleSubmit,
     reset,
+    control,
+    setValue,
+    getValues,
     formState: { isSubmitSuccessful },
   } = methods;
 
   const onSubmit = data => {
+    const formData = {
+      date: dateInput,
+      ...data,
+    };
+
     const key = location.pathname;
 
-    if (key === '/home/expenses') dispatch(addExpense(data));
+    if (key === '/home/expenses') dispatch(addExpense(formData));
 
-    if (key === '/home/income') dispatch(addIncome(data));
+    if (key === '/home/income') dispatch(addIncome(formData));
+
+    setValue('category', null);
 
     reset();
 

@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { getSummaryExpenses, getSummaryIncome } from 'Redux/kapustaSlice';
+import { convertMonth } from '../convert/convertMonth';
 import { SummarryItem, SummaryTitle, SummaryWrapper } from './Summary.styled';
 
 const Summary = () => {
@@ -17,19 +18,23 @@ const Summary = () => {
       <SummaryTitle>Summary</SummaryTitle>
       <ul>
         {pathname === '/home/expenses' &&
-          exp?.map(([key, value], index) => (
-            <SummarryItem key={index}>
-              <span>{key}</span>
-              <span>{value}</span>
-            </SummarryItem>
-          ))}
+          exp
+            ?.filter(item => item[1] !== 'N/A')
+            .map(([key, value], index) => (
+              <SummarryItem key={index}>
+                <span>{convertMonth(key)}</span>
+                <span>{value}</span>
+              </SummarryItem>
+            ))}
         {pathname === '/home/income' &&
-          inc?.map(([key, value], index) => (
-            <SummarryItem key={index}>
-              <span>{key}</span>
-              <span>{value}</span>
-            </SummarryItem>
-          ))}
+          inc
+            ?.filter(item => item[1] !== 'N/A')
+            .map(([key, value], index) => (
+              <SummarryItem key={index}>
+                <span>{convertMonth(key)}</span>
+                <span>{value}</span>
+              </SummarryItem>
+            ))}
       </ul>
     </SummaryWrapper>
   );

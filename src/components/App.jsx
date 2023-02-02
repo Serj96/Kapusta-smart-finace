@@ -32,11 +32,7 @@ export const App = () => {
         <Route
           path="register"
           element={
-            !token ? (
-              <HomePage />
-            ) : (
-              <Navigate to={'/home/expenses'} replace />
-            )
+            !token ? <HomePage /> : <Navigate to={'/home/expenses'} replace />
           }
         />
         <Route

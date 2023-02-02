@@ -34,16 +34,15 @@ export default function CategoryInput() {
 
   const {
     control,
-    // eslint-disable-next-line
     formState: { errors },
   } = useFormContext();
 
   const categories = () => {
     if (pathname === '/home/expenses')
-      return expensCategory?.map(i => <options>{i}</options>);
+      return expensCategory?.map(i => ({ label: i, value: i }));
 
     if (pathname === '/home/income')
-      return incomeCategory?.map(i => <options>{i}</options>);
+      return incomeCategory?.map(i => ({ label: i, value: i }));
   };
 
   return (
@@ -52,17 +51,19 @@ export default function CategoryInput() {
         <Controller
           control={control}
           name="category"
-          render={({ field: { onChange, value, ref } }) => (
-            <Select
-              styles={colourStyles}
-              placeholder="Product category"
-              getOptionLabel={i => i.props.children}
-              getOptionValue={i => i.props.children}
-              inputRef={ref}
-              onChange={i => onChange(i.props.children)}
-              options={categories()}
-            />
-          )}
+          render={({ field: { onChange, value, ref } }) => {
+            console.log(value);
+            return (
+              <Select
+                ref={ref}
+                styles={colourStyles}
+                placeholder={'Product category'}
+                options={categories()}
+                value={value ? categories().find(c => c.value === value) : null}
+                onChange={val => onChange(val.value)}
+              />
+            );
+          }}
         />
         {errors?.category && (
           <ErrorMessage>{errors?.category?.message || 'Error!'}</ErrorMessage>
