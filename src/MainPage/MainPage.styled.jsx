@@ -44,21 +44,21 @@ export const Top = styled.div`
   left: 0;
   z-index: -2;
   width: 100%;
-  height: 313px;
+  height: 265px;
   border-bottom-left-radius: 100px;
   background: #f5f6fb;
 
   @media screen and (min-width: 768px) {
     background-color: #f5f6fb;
     /* margin: 0 auto; */
-    height: 530px;
+    height: 480px;
     box-shadow: none;
   }
 
   @media screen and (min-width: 1280px) {
     background-color: #f5f6fb;
     /* margin: 0 auto; */
-    height: 580px;
+    height: 510px;
     box-shadow: none;
   }
 `;
