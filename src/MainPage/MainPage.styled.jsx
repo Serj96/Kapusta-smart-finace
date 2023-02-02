@@ -11,7 +11,7 @@ export const MainSt = styled.div`
   background: url(${rightTop}) top 104px right -35px no-repeat,
     url(${down}) bottom 5px left 35px no-repeat;
   position: relative;
-  padding-bottom: 160px;
+  /* padding-bottom: 160px; */
 
   @media screen and (min-width: 768px) {
     /* margin: 0 auto;
