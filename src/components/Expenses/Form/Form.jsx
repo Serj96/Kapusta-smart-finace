@@ -50,9 +50,7 @@ export const Form = () => {
   const {
     handleSubmit,
     reset,
-    control,
     setValue,
-    getValues,
     formState: { isSubmitSuccessful },
   } = methods;
 
