@@ -47,7 +47,7 @@ export const ReportCurrentBalanceText = styled.p`
 `;
 
 export const ReportCurrentAmountWrapper = styled.div`
-  border: 2px solid gray;
+  border: 2px solid #ffffff;
   border-radius: 22px;
 
   @media (max-width: 767.98px) {
@@ -67,6 +67,7 @@ export const ReportCurrentAmountWrapper = styled.div`
 export const ReportCurrentAmount = styled.input`
   margin-left: auto;
   margin-right: auto;
+  text-align: center;
 
   border: none;
   outline: none;
@@ -143,7 +144,7 @@ export const ReportCurrentConfirmWrapper = styled.button`
     text-transform: uppercase;
 
     padding: 17px 32px;
-    border: 2px solid gray;
+    border: 2px solid #ffffff;
     border-radius: 22px;
   }
 

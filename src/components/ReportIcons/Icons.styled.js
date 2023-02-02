@@ -50,6 +50,8 @@ export const ReportBackgroundIncomeSvg = styled.div`
   align-items: center;
   margin-bottom: 15px;
 
+  cursor: pointer;
+
   background-color: #f5f6fb;
   border-radius: 40px;
 
