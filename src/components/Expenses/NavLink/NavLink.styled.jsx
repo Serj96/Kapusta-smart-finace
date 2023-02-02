@@ -25,11 +25,13 @@ export const NavItem = styled(NavLink)`
   text-decoration: none;
 
   color: ${myTheme.colors.secondary};
-  background-color: ${myTheme.backgroundColors.secondary};
+  background-color: #fff;
   transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
     background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   @media screen and (max-width: 767.98px) {
+    background-color: ${myTheme.backgroundColors.secondary};
+
     &.active {
       background-color: ${myTheme.colors.hover};
       color: ${myTheme.backgroundColors.primary};

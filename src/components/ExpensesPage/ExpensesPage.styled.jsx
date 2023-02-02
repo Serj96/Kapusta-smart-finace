@@ -10,6 +10,7 @@ export const Page = styled.div`
 `;
 
 export const MainPageWrapper = styled.div`
+  padding-top: 40px;
   width: 704px;
 
   @media screen and (min-width: 1280px) {

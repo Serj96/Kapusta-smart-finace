@@ -10,7 +10,7 @@ export const ClearButton = ({ reset }) => {
 
 export const SubmitButton = ({ children, type, buttonLog }) => {
   return (
-    <Button type={type} buttonLog={buttonLog}>
+    <Button type={type} buttonLog={buttonLog} color={'submit'}>
       {children}
     </Button>
   );

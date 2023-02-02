@@ -1,3 +1,7 @@
+import {
+  convertExpenseList,
+  convertIncomesList,
+} from 'components/Expenses/convert/convertCategory';
 import { useEffect } from 'react';
 import { Controller, useFormContext } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
@@ -39,10 +43,16 @@ export default function CategoryInput() {
 
   const categories = () => {
     if (pathname === '/home/expenses')
-      return expensCategory?.map(i => ({ label: i, value: i }));
+      return expensCategory?.map(i => ({
+        label: convertExpenseList[i],
+        value: i,
+      }));
 
     if (pathname === '/home/income')
-      return incomeCategory?.map(i => ({ label: i, value: i }));
+      return incomeCategory?.map(i => ({
+        label: convertIncomesList[i],
+        value: i,
+      }));
   };
 
   return (

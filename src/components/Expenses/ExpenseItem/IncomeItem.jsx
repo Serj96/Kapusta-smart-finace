@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { convertIncomesList } from '../convert/convertCategory';
 import { Modal } from '../Modal/Modal';
 import TransactionDeleteModal from '../Modal/TransactionDeleteModal/TransactionDeleteModal';
 
@@ -27,7 +28,7 @@ const IncomeItem = ({ _id, description, date, category, amount }) => {
           <ExpDesription>{description}</ExpDesription>
           <Wrapper>
             <ExpDate>{date}</ExpDate>
-            <ExpDate>{category}</ExpDate>
+            <ExpDate>{convertIncomesList[category]}</ExpDate>
           </Wrapper>
         </div>
         <Wrapper>
