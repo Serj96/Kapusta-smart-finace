@@ -1,4 +1,3 @@
-
 import LoginPage from 'LoginPage/LoginPage';
 import { useDispatch, useSelector } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
@@ -34,9 +33,12 @@ export const App = () => {
             !token ? <LoginPage /> : <Navigate to={'/home/expenses'} replace />
           }
         />
+
         <Route
-          path="register"
-          element={
+          path="expenses"
+          element={token ? <ExpensesPage /> : <Navigate to={'/home'} />}
+        />
+
             !token ? (
               <Registration />
             ) : (
@@ -45,6 +47,7 @@ export const App = () => {
           }
         />
         {!isMobScreen ? <Route path="expenses" element={token ? <ExpensesPage /> : <Navigate to={'/home'} />} /> : <Route path="expenses" element={token && isMobScreen ? <Home /> : <Navigate to={'/home'} />} />}
+
         <Route
           path="income"
           element={token ? <IncomePage /> : <Navigate to={'/home'} />}

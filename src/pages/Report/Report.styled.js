@@ -64,6 +64,22 @@ export const ReportExpenseText = styled.p`
   }
 `;
 
+export const ReportExpenseListWrapper = styled.div`
+  @media (min-width: 768px) {
+    padding: 20px 40px 20px 40px;
+    margin-bottom: 32px;
+
+    background: #ffffff;
+    box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
+    border-radius: 30px;
+  }
+
+  @media (min-width: 1280px) {
+    padding: 20px 0 20px 0;
+    width: 1034px;
+  }
+`;
+
 export const ReportExpenseList = styled.ul`
   display: flex;
   justify-content: center;
@@ -78,6 +94,9 @@ export const ReportExpenseList = styled.ul`
 
   @media (min-width: 768px) {
     margin-bottom: 0;
+    width: 620px;
+    margin-left: auto;
+    margin-right: auto;
   }
 `;
 
@@ -95,7 +114,7 @@ export const ReportExpenseListItem = styled.li`
   }
 
   @media (min-width: 768px) {
-    width: calc((100% - 30px) / 6);
+    width: calc((100% - 30px) / 5);
   }
 `;
 
@@ -128,22 +147,4 @@ export const ReportExpenseListItemText = styled.p`
   line-height: 0.9;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-`;
-
-export const ReportExpenseListWrapper = styled.div`
-  @media (min-width: 768px) {
-    padding: 20px 40px 20px 40px;
-
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 32px;
-
-    background: #ffffff;
-    box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
-    border-radius: 30px;
-  }
-
-  @media (min-width: 1280px) {
-    padding: 20px 200px 20px 200px;
-  }
 `;
