@@ -7,9 +7,12 @@ const setToken = token => {
     }
     axios.defaults.headers.common.authorization = '';
 };
-export const register = createAsyncThunk('auth/register', async (data, { rejectWithValue }) => {
+export const register = createAsyncThunk('auth/register', async (data, { dispatch, rejectWithValue }) => {
     try {
         const { data: result } = await axios.post('auth/register', data);
+        if (result.id) {
+            dispatch(login(data));
+        }
         return result;
     } catch (error) {
 
