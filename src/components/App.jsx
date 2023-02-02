@@ -12,7 +12,11 @@ import IncomePage from './IncomePage/IncomePage';
 import { useEffect } from 'react';
 import { refresh } from 'Redux/authOperaions';
 import { NotFound } from './NotFound/NotFound';
+import { Registration } from './Registration/Registration';
+import { useMediaQuery } from 'react-responsive';
+import Home from './Home/Home';
 export const App = () => {
+  const isMobScreen = useMediaQuery({ query: '(max-width: 767.98px)' });
   const token = useSelector(getSid);
   const dispatch = useDispatch();
 
@@ -29,27 +33,30 @@ export const App = () => {
             !token ? <LoginPage /> : <Navigate to={'/home/expenses'} replace />
           }
         />
-        {/* <Route
-          path="register"
-          element={
-            !token ? <HomePage /> : <Navigate to={'/home/expenses'} replace />
-          }
-        /> */}
+
         <Route
           path="expenses"
           element={token ? <ExpensesPage /> : <Navigate to={'/home'} />}
         />
+
+            !token ? (
+              <Registration />
+            ) : (
+              <Navigate to={'/home/expenses'} replace />
+            )
+          }
+        />
+        {!isMobScreen ? <Route path="expenses" element={token ? <ExpensesPage /> : <Navigate to={'/home'} />} /> : <Route path="expenses" element={token && isMobScreen ? <Home /> : <Navigate to={'/home'} />} />}
+
         <Route
           path="income"
           element={token ? <IncomePage /> : <Navigate to={'/home'} />}
         />
-        <Route path="reports" element={<AppBarReport />}>
-          {/* =======
+
         <Route
           path="reports"
           element={token ? <AppBarReport /> : <Navigate to={'/home'} />}
         >
->>>>>>> dev */}
           <Route index element={<Expense />} />
           <Route
             path="income"
