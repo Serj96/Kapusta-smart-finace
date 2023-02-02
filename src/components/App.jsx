@@ -33,19 +33,15 @@ export const App = () => {
             !token ? <LoginPage /> : <Navigate to={'/home/expenses'} replace />
           }
         />
-
+        <Route
+          path="register"
+          element={!token ? <Registration /> : <Navigate to={'/home'} />}
+        />
         <Route
           path="expenses"
           element={token ? <ExpensesPage /> : <Navigate to={'/home'} />}
         />
 
-            !token ? (
-              <Registration />
-            ) : (
-              <Navigate to={'/home/expenses'} replace />
-            )
-          }
-        />
         {!isMobScreen ? <Route path="expenses" element={token ? <ExpensesPage /> : <Navigate to={'/home'} />} /> : <Route path="expenses" element={token && isMobScreen ? <Home /> : <Navigate to={'/home'} />} />}
 
         <Route
