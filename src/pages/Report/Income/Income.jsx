@@ -1,8 +1,9 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { getDataByPeriod } from 'Redux/kapustaSlice';
 import Salary from 'components/ReportIcons/Salary';
 import OutherIncomes from 'components/ReportIcons/OutherIncomes';
+import { setIconData } from 'Redux/kapustaSlice';
 import ReportIncomeNotification from 'components/Report/ReportNotification/ReportIncomeNotification';
 import {
   ReportArrowLeft,
@@ -21,12 +22,14 @@ import {
 export default function Income() {
   const navigate = useNavigate();
   const userPeriodTotal = useSelector(getDataByPeriod);
-
+  const dispatch = useDispatch();
   const onChangeExpensesPageHandler = () => {
+    dispatch(setIconData({ id: null, data: [] }))
     navigate('/home/reports', { replace: true });
   };
 
   const onChangeIncomePageHandler = () => {
+    dispatch(setIconData({ id: null, data: [] }))
     navigate('income', { replace: true });
   };
 
@@ -35,7 +38,12 @@ export default function Income() {
   );
 
   const TotalIncomesArray = userPeriodDataTotalIncomes.map(item => item);
+  const onClickIcon = (e) => {
+    if (e.target.nodeName !== 'svg' && e.target.nodeName !== 'path') return;
+    const dataToSet = userPeriodTotal.map(item => item);
+    dispatch(setIconData({ id: e.target.id, data: dataToSet }))
 
+  }
   return (
     <>
       <ReportExpenseListWrapper>
@@ -56,7 +64,7 @@ export default function Income() {
           </ReportExpenseButtonArrowRight>
         </ReportExpenseWrapper>
         {TotalIncomesArray.length > 0 && TotalIncomesArray[0].length > 0 ? (
-          <ReportExpenseList>
+          <ReportExpenseList onClick={onClickIcon}>
             {TotalIncomesArray.map(item =>
               item.map(elem => (
                 <ReportExpenseListItem key={elem[0]}>
