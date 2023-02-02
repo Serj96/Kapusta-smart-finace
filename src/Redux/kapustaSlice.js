@@ -41,6 +41,7 @@ const kapustaSlice = createSlice({
   reducers: {
     setDateInput(state, action) {
       state.dateInput = action.payload;
+    },
     setIconData: (state, action) => {
       state.auth.userData.iconsData = action.payload;
     },
