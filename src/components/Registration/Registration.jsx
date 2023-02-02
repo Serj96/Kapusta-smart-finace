@@ -7,9 +7,7 @@ import {
   LinkRegistr,
   LoginDiv,
   TopTextDiv,
-  GoogleBtn,
 } from './Registration.styled';
-import googleIcon from '../../images/googleIcon.svg';
 import kapustaSvg from '../../images/loginPageKAPUSTA.svg';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
@@ -53,13 +51,6 @@ export const Registration = () => {
           <p className="topGoogleRegText">You can log in with your Google</p>
           <span className="topGoogleRegTextspan"> Account:</span>
         </TopTextDiv>
-        <GoogleBtn
-          // https://team-project-kapusta/api/auth/google
-          href="*"
-        >
-          <img src={googleIcon} className="GoogleEmblem" alt="google" />
-          Google
-        </GoogleBtn>
         <p className="buttonGoogleRegText">
           Or log in using an email and password, after registering:
         </p>
@@ -83,7 +74,7 @@ export const Registration = () => {
         <input
           id="password"
           name="password"
-          type="text"
+          type="password"
           onChange={formik.handleChange}
           value={formik.values.firstName}
           placeholder="Password"
