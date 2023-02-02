@@ -14,6 +14,7 @@ export const ReportIoIosArrowRoundBackWrapper = styled.div`
 
 export const ReportIoIosArrowRoundBack = styled(IoIosArrowRoundBack)`
   fill: #ff751d;
+  cursor: pointer;
 `;
 
 export const ReportIoIosArrowRoundBackText = styled.p`
@@ -50,10 +51,12 @@ export const ReportIoIosArrowRoundBackText = styled.p`
 
 export const ReportArrowLeft = styled(RiArrowLeftSLine)`
   fill: #ff751d;
+  cursor: pointer;
 `;
 
 export const ReportArrowRight = styled(RiArrowRightSLine)`
   fill: #ff751d;
+  cursor: pointer;
 `;
 
 export const ReportCurrentPeriodWrapper = styled.div`
@@ -136,132 +139,6 @@ export const ReportDateText = styled.p`
   color: #000000;
 `;
 
-// export const ReportCurrentBalanceWrapper = styled.div`
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-
-//   @media (max-width: 767.98px) {
-//     flex-direction: column;
-//     margin-bottom: 32px;
-//   }
-
-//   @media (min-width: 768px) {
-//     position: absolute;
-//     margin-bottom: 0;
-//   }
-
-//   @media (min-width: 768px) and (max-width: 1279.98px) {
-//     left: 275px;
-//   }
-
-//   @media (min-width: 1280px) {
-//     left: 475px;
-//   }
-// `;
-
-// export const ReportCurrentBalanceText = styled.p`
-//   margin-top: 0;
-
-//   color: #52555f;
-
-//   font-family: 'Roboto';
-//   font-weight: 500;
-//   font-size: 12px;
-//   line-height: 0.9;
-//   letter-spacing: 0.04em;
-
-//   @media (max-width: 767.98px) {
-//     margin-bottom: 10px;
-//   }
-
-//   @media (min-width: 768px) {
-//     margin-right: 20px;
-//     margin-bottom: 0;
-//   }
-// `;
-
-// export const ReportCurrentAmountWrapper = styled.div`
-//   border: 2px solid gray;
-//   border-radius: 22px;
-
-//   @media (max-width: 767.98px) {
-//     padding: 17px 50px;
-//   }
-
-//   @media (min-width: 768px) {
-//     padding: 12px 20px;
-//   }
-
-//   @media (min-width: 1280px) {
-//     margin-right: 16px;
-//   }
-// `;
-
-// export const ReportCurrentConfirmWrapper = styled.div`
-//   @media (max-width: 1279.98px) {
-//     position: absolute;
-//     white-space: nowrap;
-//     width: 1px;
-//     height: 1px;
-//     overflow: hidden;
-//     border: 0;
-//     padding: 0;
-//     clip: rect(0 0 0 0);
-//     clip-path: inset(50%);
-//     margin: -1px;
-//   }
-
-//   @media (min-width: 1280px) {
-//     padding: 12px 20px;
-//     border: 2px solid gray;
-//     border-radius: 22px;
-//   }
-// `;
-
-// export const ReportCurrentAmount = styled.p`
-//   margin-top: 0;
-//   margin-bottom: 0;
-
-//   color: #000000;
-
-//   font-family: 'Roboto';
-//   font-weight: 700;
-//   font-size: 12px;
-//   line-height: 0.9;
-//   letter-spacing: 0.02em;
-//   text-transform: uppercase;
-// `;
-
-// export const ReportCurrentConfirm = styled.p`
-//   @media (max-width: 767.98px) {
-//     position: absolute;
-//     white-space: nowrap;
-//     width: 1px;
-//     height: 1px;
-//     overflow: hidden;
-//     border: 0;
-//     padding: 0;
-//     clip: rect(0 0 0 0);
-//     clip-path: inset(50%);
-//     margin: -1px;
-//   }
-
-//   @media (min-width: 1280px) {
-//     margin-top: 0;
-//     margin-bottom: 0;
-
-//     color: #000000;
-
-//     font-family: 'Roboto';
-//     font-weight: 700;
-//     font-size: 12px;
-//     line-height: 0.9;
-//     letter-spacing: 0.02em;
-//     text-transform: uppercase;
-//   }
-// `;
-
 export const ReportListIndicator = styled.ul`
   position: relative;
   display: flex;
@@ -276,23 +153,6 @@ export const ReportListIndicator = styled.ul`
   box-shadow: 5px 10px 20px rgba(170, 178, 197, 0.4);
   border-radius: 20px;
 
-  @media (max-width: 767.98px) {
-    width: 280px;
-    height: 85px;
-  }
-
-  @media (min-width: 768px) {
-    justify-content: center;
-    width: 704px;
-    height: 50px;
-  }
-`;
-
-export const ReportListItemIndicatorExpenses = styled.li`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
   &::after {
     position: absolute;
     content: '';
@@ -303,19 +163,46 @@ export const ReportListItemIndicatorExpenses = styled.li`
   }
 
   @media (max-width: 767.98px) {
-    flex-direction: column;
-    padding: 10px;
-
-    width: 70px;
+    width: 280px;
+    height: 85px;
   }
 
   @media (min-width: 768px) {
-    padding: 15px 20px 15px 130px;
+    justify-content: center;
+    width: 704px;
+    height: 50px;
+    justify-content: space-around;
+  }
 
+  @media (min-width: 768px) and (max-width: 1279.98px) {
     &::after {
-      left: 356px;
+      left: 352px;
       height: 36px;
     }
+  }
+
+  @media (min-width: 1280px) {
+    &::after {
+      left: 343px;
+      height: 36px;
+    }
+  }
+`;
+
+export const ReportListItemIndicatorExpenses = styled.li`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media (max-width: 767.98px) {
+    flex-direction: column;
+    width: 120px;
+  }
+
+  @media (min-width: 768px) and (max-width: 1279.98px) {
+  }
+
+  @media (min-width: 1280px) {
   }
 `;
 
@@ -326,13 +213,13 @@ export const ReportListItemIndicatorIncome = styled.li`
 
   @media (max-width: 767.98px) {
     flex-direction: column;
-    padding: 10px;
-
-    width: 70px;
+    width: 120px;
   }
 
-  @media (min-width: 768px) {
-    padding: 15px 130px 15px 20px;
+  @media (min-width: 768px) and (max-width: 1279.98px) {
+  }
+
+  @media (min-width: 1280px) {
   }
 `;
 
@@ -390,5 +277,8 @@ export const ReportHeaderWrapperTablet = styled.div`
     align-items: center;
     padding-top: 40px;
     margin-bottom: 32px;
+  }
+  @media (min-width: 768px) and (max-width: 1279.98px) {
+    width: 704px;
   }
 `;

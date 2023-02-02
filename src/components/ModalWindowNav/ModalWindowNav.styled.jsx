@@ -4,6 +4,7 @@ export const Modal = styled.div`
   position: absolute;
   top: 50%;
   left: 50%;
+  z-index:100;
   transform: translate(-50%, -50%);
   color: #52555f;
   background-color: #fff;
@@ -44,6 +45,7 @@ export const CloseSvg = styled.button`
 export const Backdrop = styled.div`
   position: absolute;
   top: 0;
+  z-index: 100;
   left: 0;
   bottom: 0;
   right: 0;

@@ -55,11 +55,12 @@ export const ReportCurrentAmountWrapper = styled.div`
   }
 
   @media (min-width: 768px) {
-    padding: 13px 22px;
+    padding: 13px 20px;
   }
 
   @media (min-width: 1280px) {
     margin-right: 16px;
+    cursor: pointer;
   }
 `;
 
@@ -69,6 +70,7 @@ export const ReportCurrentAmount = styled.input`
 
   border: none;
   outline: none;
+  background-color: transparent;
 
   font-family: 'Roboto';
   font-weight: 700;
@@ -78,8 +80,9 @@ export const ReportCurrentAmount = styled.input`
   text-transform: uppercase;
 
   &::placeholder {
-    color: #000000;
     text-align: center;
+    color: #000000;
+    background-color: transparent;
 
     font-family: 'Roboto';
     font-weight: 700;
@@ -94,14 +97,12 @@ export const ReportCurrentAmount = styled.input`
   }
 
   @media (min-width: 768px) {
-    width: 80px;
+    width: 90px;
   }
 
-  /* &[value] {
-    font-family: cursive;
-    font-size: 24px;
-    color: gray;
-  } */
+  @media (min-width: 1280px) {
+    cursor: pointer;
+  }
 `;
 
 export const ReportCurrentConfirmWrapper = styled.button`
@@ -112,6 +113,8 @@ export const ReportCurrentConfirmWrapper = styled.button`
   background-color: transparent;
   border: none;
   outline: none;
+
+  cursor: pointer;
 
   @media (max-width: 1279.98px) {
     position: absolute;

@@ -1,8 +1,10 @@
-// import { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-// import { getTransactionsByPeriod } from 'Redux/transactionOperation';
-
+import { getDataByPeriod } from 'Redux/kapustaSlice';
+import Salary from 'components/ReportIcons/Salary';
+import OutherIncomes from 'components/ReportIcons/OutherIncomes';
+import { setIconData } from 'Redux/kapustaSlice';
+import ReportIncomeNotification from 'components/Report/ReportNotification/ReportIncomeNotification';
 import {
   ReportArrowLeft,
   ReportArrowRight,
@@ -17,31 +19,31 @@ import {
   ReportExpenseListWrapper,
 } from '../Report.styled';
 
-import Salary from 'components/ReportIcons/Salary';
-import OutherIncomes from 'components/ReportIcons/OutherIncomes';
-
 export default function Income() {
   const navigate = useNavigate();
-  // const dispatch = useDispatch();
-
+  const userPeriodTotal = useSelector(getDataByPeriod);
+  const dispatch = useDispatch();
   const onChangeExpensesPageHandler = () => {
+    dispatch(setIconData({ id: null, data: [] }))
     navigate('/home/reports', { replace: true });
   };
 
   const onChangeIncomePageHandler = () => {
+    dispatch(setIconData({ id: null, data: [] }))
     navigate('income', { replace: true });
   };
-
-  const userPeriodTotal = useSelector(
-    state => state.kapusta.auth.userData.periodData
-  );
 
   const userPeriodDataTotalIncomes = userPeriodTotal.map(item =>
     Object.entries(item.incomes.incomesData)
   );
 
   const TotalIncomesArray = userPeriodDataTotalIncomes.map(item => item);
+  const onClickIcon = (e) => {
+    if (e.target.nodeName !== 'svg' && e.target.nodeName !== 'path') return;
+    const dataToSet = userPeriodTotal.map(item => item);
+    dispatch(setIconData({ id: e.target.id, data: dataToSet }))
 
+  }
   return (
     <>
       <ReportExpenseListWrapper>
@@ -54,28 +56,33 @@ export default function Income() {
           </ReportExpenseButtonArrowLeft>
           <ReportExpenseText>Income</ReportExpenseText>
           <ReportExpenseButtonArrowRight
-            disabled={true}
+            disabled
             className="arrow-right"
             onClick={onChangeIncomePageHandler}
           >
             <ReportArrowRight size={24} />
           </ReportExpenseButtonArrowRight>
         </ReportExpenseWrapper>
-
-        <ReportExpenseList>
-          {TotalIncomesArray.map(item =>
-            item.map(elem => (
-              <ReportExpenseListItem key={elem[0]}>
-                <ReportExpenseListItemAmount>
-                  {elem[1].incomeTotal}
-                </ReportExpenseListItemAmount>
-                {elem[0] === 'З/П' && <Salary />}
-                {elem[0] === 'Доп. доход' && <OutherIncomes />}
-                <ReportExpenseListItemText>{elem[0]}</ReportExpenseListItemText>
-              </ReportExpenseListItem>
-            ))
-          )}
-        </ReportExpenseList>
+        {TotalIncomesArray.length > 0 && TotalIncomesArray[0].length > 0 ? (
+          <ReportExpenseList onClick={onClickIcon}>
+            {TotalIncomesArray.map(item =>
+              item.map(elem => (
+                <ReportExpenseListItem key={elem[0]}>
+                  <ReportExpenseListItemAmount>
+                    {elem[1].total}
+                  </ReportExpenseListItemAmount>
+                  {elem[0] === 'З/П' && <Salary />}
+                  {elem[0] === 'Доп. доход' && <OutherIncomes />}
+                  <ReportExpenseListItemText>
+                    {elem[0]}
+                  </ReportExpenseListItemText>
+                </ReportExpenseListItem>
+              ))
+            )}
+          </ReportExpenseList>
+        ) : (
+          <ReportIncomeNotification />
+        )}
       </ReportExpenseListWrapper>
     </>
   );

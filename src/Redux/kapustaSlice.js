@@ -24,6 +24,8 @@ const initialState = {
       expenses: { expenses: [], monthsStats: [] },
       category: { income: [], expense: [] },
       periodData: [],
+
+      iconsData: { id: null, data: [] },
     },
   },
   accessToken: null,
@@ -39,6 +41,8 @@ const kapustaSlice = createSlice({
   reducers: {
     setDateInput(state, action) {
       state.dateInput = action.payload;
+    setIconData: (state, action) => {
+      state.auth.userData.iconsData = action.payload;
     },
   },
   extraReducers: builder => {
@@ -84,6 +88,7 @@ const kapustaSlice = createSlice({
         state.loading = false;
         state.auth.userData.expenses.expenses = [];
         state.auth.userData.incomes.incomes = [];
+        state.auth.userData.iconsData = { id: null, data: [] };
       })
       .addCase(logOut.rejected, (state, action) => {
         state.loading = false;
@@ -256,6 +261,7 @@ export const kapustaReducer = persistReducer(
   persistConfig,
   kapustaSlice.reducer
 );
+export const { setIconData } = kapustaSlice.actions;
 export const getIsLoggedIn = state => state.kapusta.isLoggedIn;
 export const getTransation = state => state.kapusta.auth.userData.transactions;
 export const getSid = state => state.kapusta.sid;
@@ -285,5 +291,9 @@ export const getSummaryIncome = state =>
 export const getUserBalance = state => state.kapusta.auth.userData.balance;
 export const getDataByPeriod = state => state.kapusta.auth.userData.periodData;
 
+
 export const { setDateInput } = kapustaSlice.actions;
 export const getDateInput = state => state.kapusta.dateInput;
+
+export const getIconsData = state => state.kapusta.auth.userData.iconsData;
+

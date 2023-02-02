@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Outlet, useNavigate } from 'react-router-dom';
+import { format, subMonths, addMonths } from 'date-fns';
+import { getDataByPeriod, getLoading } from 'Redux/kapustaSlice';
 import { getTransactionsByPeriod } from 'Redux/transactionOperation';
-import { Container } from 'components/Theme/BreakPoints';
-// import { getUserIncomes, getUserExpenses } from 'Redux/kapustaSlice';
-import { months } from './Month';
+import { setIconData } from 'Redux/kapustaSlice';
+// import { Container } from 'components/Theme/BreakPoints';
 import StatsReport from 'components/StatsReport/StatsReport';
-import { ReportBalance } from '../Balance/ReportBalance';
-
+import ReportBalance from '../Balance/ReportBalance';
 import {
   ReportIoIosArrowRoundBack,
   ReportArrowLeft,
@@ -29,164 +29,31 @@ import {
   ReportHeaderWrapperTablet,
 } from './AppBarReport.styled';
 
-const currentDateMonth = new Date().getMonth();
-let monthName = months[currentDateMonth];
-
 export default function AppBarReport() {
-  const [currentMonthName, setCurrentMonthName] = useState(monthName);
-  const [currentMonthNumber, setCurrentMonthNumber] =
-    useState(currentDateMonth);
-
-  console.log(typeof currentDateMonth);
-
-  console.log('Теперішній місяць номер згідно з Date', currentDateMonth);
-  console.log('Теперішній місяць назва згідно з Date', monthName);
-  console.log(
-    'Теперішній місяць номер у стейті згідно з індексом',
-    currentMonthNumber
-  );
-  console.log(
-    'Теперішній місяць назва у стейті згідно з індексом',
-    currentMonthName
-  );
-  console.log('===============================================');
-
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const userPeriodTotal = useSelector(getDataByPeriod);
+  const isLoading = useSelector(getLoading);
+  const [selectedSeriod, setSelectedSeriod] = useState(() => new Date());
+
+  console.log('завантаження:', isLoading, 'data з бекенду:', userPeriodTotal);
 
   const onBackHomePageHandler = () => {
+    dispatch(setIconData({ id: null, data: [] }))
     navigate('/home', { replace: true });
   };
 
   const onChangeMonthIncreaseHandler = () => {
-    setCurrentMonthName(months[currentMonthNumber + 1]);
-    setCurrentMonthNumber(prevState => prevState + 1);
-
-    onFetchCurrentPeriodHandler(currentMonthNumber);
+    const nextDate = addMonths(selectedSeriod, 1);
+    setSelectedSeriod(nextDate);
+    dispatch(setIconData({ id: null, data: [] }))
   };
 
   const onChangeMonthDecreaseHandler = () => {
-    // setCurrentMonthName(months[currentMonthNumber - 1]);
-    // setCurrentMonthNumber(currentMonthNumber - 1);
-    setCurrentMonthName(months[currentMonthNumber - 1]);
-    setCurrentMonthNumber(prevState => prevState - 1);
-
-    onFetchCurrentPeriodHandler(currentMonthNumber);
+    const previousDate = subMonths(selectedSeriod, 1);
+    setSelectedSeriod(previousDate);
+    dispatch(setIconData({ id: null, data: [] }))
   };
-
-  const onFetchCurrentPeriodHandler = currentMonthNumber => {
-    switch (currentMonthNumber) {
-      // case 0:
-      //   dispatch(getTransactionsByPeriod('01'));
-      //   break;
-
-      // case 1:
-      //   dispatch(getTransactionsByPeriod('02'));
-      //   break;
-
-      // case 2:
-      //   dispatch(getTransactionsByPeriod('03'));
-      //   break;
-
-      // case 3:
-      //   dispatch(getTransactionsByPeriod('04'));
-      //   break;
-
-      // case 4:
-      //   dispatch(getTransactionsByPeriod('05'));
-      //   break;
-
-      // case 5:
-      //   dispatch(getTransactionsByPeriod('06'));
-      //   break;
-
-      // case 6:
-      //   dispatch(getTransactionsByPeriod('07'));
-      //   break;
-
-      // case 7:
-      //   dispatch(getTransactionsByPeriod('08'));
-      //   break;
-
-      // case 8:
-      //   dispatch(getTransactionsByPeriod('09'));
-      //   break;
-
-      // case 9:
-      //   dispatch(getTransactionsByPeriod('10'));
-      //   break;
-
-      // case 10:
-      //   dispatch(getTransactionsByPeriod('11'));
-      //   break;
-
-      // case 11:
-      //   dispatch(getTransactionsByPeriod('12'));
-      //   break;
-
-      case 0:
-        dispatch(getTransactionsByPeriod('01'));
-        break;
-
-      case 1:
-        dispatch(getTransactionsByPeriod('02'));
-        break;
-
-      case 2:
-        dispatch(getTransactionsByPeriod('03'));
-        break;
-
-      case 3:
-        dispatch(getTransactionsByPeriod('04'));
-        break;
-
-      case 4:
-        dispatch(getTransactionsByPeriod('05'));
-        break;
-
-      case 5:
-        dispatch(getTransactionsByPeriod('06'));
-        break;
-
-      case 6:
-        dispatch(getTransactionsByPeriod('07'));
-        break;
-
-      case 7:
-        dispatch(getTransactionsByPeriod('08'));
-        break;
-
-      case 8:
-        dispatch(getTransactionsByPeriod('09'));
-        break;
-
-      case 9:
-        dispatch(getTransactionsByPeriod('10'));
-        break;
-
-      case 10:
-        dispatch(getTransactionsByPeriod('11'));
-        break;
-
-      case 11:
-        dispatch(getTransactionsByPeriod('12'));
-        break;
-
-      default:
-        return;
-    }
-  };
-
-  const userPeriodTotal = useSelector(
-    state => state.kapusta.auth.userData.periodData
-  );
-
-  useEffect(() => {
-    dispatch(getTransactionsByPeriod('01'));
-    // onFetchCurrentPeriodHandler(currentMonthNumber);
-    // setCurrentMonthNumber(currentMonthNumber);
-    // eslint-disable-next-line
-  }, [dispatch]);
 
   const userPeriodExpenses = userPeriodTotal.map(
     item => item?.expenses.expenseTotal
@@ -195,8 +62,23 @@ export default function AppBarReport() {
   const userPeriodIncomes = userPeriodTotal.map(
     item => item?.incomes.incomeTotal
   );
+
+  useEffect(() => {
+    dispatch(getTransactionsByPeriod(format(selectedSeriod, 'yyyy-MM')));
+  }, [dispatch, selectedSeriod]);
+
   return (
-    <Container>
+    <div
+      style={{
+        paddingBottom: 80,
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        // alignItems: 'center',
+      }}
+    >
       <ReportHeaderWrapperTablet>
         <ReportIoIosArrowRoundBackWrapper>
           <ReportIoIosArrowRoundBack
@@ -212,14 +94,14 @@ export default function AppBarReport() {
           <ReportCurrentPeriodText>Current period:</ReportCurrentPeriodText>
           <ReportDateWrapper>
             <ReportExpenseButtonArrowLeft
-              disabled={currentMonthNumber === 0}
               onClick={onChangeMonthDecreaseHandler}
             >
               <ReportArrowLeft size={24} />
             </ReportExpenseButtonArrowLeft>
-            <ReportDateText>{currentMonthName} 2023</ReportDateText>
+            <ReportDateText>
+              {format(selectedSeriod, 'MMMM yyyy')}
+            </ReportDateText>
             <ReportExpenseButtonArrowRight
-              disabled={currentMonthNumber === 11}
               onClick={onChangeMonthIncreaseHandler}
             >
               <ReportArrowRight size={24} />
@@ -233,18 +115,18 @@ export default function AppBarReport() {
         <ReportListItemIndicatorExpenses>
           <ReportListItemIndicatorText>Expenses:</ReportListItemIndicatorText>
           <ReportListItemIndicatorExpensesAmount>
-            {[...userPeriodExpenses]} UAH.
+            - {[...userPeriodExpenses]} UAH.
           </ReportListItemIndicatorExpensesAmount>
         </ReportListItemIndicatorExpenses>
         <ReportListItemIndicatorIncome>
           <ReportListItemIndicatorText>Income:</ReportListItemIndicatorText>
           <ReportListItemIndicatorIncomeAmount>
-            {[...userPeriodIncomes]} UAH.
+            + {[...userPeriodIncomes]} UAH.
           </ReportListItemIndicatorIncomeAmount>
         </ReportListItemIndicatorIncome>
       </ReportListIndicator>
       <Outlet />
-      <StatsReport data1={userPeriodTotal} />
-    </Container>
+      <StatsReport />
+    </div>
   );
 }

@@ -13,13 +13,14 @@ import { logOut } from 'Redux/authOperaions';
 import logoutSvg from '../../images/logout.svg';
 import { ModalWindow } from 'components/ModalWindowNav/ModalWindowNav';
 import {
-  getIsLoggedIn,
+
+  getSid,
   getUserMail
 } from 'Redux/kapustaSlice';
 
 export const AuthNav = () => {
   const [modalOpen, setModalOpen] = useState(false);
-  const isLogIn = useSelector(getIsLoggedIn);
+  const token = useSelector(getSid);
   const userEmail = useSelector(getUserMail);
   const dispatch = useDispatch();
 
@@ -39,7 +40,7 @@ export const AuthNav = () => {
   };
 
   return (
-    isLogIn && (
+    token && (
       <>
         <NavStyled>
           {/* тут буде перша буква імені юзера */}
