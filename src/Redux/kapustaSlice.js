@@ -13,8 +13,12 @@ import {
   getTransactionsByPeriod,
 } from './transactionOperation';
 import { changeBalance, getUser } from './userOperations';
+
+import format from 'date-fns/format';
+const date = format(new Date(), 'yyyy-MM-dd');
+
 const initialState = {
-  dateInput: '',
+  dateInput: date,
   auth: {
     user: { email: null, id: null },
     userData: {
@@ -292,9 +296,7 @@ export const getSummaryIncome = state =>
 export const getUserBalance = state => state.kapusta.auth.userData.balance;
 export const getDataByPeriod = state => state.kapusta.auth.userData.periodData;
 
-
 export const { setDateInput } = kapustaSlice.actions;
 export const getDateInput = state => state.kapusta.dateInput;
 
 export const getIconsData = state => state.kapusta.auth.userData.iconsData;
-

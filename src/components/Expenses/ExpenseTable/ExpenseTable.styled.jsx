@@ -1,17 +1,5 @@
 import styled from '@emotion/styled';
 
-/* for custom scrollbar for webkit browser*/
-
-// ::-webkit-scrollbar {
-//     width: 6px;
-// }
-// ::-webkit-scrollbar-track {
-//     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-// }
-// ::-webkit-scrollbar-thumb {
-//     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-// }
-
 export const TableWrapper = styled.div`
   @media screen and (min-width: 1280px) {
     width: 746px;
@@ -37,6 +25,17 @@ export const TableC = styled.div`
   border: 2px solid #f5f6fb;
 
   overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: #f5f6fb;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 2px;
+    background-color: #ff751d;
+  }
 `;
 
 export const Th = styled.th`

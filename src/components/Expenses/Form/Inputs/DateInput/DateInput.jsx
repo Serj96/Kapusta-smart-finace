@@ -1,7 +1,7 @@
 import { forwardRef, useState } from 'react';
-import ReactDatePicker from 'react-datepicker';
+import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import { Controller, useFormContext } from 'react-hook-form';
+// import { Controller, useFormContext } from 'react-hook-form';
 import { FaRegCalendarAlt } from 'react-icons/fa';
 import {
   DateBtn,
@@ -10,10 +10,10 @@ import {
 } from './DateInput.styled';
 
 import format from 'date-fns/format';
-import {
-  ErrorMessage,
-  ErrorPositionWrapper,
-} from '../DescriptionInput/DescriptionInput.styled';
+// import {
+//   ErrorMessage,
+//   ErrorPositionWrapper,
+// } from '../DescriptionInput/DescriptionInput.styled';
 import { useDispatch } from 'react-redux';
 import { setDateInput } from 'Redux/kapustaSlice';
 
@@ -37,7 +37,7 @@ export const DateInput = () => {
     <>
       <DateInputWrapper>
         <DatePickerWrapper>
-          <ReactDatePicker
+          <DatePicker
             name="date"
             selected={startDate}
             dateFormat="yy.MM.dd"

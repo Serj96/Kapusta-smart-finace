@@ -44,9 +44,9 @@ const Balance = () => {
     reset,
     formState: { errors },
   } = useForm({
-    defaultValues: {
-      newBalance: balance,
-    },
+    // defaultValues: {
+    //   newBalance: balance,
+    // },
     mode: 'onChange',
     resolver: yupResolver(schema),
   });
@@ -66,6 +66,7 @@ const Balance = () => {
               {...register('newBalance')}
               name="newBalance"
               type="text"
+              // value={balance}
               placeholder={`${balance}.00 UAH`}
             />
             {balance === 0 && <DarkModal />}
