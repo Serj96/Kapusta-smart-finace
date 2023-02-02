@@ -52,8 +52,10 @@ const StatsReport = () => {
 
   const arr = Object.values(newObj)?.sort((a, b) => b - a);
   const chartData = {
+
     labels: Object.keys(newObj).filter(item => item !== 'total'),
     datasets: [{
+      barThickness: isMobScreen ? 15 : 38,
       label: 'Amount',
       data: arr,
       backgroundColor: arr.map((el, idx) => idx === 0 ? '#FF751D' : ((idx) % 3) ? '#FFDAC0' : '#FF751D'),
@@ -62,9 +64,8 @@ const StatsReport = () => {
   const options = {
     barPercentage: 0.7,
     layout: {
-      padding: 40,
+      padding: 15,
       margin: 10,
-
     },
     responsive: true,
     scales: {
@@ -79,7 +80,7 @@ const StatsReport = () => {
       y: {
         ticks: {
           display: false,
-          scaleBeginAtZero: false,
+          scaleBeginAtZero: true,
           padding: 3,
           min: arr[arr.length - 1]?.total,
           max: arr[0]?.total * 1.2,
@@ -88,7 +89,6 @@ const StatsReport = () => {
           display: true,
           drawTicks: false,
           offset: true,
-          lineWidth: 2,
           tickBorderDashOffset: 3,
           color: '#F5F6FB',
         }
@@ -131,6 +131,7 @@ const StatsReport = () => {
     options.plugins.datalabels.offset = 0;
     options.plugins.datalabels.align = 'end';
     options.plugins.datalabels.font.size = 10;
+
   }
 
   if (isTabScreen) {
