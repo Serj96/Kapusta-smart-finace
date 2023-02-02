@@ -1,139 +1,118 @@
 import styled from '@emotion/styled';
 import { myTheme } from 'components/Theme/Theme';
-import { Link } from 'react-router-dom';
-export const FormTitle = styled.h3`
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 14px;
-  text-align: center;
-  letter-spacing: 0.04em;
-  margin-top: 40px;
-  margin-bottom: 16px;
-  color: #52555f;
-`;
+import { NavLink } from 'react-router-dom';
 
-export const FormSubTitle = styled.h3`
-  display: block;
-  width: 75%;
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 14px;
-  letter-spacing: 0.04em;
-
-  color: #52555f;
-
-  margin-left: 10px;
-  margin-top: 32px;
-  @media (min-width: 767px) and (max-width: 1279.98px) {
-    margin-left: 73px;
-    width: 50%;
+export const LoginDiv = styled.div`
+  .textunderLogo {
+    font-size: 13px;
+    line-height: 15px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #52555f;
+    padding-right: 100px;
+    margin: 0 auto;
   }
 
-  @media (min-width: 1280px) {
-    margin-left: 73px;
-    width: 50%;
+  .logo {
+    width: 183px;
   }
-`;
 
-export const ButtonLink = styled.a`
-  display: block;
-  gap: 10px;
-  justify-content: center;
+  .logoDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 86px;
+    margin-bottom: 50px;
+  }
 
-  width: 122px;
-  height: 40px;
-  padding: 0 auto;
-
-  text-decoration: none;
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 16px;
-  display: flex;
-  align-items: center;
-  letter-spacing: 0.02em;
-
-  color: #000000;
-  background: #f6f7fb;
-  border-radius: 26px;
-
-  span {
-    @media (min-width: 767px) and (max-width: 1279.98px) {
+  @media screen and (min-width: 768px) {
+    margin-left: 170px;
+    margin-right: 170px;
+    
+    .textunderLogo {
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 19px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
     }
 
-    @media (min-width: 1280px) {
+    .logo {
+      width: 306px;
     }
   }
 
-  margin: 0 auto;
-  &:hover {
-    color: ${myTheme.backgroundColors.primary};
-    background-color: ${myTheme.colors.hover};
+  @media screen and (min-width: 1280px) {
+    padding-top: 117px;
+    display: flex;
+    align-items: center;
+
+    padding: 0;
+    margin: 0;
+    padding-top: 117px;
+
+    .logo {
+      width: 377px;
+    }
+
+    .logoDiv {
+      padding-left: 107px;
+      margin-right: 157px;
+    }
   }
 `;
 
 export const LoginForm = styled.form`
-  height: 496px;
-  width: 280px;
-  background-color: #ffffff;
-
   border-radius: 30px;
-  border: none;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  padding: 40px 20px;
+  background-color: white;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.04em;
 
-  label {
-    margin-top: 16px;
-    margin-left: 10px;
-    display: block;
+  box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
+  color: #52555f;
+  padding-left: 20px;
+  padding-right: 20px;
 
-    font-size: 16px;
-    font-weight: 500;
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 10px;
-    line-height: 12px;
+  .buttonGoogleRegText {
+    margin-top: 32px;
 
-    letter-spacing: 0.04em;
-
-    margin-bottom: 12px;
-
-    @media (min-width: 767px) and (max-width: 1279.98px) {
-      position: relative;
-      transform: translate(-50%, -50%);
-      top: 2%;
-      left: 64%;
-    }
-
-    @media (min-width: 1280px) {
-      position: relative;
-      transform: translate(-50%, -50%);
-      top: 2%;
-      left: 64%;
+    @media screen and (min-width: 768px) {
+      padding-right: 20px;
     }
   }
 
+  .emailLabel {
+    display: flex;
+    margin-top: 16px;
+    margin-bottom: 12px;
+    font-size: 10px;
+    line-height: 12px;
+    letter-spacing: 0.04em;
+    color: #000000;
+  }
+
+  .passwordLabel {
+    display: flex;
+    padding-top: 20px;
+    margin-bottom: 12px;
+    font-size: 10px;
+    line-height: 12px;
+    letter-spacing: 0.04em;
+    color: #000000;
+  }
+
   input {
-    display: block;
     width: 240px;
     height: 52px;
-
+    padding: 17px;
     background: #f6f7fb;
-    border-radius: 30px;
     border: none;
-    padding-left: 20px;
-
-    margin: 0 auto;
+    border-radius: 30px;
+    margin-bottom: 5px;
 
     &::placeholder {
-      font-family: 'Roboto';
-      font-style: normal;
       font-weight: 400;
       font-size: 14px;
       line-height: 16px;
@@ -141,31 +120,71 @@ export const LoginForm = styled.form`
 
       color: #a6abb9;
     }
+  }
+  @media screen and (min-width: 767px) {
+    width: 426px;
+    margin: 0 auto;
 
-    @media (min-width: 767px) and (max-width: 1279.98px) {
-      width: 259px;
-    }
+    padding-left: 84px;
+    padding-right: 84px;
+  }
+`;
 
-    @media (min-width: 1280px) {
-      width: 259px;
+export const TopTextDiv = styled.div`
+  padding-top: 40px;
+  flex-direction: column;
+  display: flex;
+  margin-bottom: 40px;
+  align-items: center;
+
+  .topGoogleRegTextspan {
+    padding-left: 3px;
+  }
+
+  @media screen and (min-width: 768px) {
+    align-items: baseline;
+    justify-content: center;
+    flex-direction: row;
+
+    .topGoogleRegTextspan {
+      display: inline-flex;
     }
   }
-  @media (min-width: 767px) and (max-width: 1279.98px) {
-    width: 426px;
-    height: 552px;
-    padding: 56px 84px;
+`;
+
+export const GoogleBtn = styled.a`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border: none;
+  width: 116px;
+  height: 44px;
+  background: #f5f6fb;
+  border-radius: 16px;
+  color: #52555f;
+
+  margin: 0 auto;
+  padding: 10px 20px;
+  font-size: 14px;
+  line-height: 16px;
+  color: #000000;
+  box-shadow: 1px 3px 5px rgba(82, 85, 95, 0.15);
+
+  &:hover {
+    color: ${myTheme.backgroundColors.primary};
+    background-color: ${myTheme.colors.hover};
   }
 
-  @media (min-width: 1280px) {
-    width: 426px;
-    height: 552px;
-    padding: 56px 84px;
+  .GoogleEmblem {
+    display: flex;
+    width: 18px;
+    align-items: baseline;
+    justify-content: center;
   }
 `;
 
 export const ErrorMsg = styled.div`
-  font-family: 'Roboto';
-  font-style: normal;
   font-weight: 400;
   font-size: 10px;
   line-height: 12px;
@@ -176,87 +195,63 @@ export const ErrorMsg = styled.div`
   letter-spacing: 0.04em;
 
   color: #eb5757;
-
-  @media (min-width: 767px) and (max-width: 1279.98px) {
-    margin-top: 2px;
-    padding-left: 70px;
-  }
-
-  @media (min-width: 1280px) {
-    margin-top: 2px;
-    padding-left: 70px;
-  }
 `;
-export const RegisterLink = styled(Link)` display: block;
-gap: 10px;
-justify-content: center;
 
-width: 122px;
-height: 40px;
-padding: 0 auto;
-
-text-decoration: none;
-font-family: 'Roboto';
-font-style: normal;
-font-weight: 500;
-font-size: 14px;
-line-height: 16px;
-display: flex;
-align-items: center;
-letter-spacing: 0.02em;
-
-color: #000000;
-background: #f6f7fb;
-border-radius: 26px;
-
-span {
-@media (min-width: 767px) and (max-width: 1279.98px) {
-}
-
-@media (min-width: 1280px) {
-}
-}
-
-margin: 0 auto;
-&:hover {
-color: ${myTheme.backgroundColors.primary};
-background-color: ${myTheme.colors.hover};
-}`;
-export const LinkRegistr = styled.div`
-  display: flex;
-  border: 2px solid #f6f7fc;
-  justify-content: center;
-  /* text-decoration: none; */
-  border-radius: 16px;
-  background-color: inherit;
-  cursor: pointer;
-  text-transform: uppercase;
-
-  width: 122px;
-  height: 40px;
-  padding: 0 auto;
-
-  text-decoration: none;
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 16px;
-  display: flex;
-  align-items: center;
-  letter-spacing: 0.02em;
-
-  color: #000000;
-  background: #f6f7fb;
-  border-radius: 26px;
-`;
 export const ButtonWrapper = styled.div`
   display: flex;
-  justify-content: center;
-  gap: 15px;
   margin-top: 40px;
+  padding-bottom: 40px;
+  justify-content: space-between;
+`;
 
-  @media (min-width: 767px) and (max-width: 1279.98px) {
-    margin-top: 57px;
+export const SubmitButton = styled.button`
+  width: 116px;
+  height: 44px;
+
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.02em;
+
+  color: #52555f;
+  background: #f5f6fb;
+  border: none;
+  border-radius: 16px;
+  cursor: pointer;
+  text-transform: uppercase;
+  filter: drop-shadow(1px 3px 5px rgba(82, 85, 95, 0.15));
+  &:hover {
+    color: ${myTheme.backgroundColors.primary};
+    background-color: ${myTheme.colors.hover};
+  }
+`;
+
+export const LinkRegistr = styled(NavLink)`
+  
+    width: 116px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.02em;
+  
+  border: none;
+  color: #52555f;
+  background: #F5F6FB;
+  border-radius: 16px;
+  cursor: pointer;
+  text-transform: uppercase;
+  filter: drop-shadow(1px 3px 5px rgba(82, 85, 95, 0.15));
+
+
+  &:hover {
+    color: ${myTheme.backgroundColors.primary};
+    background-color: ${myTheme.colors.hover};
   }
 `;
