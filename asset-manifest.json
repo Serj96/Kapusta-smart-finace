@@ -1,13 +1,21 @@
 {
   "files": {
-    "main.css": "/react-homework-template/static/css/main.7acaea2f.css",
-    "main.js": "/react-homework-template/static/js/main.07d3183d.js",
-    "index.html": "/react-homework-template/index.html",
-    "main.7acaea2f.css.map": "/react-homework-template/static/css/main.7acaea2f.css.map",
-    "main.07d3183d.js.map": "/react-homework-template/static/js/main.07d3183d.js.map"
+    "main.css": "/Kapusta-team-project-react/static/css/main.ce326cf6.css",
+    "main.js": "/Kapusta-team-project-react/static/js/main.3733f90e.js",
+    "static/media/kapusta_background.png": "/Kapusta-team-project-react/static/media/kapusta_background.7e9987965c8bdba639d1.png",
+    "static/media/two.svg": "/Kapusta-team-project-react/static/media/two.3e9b51598196b0d57182023e239ab7d2.svg",
+    "static/media/rightTop.svg": "/Kapusta-team-project-react/static/media/rightTop.5b87f84018284c2097f7c8ab4b23ab36.svg",
+    "static/media/loginPageKAPUSTA.svg": "/Kapusta-team-project-react/static/media/loginPageKAPUSTA.20d9f4fffb4586e08bdfc6d42521f042.svg",
+    "static/media/googleIcon.svg": "/Kapusta-team-project-react/static/media/googleIcon.7a3f1f24bf3def5cd5b1689aa1c2b0c1.svg",
+    "static/media/logo.svg": "/Kapusta-team-project-react/static/media/logo.a2f0299ede9bf1886ffbaee874b0a4e6.svg",
+    "index.html": "/Kapusta-team-project-react/index.html",
+    "static/media/logout.svg": "/Kapusta-team-project-react/static/media/logout.78b82f57a34115e6b1443bc704333c8f.svg",
+    "static/media/close.svg": "/Kapusta-team-project-react/static/media/close.b078d0ed69d09556d751e2f5c1cec3cb.svg",
+    "main.ce326cf6.css.map": "/Kapusta-team-project-react/static/css/main.ce326cf6.css.map",
+    "main.3733f90e.js.map": "/Kapusta-team-project-react/static/js/main.3733f90e.js.map"
   },
   "entrypoints": [
-    "static/css/main.7acaea2f.css",
-    "static/js/main.07d3183d.js"
+    "static/css/main.ce326cf6.css",
+    "static/js/main.3733f90e.js"
   ]
 }
