@@ -25,6 +25,7 @@ const ExpenseTable = () => {
   const sid = useSelector(getSid);
 
   const [swohModalDelete, setShowModalDelete] = useState(false);
+  const [itemId, setItemId] = useState(null);
 
   useEffect(() => {
     if (sid && pathname === '/home/expenses') dispatch(getExpense());
@@ -81,16 +82,17 @@ const ExpenseTable = () => {
                           }}
                         >
                           {formatSum(amount)}
-                          <ExpButton type="button" onClick={onModal}>
+                          <ExpButton
+                            type="button"
+                            onClick={() => {
+                              setItemId(_id);
+                              onModal();
+                            }}
+                          >
                             <DeleteIcon />
                           </ExpButton>
                         </div>
                       </Td>
-                      {swohModalDelete && (
-                        <Modal onClose={onModal}>
-                          <TransactionDeleteModal id={_id} onClose={onModal} />
-                        </Modal>
-                      )}
                     </tr>
                   )
                 )}
@@ -110,16 +112,17 @@ const ExpenseTable = () => {
                           }}
                         >
                           {amount}
-                          <ExpButton type="button" onClick={onModal}>
+                          <ExpButton
+                            type="button"
+                            onClick={() => {
+                              setItemId(_id);
+                              onModal();
+                            }}
+                          >
                             <DeleteIcon />
                           </ExpButton>
                         </div>
                       </Td>
-                      {swohModalDelete && (
-                        <Modal onClose={onModal}>
-                          <TransactionDeleteModal id={_id} onClose={onModal} />
-                        </Modal>
-                      )}
                     </tr>
                   )
                 )}
@@ -127,6 +130,11 @@ const ExpenseTable = () => {
           </Table>
         </TableC>
       </TableWrapper>
+      {swohModalDelete && (
+        <Modal onClose={onModal}>
+          <TransactionDeleteModal id={itemId} onClose={onModal} />
+        </Modal>
+      )}
     </>
   );
 };

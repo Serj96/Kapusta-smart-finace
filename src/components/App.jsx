@@ -34,8 +34,12 @@ export const App = () => {
           }
         />
         <Route
-          path="register"
-          element={!token ? <Registration /> : <Navigate to={'/home'} />}
+          path="register"element={!token ? <Registration /> : <Navigate to={'/home'} />}
+
+        <Route
+          path="expenses"
+          element={token ? <ExpensesPage /> : <Navigate to={'/home'} />}
+
         />
 
         {!isMobScreen ? <Route path="expenses" element={token ? <ExpensesPage /> : <Navigate to={'/home'} />} /> : <Route path="expenses" element={token && isMobScreen ? <Home /> : <Navigate to={'/home'} />} />}

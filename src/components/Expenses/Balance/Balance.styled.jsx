@@ -27,9 +27,9 @@ export const Form = styled.form`
   display: flex;
   align-items: center;
 
-  @media screen and (max-width: 767.98px) {
+  /* @media screen and (max-width: 767.98px) {
     margin-bottom: 40px;
-  }
+  } */
 `;
 
 export const AmountInput = styled.input`

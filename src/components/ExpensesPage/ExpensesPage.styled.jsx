@@ -40,7 +40,7 @@ export const BalanceWrapper = styled.div`
   align-items: center;
   flex-direction: column-reverse;
   padding: 40px 0;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
 
   @media screen and (min-width: 768px) {
     flex-direction: row;

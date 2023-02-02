@@ -14,6 +14,7 @@ import {
 } from './transactionOperation';
 import { changeBalance, getUser } from './userOperations';
 const initialState = {
+  dateInput: '',
   auth: {
     user: { email: null, id: null },
     userData: {
@@ -23,6 +24,7 @@ const initialState = {
       expenses: { expenses: [], monthsStats: [] },
       category: { income: [], expense: [] },
       periodData: [],
+
       iconsData: { id: null, data: [] },
     },
   },
@@ -37,6 +39,8 @@ const kapustaSlice = createSlice({
   name: 'kapusta',
   initialState,
   reducers: {
+    setDateInput(state, action) {
+      state.dateInput = action.payload;
     setIconData: (state, action) => {
       state.auth.userData.iconsData = action.payload;
     },
@@ -286,4 +290,10 @@ export const getSummaryIncome = state =>
 
 export const getUserBalance = state => state.kapusta.auth.userData.balance;
 export const getDataByPeriod = state => state.kapusta.auth.userData.periodData;
+
+
+export const { setDateInput } = kapustaSlice.actions;
+export const getDateInput = state => state.kapusta.dateInput;
+
 export const getIconsData = state => state.kapusta.auth.userData.iconsData;
+

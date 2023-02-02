@@ -5,7 +5,6 @@ export const DateBtn = styled.button`
   display: flex;
   align-items: flex-end;
   gap: 10px;
-  width: 100px;
   font-weight: 900;
   font-size: 12px;
   line-height: 1.17;
@@ -19,4 +18,18 @@ export const DateBtn = styled.button`
   @media screen and (min-width: 768px) {
     margin-right: 44px;
   }
+`;
+
+export const DateInputWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @media screen and (max-width: 767.98px) {
+    margin-bottom: 52px;
+  }
+`;
+
+export const DatePickerWrapper = styled.div`
+  width: 100px;
 `;

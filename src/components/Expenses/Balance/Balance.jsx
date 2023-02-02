@@ -32,7 +32,7 @@ const schema = yup
 const Balance = () => {
   const dispatch = useDispatch();
   const sid = useSelector(getSid);
-  const balance = useSelector(getUserBalance);
+  const balance = useSelector(getUserBalance) ?? '';
 
   useEffect(() => {
     if (sid) dispatch(getUser());
