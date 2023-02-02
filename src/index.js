@@ -5,7 +5,6 @@ import { App } from 'components/App';
 import { Provider } from 'react-redux';
 import { store } from 'Redux/store';
 import './index.css';
-import './components/ReportIcons/indexx.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <Provider store={store}>

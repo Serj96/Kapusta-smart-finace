@@ -12,6 +12,7 @@ import Products from 'components/ReportIcons/Products';
 import Invoice from 'components/ReportIcons/Invoice';
 import Tools from 'components/ReportIcons/Tools';
 import Ufo from 'components/ReportIcons/Ufo';
+import ReportExpenceNotification from 'components/Report/ReportNotification/ReportExpenceNotification';
 import {
   ReportArrowLeft,
   ReportArrowRight,
@@ -46,25 +47,24 @@ export default function Expense() {
 
   return (
     <>
-      {TotalExpensesArray.length > 0 && TotalExpensesArray[0].length > 0 && (
-        <ReportExpenseListWrapper>
-          <ReportExpenseWrapper>
-            <ReportExpenseButtonArrowLeft
-              disabled
-              className="arrow-left"
-              onClick={onChangeExpensesPageHandler}
-            >
-              <ReportArrowLeft size={24} />
-            </ReportExpenseButtonArrowLeft>
-            <ReportExpenseText>Expenses</ReportExpenseText>
-            <ReportExpenseButtonArrowRight
-              className="arrow-right"
-              onClick={onChangeIncomePageHandler}
-            >
-              <ReportArrowRight size={24} />
-            </ReportExpenseButtonArrowRight>
-          </ReportExpenseWrapper>
-
+      <ReportExpenseListWrapper>
+        <ReportExpenseWrapper>
+          <ReportExpenseButtonArrowLeft
+            disabled
+            className="arrow-left"
+            onClick={onChangeExpensesPageHandler}
+          >
+            <ReportArrowLeft size={24} />
+          </ReportExpenseButtonArrowLeft>
+          <ReportExpenseText>Expenses</ReportExpenseText>
+          <ReportExpenseButtonArrowRight
+            className="arrow-right"
+            onClick={onChangeIncomePageHandler}
+          >
+            <ReportArrowRight size={24} />
+          </ReportExpenseButtonArrowRight>
+        </ReportExpenseWrapper>
+        {TotalExpensesArray.length > 0 && TotalExpensesArray[0].length > 0 ? (
           <ReportExpenseList>
             {TotalExpensesArray.map(item =>
               item.map(elem => (
@@ -90,8 +90,10 @@ export default function Expense() {
               ))
             )}
           </ReportExpenseList>
-        </ReportExpenseListWrapper>
-      )}
+        ) : (
+          <ReportExpenceNotification />
+        )}
+      </ReportExpenseListWrapper>
     </>
   );
 }

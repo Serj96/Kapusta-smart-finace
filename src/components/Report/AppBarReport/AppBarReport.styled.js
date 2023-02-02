@@ -153,23 +153,6 @@ export const ReportListIndicator = styled.ul`
   box-shadow: 5px 10px 20px rgba(170, 178, 197, 0.4);
   border-radius: 20px;
 
-  @media (max-width: 767.98px) {
-    width: 280px;
-    height: 85px;
-  }
-
-  @media (min-width: 768px) {
-    justify-content: center;
-    width: 704px;
-    height: 50px;
-  }
-`;
-
-export const ReportListItemIndicatorExpenses = styled.li`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
   &::after {
     position: absolute;
     content: '';
@@ -180,19 +163,46 @@ export const ReportListItemIndicatorExpenses = styled.li`
   }
 
   @media (max-width: 767.98px) {
-    flex-direction: column;
-    padding: 10px;
-
-    width: 120px;
+    width: 280px;
+    height: 85px;
   }
 
   @media (min-width: 768px) {
-    padding: 15px 20px 15px 130px;
+    justify-content: center;
+    width: 704px;
+    height: 50px;
+    justify-content: space-around;
+  }
 
+  @media (min-width: 768px) and (max-width: 1279.98px) {
     &::after {
-      left: 340px;
+      left: 352px;
       height: 36px;
     }
+  }
+
+  @media (min-width: 1280px) {
+    &::after {
+      left: 343px;
+      height: 36px;
+    }
+  }
+`;
+
+export const ReportListItemIndicatorExpenses = styled.li`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media (max-width: 767.98px) {
+    flex-direction: column;
+    width: 120px;
+  }
+
+  @media (min-width: 768px) and (max-width: 1279.98px) {
+  }
+
+  @media (min-width: 1280px) {
   }
 `;
 
@@ -203,13 +213,13 @@ export const ReportListItemIndicatorIncome = styled.li`
 
   @media (max-width: 767.98px) {
     flex-direction: column;
-    padding: 10px;
-
     width: 120px;
   }
 
-  @media (min-width: 768px) {
-    padding: 15px 130px 15px 20px;
+  @media (min-width: 768px) and (max-width: 1279.98px) {
+  }
+
+  @media (min-width: 1280px) {
   }
 `;
 

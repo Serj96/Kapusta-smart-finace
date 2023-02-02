@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { getDataByPeriod } from 'Redux/kapustaSlice';
 import Salary from 'components/ReportIcons/Salary';
 import OutherIncomes from 'components/ReportIcons/OutherIncomes';
+import ReportIncomeNotification from 'components/Report/ReportNotification/ReportIncomeNotification';
 import {
   ReportArrowLeft,
   ReportArrowRight,
@@ -37,25 +38,24 @@ export default function Income() {
 
   return (
     <>
-      {TotalIncomesArray.length > 0 && TotalIncomesArray[0].length > 0 && (
-        <ReportExpenseListWrapper>
-          <ReportExpenseWrapper>
-            <ReportExpenseButtonArrowLeft
-              className="arrow-left"
-              onClick={onChangeExpensesPageHandler}
-            >
-              <ReportArrowLeft size={24} />
-            </ReportExpenseButtonArrowLeft>
-            <ReportExpenseText>Income</ReportExpenseText>
-            <ReportExpenseButtonArrowRight
-              disabled
-              className="arrow-right"
-              onClick={onChangeIncomePageHandler}
-            >
-              <ReportArrowRight size={24} />
-            </ReportExpenseButtonArrowRight>
-          </ReportExpenseWrapper>
-
+      <ReportExpenseListWrapper>
+        <ReportExpenseWrapper>
+          <ReportExpenseButtonArrowLeft
+            className="arrow-left"
+            onClick={onChangeExpensesPageHandler}
+          >
+            <ReportArrowLeft size={24} />
+          </ReportExpenseButtonArrowLeft>
+          <ReportExpenseText>Income</ReportExpenseText>
+          <ReportExpenseButtonArrowRight
+            disabled
+            className="arrow-right"
+            onClick={onChangeIncomePageHandler}
+          >
+            <ReportArrowRight size={24} />
+          </ReportExpenseButtonArrowRight>
+        </ReportExpenseWrapper>
+        {TotalIncomesArray.length > 0 && TotalIncomesArray[0].length > 0 ? (
           <ReportExpenseList>
             {TotalIncomesArray.map(item =>
               item.map(elem => (
@@ -72,8 +72,10 @@ export default function Income() {
               ))
             )}
           </ReportExpenseList>
-        </ReportExpenseListWrapper>
-      )}
+        ) : (
+          <ReportIncomeNotification />
+        )}
+      </ReportExpenseListWrapper>
     </>
   );
 }
