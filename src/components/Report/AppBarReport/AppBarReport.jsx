@@ -4,6 +4,7 @@ import { Outlet, useNavigate } from 'react-router-dom';
 import { format, subMonths, addMonths } from 'date-fns';
 import { getDataByPeriod, getLoading } from 'Redux/kapustaSlice';
 import { getTransactionsByPeriod } from 'Redux/transactionOperation';
+import { setIconData } from 'Redux/kapustaSlice';
 // import { Container } from 'components/Theme/BreakPoints';
 import StatsReport from 'components/StatsReport/StatsReport';
 import ReportBalance from '../Balance/ReportBalance';
@@ -38,17 +39,20 @@ export default function AppBarReport() {
   console.log('завантаження:', isLoading, 'data з бекенду:', userPeriodTotal);
 
   const onBackHomePageHandler = () => {
+    dispatch(setIconData({ id: null, data: [] }))
     navigate('/home', { replace: true });
   };
 
   const onChangeMonthIncreaseHandler = () => {
     const nextDate = addMonths(selectedSeriod, 1);
     setSelectedSeriod(nextDate);
+    dispatch(setIconData({ id: null, data: [] }))
   };
 
   const onChangeMonthDecreaseHandler = () => {
     const previousDate = subMonths(selectedSeriod, 1);
     setSelectedSeriod(previousDate);
+    dispatch(setIconData({ id: null, data: [] }))
   };
 
   const userPeriodExpenses = userPeriodTotal.map(
@@ -122,7 +126,7 @@ export default function AppBarReport() {
         </ReportListItemIndicatorIncome>
       </ReportListIndicator>
       <Outlet />
-      <StatsReport data1={userPeriodTotal} />
+      <StatsReport />
     </div>
   );
 }

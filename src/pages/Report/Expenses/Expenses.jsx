@@ -1,4 +1,4 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { getDataByPeriod } from 'Redux/kapustaSlice';
 import Boock from 'components/ReportIcons/Boock';
@@ -12,6 +12,7 @@ import Products from 'components/ReportIcons/Products';
 import Invoice from 'components/ReportIcons/Invoice';
 import Tools from 'components/ReportIcons/Tools';
 import Ufo from 'components/ReportIcons/Ufo';
+import { setIconData } from 'Redux/kapustaSlice';
 import ReportExpenceNotification from 'components/Report/ReportNotification/ReportExpenceNotification';
 import {
   ReportArrowLeft,
@@ -28,14 +29,17 @@ import {
 } from '../Report.styled';
 
 export default function Expense() {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const userPeriodTotal = useSelector(getDataByPeriod);
 
   const onChangeExpensesPageHandler = () => {
+    dispatch(setIconData({ id: null, data: [] }))
     navigate('/home/reports', { replace: true });
   };
 
   const onChangeIncomePageHandler = () => {
+    dispatch(setIconData({ id: null, data: [] }))
     navigate('income', { replace: true });
   };
 
@@ -44,7 +48,12 @@ export default function Expense() {
   );
 
   const TotalExpensesArray = userPeriodDataTotalExpenses.map(item => item);
+  const onClickIcon = (e) => {
+    if (e.target.nodeName !== 'svg' && e.target.nodeName !== 'path') return;
+    const dataToSet = userPeriodTotal.map(item => item);
+    dispatch(setIconData({ id: e.target.id, data: dataToSet }))
 
+  }
   return (
     <>
       <ReportExpenseListWrapper>
@@ -65,10 +74,10 @@ export default function Expense() {
           </ReportExpenseButtonArrowRight>
         </ReportExpenseWrapper>
         {TotalExpensesArray.length > 0 && TotalExpensesArray[0].length > 0 ? (
-          <ReportExpenseList>
+          <ReportExpenseList onClick={onClickIcon}>
             {TotalExpensesArray.map(item =>
               item.map(elem => (
-                <ReportExpenseListItem key={elem[0]}>
+                <ReportExpenseListItem key={elem[0]} >
                   <ReportExpenseListItemAmount>
                     {elem[1].total}
                   </ReportExpenseListItemAmount>
