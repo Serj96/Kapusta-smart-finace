@@ -153,6 +153,15 @@ export const ReportListIndicator = styled.ul`
   box-shadow: 5px 10px 20px rgba(170, 178, 197, 0.4);
   border-radius: 20px;
 
+  &::after {
+    position: absolute;
+    content: '';
+    left: 140px;
+    width: 1px;
+    height: 70px;
+    background-color: #e0e5eb;
+  }
+
   @media (max-width: 767.98px) {
     width: 280px;
     height: 85px;
@@ -164,30 +173,10 @@ export const ReportListIndicator = styled.ul`
     height: 50px;
     justify-content: space-around;
   }
-`;
-
-export const ReportListItemIndicatorExpenses = styled.li`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  &::after {
-    position: absolute;
-    content: '';
-    left: 140px;
-    width: 1px;
-    height: 70px;
-    background-color: #e0e5eb;
-  }
-
-  @media (max-width: 767.98px) {
-    flex-direction: column;
-    width: 120px;
-  }
 
   @media (min-width: 768px) and (max-width: 1279.98px) {
     &::after {
-      left: 345px;
+      left: 352px;
       height: 36px;
     }
   }
@@ -197,6 +186,23 @@ export const ReportListItemIndicatorExpenses = styled.li`
       left: 343px;
       height: 36px;
     }
+  }
+`;
+
+export const ReportListItemIndicatorExpenses = styled.li`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media (max-width: 767.98px) {
+    flex-direction: column;
+    width: 120px;
+  }
+
+  @media (min-width: 768px) and (max-width: 1279.98px) {
+  }
+
+  @media (min-width: 1280px) {
   }
 `;
 
