@@ -8,7 +8,7 @@ import './index.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <Provider store={store}>
-    <BrowserRouter>
+    <BrowserRouter basename='/Kapusta-team-project-react'>
       <App />
     </BrowserRouter>
   </Provider>

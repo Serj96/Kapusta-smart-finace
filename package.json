@@ -1,8 +1,8 @@
 {
-  "name": "react-homework-template",
+  "name": "kapusta-team-project-react",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://goitacademy.github.io/react-homework-template/",
+  "homepage": "https://QNeee.github.io/Kapusta-team-project-react/",
   "dependencies": {
     "@emotion/styled": "^11.10.5",
     "@hookform/resolvers": "^2.9.10",
