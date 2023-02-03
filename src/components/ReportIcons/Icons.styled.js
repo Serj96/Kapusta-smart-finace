@@ -60,6 +60,10 @@ export const ReportBackgroundIncomeSvg = styled.div`
     background-color: #ffdac0;
   }
 
+  &:active {
+    background-color: #ffdac0;
+  }
+
   @media (max-width: 767.98px) {
     width: 57px;
     height: 41px;

@@ -53,6 +53,7 @@ export default function Expense() {
     const dataToSet = userPeriodTotal.map(item => item);
     dispatch(setIconData({ id: e.target.id, data: dataToSet }));
   };
+
   return (
     <>
       <ReportExpenseListWrapper>
@@ -92,7 +93,18 @@ export default function Expense() {
                   {elem[0] === 'Образование' && <Boock />}
                   {elem[0] === 'Прочее' && <Ufo />}
                   <ReportExpenseListItemText>
-                    {elem[0]}
+                    {elem[0] === 'Алкоголь' && 'Alcohol'}
+                    {elem[0] === 'Продукты' && 'Products'}
+                    {elem[0] === 'Здоровье' && 'Health'}
+                    {elem[0] === 'Развлечения' && 'Entertainment'}
+                    {elem[0] === 'Транспорт' && 'Transport'}
+                    {elem[0] === 'Всё для дома' && 'Housing'}
+                    {elem[0] === 'Техника' && 'Technique'}
+                    {elem[0] === 'Коммуналка и связь' &&
+                      'Communal, communication'}
+                    {elem[0] === 'Спорт и хобби' && 'Sports, hobbies'}
+                    {elem[0] === 'Образование' && 'Education'}
+                    {elem[0] === 'Прочее' && 'Other'}
                   </ReportExpenseListItemText>
                 </ReportExpenseListItem>
               ))

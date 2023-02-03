@@ -73,7 +73,8 @@ export default function Income() {
                   {elem[0] === 'З/П' && <Salary />}
                   {elem[0] === 'Доп. доход' && <OutherIncomes />}
                   <ReportExpenseListItemText>
-                    {elem[0]}
+                    {elem[0] === 'З/П' && 'Salary'}
+                    {elem[0] === 'Доп. доход' && 'Add. income'}
                   </ReportExpenseListItemText>
                 </ReportExpenseListItem>
               ))
