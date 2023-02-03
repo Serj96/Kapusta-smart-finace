@@ -125,7 +125,7 @@ const StatsReport = () => {
         clamp: true,
         align: "top",
         formatter: function (value, context) {
-          return value + 'UAH';
+          return '' + value + ' UAH';
         },
       }
     },

@@ -48,8 +48,7 @@ export const Registration = () => {
       </div>
       <LoginForm onSubmit={formik.handleSubmit}>
         <TopTextDiv>
-          <p className="topGoogleRegText">You can log in with your Google</p>
-          <span className="topGoogleRegTextspan"> Account:</span>
+          <h3>Register Page</h3>
         </TopTextDiv>
         <p className="buttonGoogleRegText">
           Or log in using an email and password, after registering:
@@ -64,6 +63,7 @@ export const Registration = () => {
           onChange={formik.handleChange}
           value={formik.values.email}
           placeholder="your@email.com"
+          autoComplete='off'
         />
         {formik.errors.email ? (
           <ErrorMsg>{formik.errors.email}</ErrorMsg>
@@ -78,13 +78,14 @@ export const Registration = () => {
           onChange={formik.handleChange}
           value={formik.values.firstName}
           placeholder="Password"
+          autoComplete='off'
         />
         {formik.errors.password ? (
           <ErrorMsg>{formik.errors.password}</ErrorMsg>
         ) : null}
         <ButtonWrapper>
           <SubmitButton type={'submit'}>Registration</SubmitButton>
-          <LinkRegistr to="/home" styled={{ textDecoration: 'none' }}>
+          <LinkRegistr to="/" styled={{ textDecoration: 'none' }}>
             Log In
           </LinkRegistr>
         </ButtonWrapper>

@@ -51,7 +51,6 @@ export const Form = () => {
     handleSubmit,
     reset,
     setValue,
-    formState: { isSubmitSuccessful },
   } = methods;
 
   const onSubmit = data => {
@@ -59,7 +58,6 @@ export const Form = () => {
       date: dateInput,
       ...data,
     };
-
     const key = location.pathname;
 
     if (key === '/home/expenses') dispatch(addExpense(formData));
@@ -67,10 +65,10 @@ export const Form = () => {
     if (key === '/home/income') dispatch(addIncome(formData));
 
     setValue('category', null);
-
+    if (isMobScreen) navigate('/home');
     reset();
 
-    if (isMobScreen && isSubmitSuccessful) return navigate('/home');
+    // if (isMobScreen && isSubmitSuccessful) return navigate('/home');
   };
 
   return (

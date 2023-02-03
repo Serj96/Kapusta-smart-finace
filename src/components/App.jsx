@@ -1,6 +1,6 @@
 import LoginPage from 'LoginPage/LoginPage';
 import { useDispatch, useSelector } from 'react-redux';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Outlet } from 'react-router-dom';
 import { getSid } from 'Redux/kapustaSlice';
 import { Navigate } from 'react-router-dom';
 import { Layout } from './Layout/Layout';
@@ -26,34 +26,35 @@ export const App = () => {
 
   return (
     <Routes>
-      <Route path="/home" element={<Layout />}>
+      <Route path="/" element={<Layout />}>
         <Route
           index
           element={
-            !token ? <LoginPage /> : <Navigate to={'/home/expenses'} replace />
+            !token ? <LoginPage /> : <Navigate to={'/home'} replace />
           }
         />
         <Route
           path="register"
-          element={!token ? <Registration /> : <Navigate to={'/home'} />}
+          element={!token ? <Registration /> : <Navigate to={isMobScreen ? '/home' : "/home/expenses"} />}
         />
-
-        {!isMobScreen ? <Route path="expenses" element={token ? <ExpensesPage /> : <Navigate to={'/home'} />} /> : <Route path="expenses" element={token && isMobScreen ? <Home /> : <Navigate to={'/home'} />} />}
-
-        <Route
-          path="income"
-          element={token ? <IncomePage /> : <Navigate to={'/home'} />}
-        />
-
-        <Route
-          path="reports"
-          element={token ? <AppBarReport /> : <Navigate to={'/home'} />}
-        >
-          <Route index element={<Expense />} />
+        <Route path='home' element={token ? <div><Outlet /></div> : <Navigate to="/" />} >
+          <Route index element={isMobScreen ? <Home /> : <Navigate to="/home/expenses" />} />
+          <Route path="expenses" element={<ExpensesPage />} />
           <Route
             path="income"
-            element={token ? <Income /> : <Navigate to={'/home'} />}
+            element={token ? <IncomePage /> : <Navigate to={'/'} />}
           />
+
+          <Route
+            path="reports"
+            element={token ? <AppBarReport /> : <Navigate to={'/'} />}
+          >
+            <Route index element={<Expense />} />
+            <Route
+              path="income"
+              element={token ? <Income /> : <Navigate to={'/'} />}
+            />
+          </Route>
         </Route>
       </Route>
       <Route path="*" element={<NotFound />} />
