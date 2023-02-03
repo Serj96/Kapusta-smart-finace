@@ -24,6 +24,7 @@ const TransactionDeleteModal = ({ id, onClose }) => {
               .unwrap()
               .then(() => onClose())
           }
+          color={'submit'}
         >
           Yes
         </TransactionDeleteBtn>

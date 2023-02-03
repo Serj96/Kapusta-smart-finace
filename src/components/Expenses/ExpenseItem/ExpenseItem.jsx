@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { convertExpenseList } from '../convert/convertCategory';
 import { Modal } from '../Modal/Modal';
 import TransactionDeleteModal from '../Modal/TransactionDeleteModal/TransactionDeleteModal';
 
@@ -35,7 +36,7 @@ const ExpenseItem = ({ _id, description, date, category, amount }) => {
           <ExpDesription>{description}</ExpDesription>
           <Wrapper>
             <ExpDate>{date}</ExpDate>
-            <ExpDate>{category}</ExpDate>
+            <ExpDate>{convertExpenseList[category]}</ExpDate>
           </Wrapper>
         </div>
         <Wrapper>

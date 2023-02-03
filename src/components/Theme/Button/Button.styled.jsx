@@ -5,10 +5,11 @@ export const Button = styled.button`
   height: 44px;
   padding: 12px 15px;
 
-  color: ${myTheme.colors.primary};
   border: 2px solid #f6f7fc;
   border-radius: 16px;
-  background-color: inherit;
+  color: ${props => (props.color === 'submit' ? '#fff' : '#52555F')};
+  background-color: ${props =>
+    props.color === 'submit' ? '#FF751D' : 'transparent'};
 
   text-transform: uppercase;
   font-weight: 700;
@@ -19,8 +20,9 @@ export const Button = styled.button`
     background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover {
-    color: ${myTheme.backgroundColors.primary};
-    background-color: ${myTheme.colors.hover};
+    color: ${props => (props.color === 'submit' ? '#fff' : '#52555F')};
+    background-color: ${props =>
+      props.color === 'submit' ? '#df5500' : '#ebebeb'};
   }
 
   @media screen and (max-width: 767.98px) {

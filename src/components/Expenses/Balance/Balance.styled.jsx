@@ -45,6 +45,7 @@ export const AmountInput = styled.input`
   color: ${myTheme.colors.secondary};
   border: 2px solid ${myTheme.backgroundColors.primary};
   border-radius: 22px 0px 0px 22px;
+  background-color: transparent;
 
   @media screen and (min-width: 768px) {
     margin-right: 15px;

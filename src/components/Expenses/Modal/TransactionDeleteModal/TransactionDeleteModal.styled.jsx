@@ -53,7 +53,6 @@ export const TransactionDeleteBtn = styled.button`
   padding: 12px 34px;
   width: 125px;
   height: 44px;
-  background: transparent;
   border: 2px solid #f5f6fb;
   border-radius: 16px;
   font-weight: 700;
@@ -63,7 +62,10 @@ export const TransactionDeleteBtn = styled.button`
   letter-spacing: 0.02em;
   text-transform: uppercase;
   cursor: pointer;
-  color: #52555f;
+
+  color: ${props => (props.color === 'submit' ? '#fff' : '#52555F')};
+  background-color: ${props =>
+    props.color === 'submit' ? '#FF751D' : 'transparent'};
 
   transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
     background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
@@ -71,8 +73,9 @@ export const TransactionDeleteBtn = styled.button`
 
   &:hover,
   &:focus {
-    background: #ff751d;
-    color: #fff;
-    border-color: #ff751d;
+    border-color: transparent;
+    color: ${props => (props.color === 'submit' ? '#fff' : '#52555F')};
+    background-color: ${props =>
+      props.color === 'submit' ? '#df5500' : '#ebebeb'};
   }
 `;

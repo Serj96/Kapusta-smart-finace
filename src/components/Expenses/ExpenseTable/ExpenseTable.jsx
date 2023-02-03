@@ -4,6 +4,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { getSid, getUserExpenses, getUserIncomes } from 'Redux/kapustaSlice';
 import { getExpense, getIncome } from 'Redux/transactionOperation';
+import {
+  convertExpenseList,
+  convertIncomesList,
+} from '../convert/convertCategory';
 
 import { DeleteIcon, ExpButton } from '../ExpenseItem/ExpenseItem.styled';
 import { Modal } from '../Modal/Modal';
@@ -46,8 +50,6 @@ const ExpenseTable = () => {
     return sum;
   };
 
-  // formatSum(30);
-
   return (
     <>
       <TableWrapper>
@@ -72,7 +74,7 @@ const ExpenseTable = () => {
                     <tr key={_id}>
                       <Td>{date}</Td>
                       <Td>{description}</Td>
-                      <Td>{category}</Td>
+                      <Td>{convertExpenseList[category]}</Td>
                       <Td path={pathname}>
                         <div
                           style={{
@@ -102,7 +104,7 @@ const ExpenseTable = () => {
                     <tr key={_id}>
                       <Td>{date}</Td>
                       <Td>{description}</Td>
-                      <Td>{category}</Td>
+                      <Td>{convertIncomesList[category]}</Td>
                       <Td path={pathname}>
                         <div
                           style={{
