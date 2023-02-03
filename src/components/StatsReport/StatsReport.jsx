@@ -50,10 +50,18 @@ const StatsReport = () => {
     ChartDataLabels
   );
 
-  const arr = Object.values(newObj)?.sort((a, b) => b - a);
-  const chartData = {
+  const normalObj = { ...newObj };
+  delete normalObj.total;
 
-    labels: Object.keys(newObj).filter(item => item !== 'total'),
+  const sortableObj = Object.fromEntries(
+    Object.entries(normalObj).sort(([, a], [, b]) => b - a)
+  );
+
+  const arr = Object.values(sortableObj);
+  const arrLabel = Object.keys(sortableObj).filter(item => item !== 'total');
+
+  const chartData = {
+    labels: arrLabel,
     datasets: [{
       barThickness: isMobScreen ? 15 : 38,
       label: 'Amount',
@@ -63,13 +71,17 @@ const StatsReport = () => {
   };
   const options = {
     barPercentage: 0.7,
+    maintainAspectRatio: false,
     layout: {
-      padding: 15,
-      margin: 10,
+      padding: 30,
+      fullSize: true,
     },
     responsive: true,
     scales: {
       x: {
+        border: {
+          display: false,
+        },
         grid: {
           display: false,
         },
@@ -78,18 +90,22 @@ const StatsReport = () => {
         }
       },
       y: {
+        border: {
+          display: false,
+        },
         ticks: {
           display: false,
           scaleBeginAtZero: true,
-          padding: 3,
           min: arr[arr.length - 1]?.total,
           max: arr[0]?.total * 1.2,
+
         },
         grid: {
           display: true,
+          drawBorder: false,
+          showBorder: false,
+          lineWidth: 2,
           drawTicks: false,
-          offset: true,
-          tickBorderDashOffset: 3,
           color: '#F5F6FB',
         }
       },
@@ -100,43 +116,45 @@ const StatsReport = () => {
         display: false,
       },
       datalabels: {
-        display: true,
         color: "black",
         font: {
           family: 'arial',
           size: 12,
         },
         anchor: "end",
-        offset: -20,
-        align: "start",
-        formatter: function (value) {
-          return value + ' UAH';
-        }
-      },
+        clamp: true,
+        align: "top",
+        formatter: function (value, context) {
+          return value + 'UAH';
+        },
+      }
     },
     elements: {
       bar: {
-        borderRadius: 15,
+        borderRadius: 10,
       }
     }
   }
+
   if (isMobScreen) {
-    options.layout.padding = 20;
+    options.layout.padding = 25;
     options.indexAxis = 'y';
     options.maintainAspectRatio = false;
     options.scales.x.grid.display = false;
     options.scales.x.ticks.display = false;
     options.scales.y.grid.display = false;
     options.scales.y.ticks.display = true;
-    options.plugins.datalabels.offset = 0;
-    options.plugins.datalabels.align = 'end';
+    options.plugins.datalabels.offset = 7;
     options.plugins.datalabels.font.size = 10;
+    options.plugins.datalabels.align = 'top';
+    options.plugins.datalabels.anchor = 'end';
 
+    options.scales.y.ticks.mirror = true;
+    options.scales.y.ticks.labelOffset = -17;
   }
 
   if (isTabScreen) {
-    options.elements.bar.borderRadius = 5;
-    options.layout.padding = 20;
+    options.elements.bar.borderRadius = 10;
   }
 
   return (
