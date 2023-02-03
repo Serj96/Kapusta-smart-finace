@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Kapusta-team-project-react/static/css/main.ce326cf6.css",
-    "main.js": "/Kapusta-team-project-react/static/js/main.4c166c30.js",
+    "main.js": "/Kapusta-team-project-react/static/js/main.e7c53afe.js",
     "static/media/kapusta_background.png": "/Kapusta-team-project-react/static/media/kapusta_background.7e9987965c8bdba639d1.png",
     "static/media/two.svg": "/Kapusta-team-project-react/static/media/two.3e9b51598196b0d57182023e239ab7d2.svg",
     "static/media/rightTop.svg": "/Kapusta-team-project-react/static/media/rightTop.5b87f84018284c2097f7c8ab4b23ab36.svg",
@@ -11,10 +11,10 @@
     "static/media/logout.svg": "/Kapusta-team-project-react/static/media/logout.78b82f57a34115e6b1443bc704333c8f.svg",
     "static/media/close.svg": "/Kapusta-team-project-react/static/media/close.b078d0ed69d09556d751e2f5c1cec3cb.svg",
     "main.ce326cf6.css.map": "/Kapusta-team-project-react/static/css/main.ce326cf6.css.map",
-    "main.4c166c30.js.map": "/Kapusta-team-project-react/static/js/main.4c166c30.js.map"
+    "main.e7c53afe.js.map": "/Kapusta-team-project-react/static/js/main.e7c53afe.js.map"
   },
   "entrypoints": [
     "static/css/main.ce326cf6.css",
-    "static/js/main.4c166c30.js"
+    "static/js/main.e7c53afe.js"
   ]
 }
